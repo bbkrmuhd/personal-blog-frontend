@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Featured, NavBar} from '../components'
+import {Featured, ForYou, NavBar} from '../components'
 
 const Home = () => {
 
@@ -13,11 +13,13 @@ const Home = () => {
       </div>
       <div className='flex-auto min-h-screen border-x sm:px-8'>
       <Featured/>
+      <ForYou />
       </div>
       <div className='flex-none w-72'>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit distinctio modi illum quod totam ut ad illo itaque officia dolorem eos suscipit quia, similique fugit facere, cumque, cum assumenda nostrum.</p>
 
       </div>
+      
 
       
       

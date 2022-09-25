@@ -15,7 +15,8 @@ import { LocalStorageService } from '../services/LocalStorageService'
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`,
+        "Access-Control-Allow-Origin": ''
       },
       body: JSON.stringify(data)
     

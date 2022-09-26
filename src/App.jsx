@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import './App.css'
-import {Home, About, Login} from './pages'
+import {Home, About, Login, PostList, PostDetail} from './pages'
 
 
 export default function App() {
@@ -11,6 +11,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/posts/list' element={<PostList/>} />
+        <Route path='/post/detail' element={<PostDetail/>} />
         <Route
         path="*"
         element={

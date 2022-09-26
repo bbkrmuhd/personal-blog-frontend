@@ -6,9 +6,9 @@ import {AiOutlineLinkedin, AiOutlineTwitter, AiOutlineGithub} from 'react-icons/
 
 const Subscribe = () => {
   return (
-    <div className='p-8 my-2 sm:my-4 flex items-center justify-between drop-shadow-sm'>
+    <div className='p-6 my-2 sm:my-4 flex items-center justify-between drop-shadow-sm'>
         <div className='w-3/6'>
-            <h1 className='text2xl text-slate-700 tracking-wide sm:text-3xl '>Subscribe to my news Later to get latest updates and news</h1>
+            <h1 className='text2xl text-slate-700 tracking-wide sm:text-3xl '>Subscribe to my news latter to get latest updates and news</h1>
         </div>
         <div>
         <form className='flex gap-2' action="">
@@ -16,10 +16,7 @@ const Subscribe = () => {
             <label htmlFor=""></label>
             <button className='px-4 py-2  bg-cyan-700 text-white sm:px-6 hover:bg-cyan-900 transition-all rounded-lg'>Subscribe</button>
         </form>
-
         </div>
-       
-
     </div>
   )
 }

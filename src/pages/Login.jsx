@@ -34,11 +34,12 @@ function LoginPage() {
   }
 
   return (  
-    <div className='container mx-auto h-screen center'>
-      <div className='max-w-2xl flex border rounded-xl mx-6'>
+    <div className='container mx-auto h-screen '>
+      <div className='bg-red-500'>
+      <div className='max-w-2xl flex border rounded-xl absolute w-full left-1/2 right-1/2 translate-y-1/3 -translate-x-1/2 '>
         <div className='hidden sm:block w-2/5 bg-login-image bg-cover'>
         </div>
-        <div className='flex-initial w-full sm:w-3/5 p-3 sm:p-8'>
+        <div className='w-full sm:w-3/5 p-3 sm:p-8 '>
         <h2 className='text-2xl sm:text-3xl'>LOGIN</h2>
         <h3 className='text-base sm:text-lg text-gray-500'>AND CONTINUE</h3>
 
@@ -60,6 +61,9 @@ function LoginPage() {
     
 
       </div>
+
+      </div>
+      
         
     </div>
   ) 

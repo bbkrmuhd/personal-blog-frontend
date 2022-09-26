@@ -1,12 +1,14 @@
 import React from 'react'
 import {AiOutlineLinkedin, AiOutlineTwitter, AiOutlineGithub, AiOutlineSearch} from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
     <div className='container mx-auto border-b'>
+    
         <div className='flex items-center justify-between py-4'>
             <div className='flex items-center space-x-4'>
-                <div className='text-2xl text-cyan-700'>SadiqCodes</div>
+            <Link to='/'><div className='text-2xl text-cyan-700'>SadiqCodes</div></Link> 
                 <form>   
             <label htmlFor="default-search" className="text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
          <div className="relative">
@@ -22,7 +24,7 @@ const NavBar = () => {
                     <li>
                     <label htmlFor="small-toggle" className="inline-flex relative items-center cursor-pointer mt-2">
                         <input type="checkbox" value="" id="small-toggle" className="sr-only peer" />
-                        <div className="w-9 h-5 bg-gray-200 ring-2 ring-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-300 dark:peer-focus:ring-cyan-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
+                        <div className="w-9 h-5 bg-gray-200 ring-2 ring-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-700 dark:peer-focus:ring-cyan-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-slate-700"></div>
                         </label>
                     </li>
                     <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all '><AiOutlineTwitter/></li>

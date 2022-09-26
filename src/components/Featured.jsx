@@ -1,16 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Button from './Button'
+import H1 from './H1'
 
 const Featured = ({ post }) => {
   return (
     <div>
         <div className='flex items-center justify-between my-2 sm:my-4'>
-            <div>
-            <h1 className=' text-2xl sm:text-3xl text-gray-900 tracking-wide font-bold'>Article of the Day</h1>
-            </div>
-       
+           <H1 text='Article Of The Day'/>
         <div>
-       <Button text='View More'/>
+        <Link to="/posts/list">  <Button text='View More'/></Link>
         </div>
         </div>
 
@@ -20,6 +19,7 @@ const Featured = ({ post }) => {
             <p className='text-gray-300 text-xs sm:text-sm leading-4 '>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore doloribus, velit odit possimus corrupti veritatis nostrum, optio libero inventore blanditiis natus maxime laboriosam ex neque nam, minus modi rem. Velit.</p>
            <div>
            <Button text='Read Now' bgColor='' textColor='white' />
+         
 
            </div>
             

@@ -1,40 +1,43 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Fetch from '../hooks/Fetch'
 import Button from './Button'
-import H1 from './H1'
 
-const Featured = ({ post }) => {
+
+
+
+
+const FeaturedPost = ({ post: {slug, title, body} }) => {
   return (
     <div>
-        <div className='flex items-center justify-between my-2 sm:my-4'>
-           <H1 text='Article Of The Day'/>
+    <div className='h-96 my-10 rounded-lg bg-cover bg-no-repeat bg-center flex drop-shadow-xl drop-shadow-gray-300 bg-gradient-to-t from-black/75 via-black/0' style={{'backgroundImage': "url('https://images.pexels.com/photos/4144179/pexels-photo-4144179.jpeg?auto=compress&cs=tinysrgb&w=800')"}}>
+        <div className='flex flex-col gap-4 p-4 basis-1/2 justify-between'>
+          <div className='w-full'>
+          <h1 className=' text-2xl sm:text-4xl text-white tracking-wide font-bold leading-6 my-10'>{title}</h1>
+        <p className='text-gray-300 text-xs sm:text-sm leading-4 '>{body}</p>
+          </div>
+       
+       <div>
+        <Link to={`/post/detail/${slug}`}><Button text='Read Now' bgColor='' textColor='white' /></Link>
+       </div>
+        </div>
         <div>
-        <Link to="/posts/list">  <Button text='View More'/></Link>
         </div>
-        </div>
-
-        <div className='h-96 my-10 rounded-lg bg-cover bg-no-repeat bg-center flex drop-shadow-xl drop-shadow-gray-300 bg-gradient-to-t from-black/75 via-black/0' style={{'backgroundImage': "url('https://images.pexels.com/photos/4144179/pexels-photo-4144179.jpeg?auto=compress&cs=tinysrgb&w=800')"}}>
-            <div className='flex flex-col gap-4 p-4 basis-1/2'>
-            <h1 className=' text-2xl sm:text-3xl text-white tracking-wide leading-6 mt-10'>Lorem ipsum, dolor sit amet consectetur adipisicing elit</h1>
-            <p className='text-gray-300 text-xs sm:text-sm leading-4 '>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore doloribus, velit odit possimus corrupti veritatis nostrum, optio libero inventore blanditiis natus maxime laboriosam ex neque nam, minus modi rem. Velit.</p>
-           <div>
-           <Button text='Read Now' bgColor='' textColor='white' />
-         
-
-           </div>
-            
-            </div>
-            <div>
-
-            </div>
-
- 
-
-        </div>
-
-        
-
     </div>
+</div>
+  )
+}
+
+
+const Featured = () => {
+  return (
+    <Fetch
+    url="/posts/featured"
+    renderSuccess={({data}) => (
+      <FeaturedPost post={data}/>
+    )}
+/>
+   
   )
 }
 

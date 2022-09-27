@@ -8,4 +8,5 @@ export {default as Categories} from './Categories'
 export {default as Footer} from './Footer'
 export {default as Pagination} from './Pagination'
 export {default as ReadNext} from './ReadNext'
+export {default as ToDate} from './ToDate'
 

@@ -6,7 +6,7 @@ const useFetch = ( uri ) => {
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState(null)
     const [error, setError] = useState(null)
-    
+
 
     useEffect(() => {
         setTimeout(() => {

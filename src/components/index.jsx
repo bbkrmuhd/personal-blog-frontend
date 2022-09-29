@@ -9,4 +9,5 @@ export {default as Footer} from './Footer'
 export {default as Pagination} from './Pagination'
 export {default as ReadNext} from './ReadNext'
 export {default as ToDate} from './ToDate'
+export {default as Comments} from './Comments'
 

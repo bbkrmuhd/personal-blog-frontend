@@ -21,7 +21,7 @@ const Home = () => {
       <div className='flex items-center justify-between px-4 my-2 sm:my-4'>
        <H1 text='Article Of The Day'/>
     <div>
-    <Link to="/posts/list">  <Button text='View More'/></Link>
+    <Link to="/posts">  <Button text='View More'/></Link>
     </div>
     </div>
 

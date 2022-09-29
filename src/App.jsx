@@ -10,7 +10,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/posts/list' element={<PostList/>} />
+        <Route path='/posts' element={<PostList/>} />
         <Route path='/post/detail/:postSlug' element={<PostDetail/>} />
         <Route path='tag/:tagSlug' element={<PostList/>} />
         <Route

@@ -1,5 +1,4 @@
 import React, {useState, } from 'react'
-import { PostData } from '../hooks/PostData'
 import { LocalStorageService } from '../services/LocalStorageService'
 import {useNavigate} from 'react-router-dom'
 

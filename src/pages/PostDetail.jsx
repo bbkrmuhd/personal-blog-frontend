@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { NavBar, Footer, H1, LatestPosts, ReadNext, ToDate } from '../components'
+import { NavBar, Footer, H1, LatestPosts, ReadNext, ToDate, Comments } from '../components'
 import { MdDateRange } from 'react-icons/md'
 import Fetch from '../hooks/Fetch'
 
@@ -56,6 +56,7 @@ const PostDetail = () => {
       </div>
       <div className='flex-auto min-h-screen border-x sm:px-8 my-4'>
       <PostDetailFetch postSlug={postSlug} />
+      <Comments postSlug={postSlug}/>
       </div>
 
       <div className='flex-none flex flex-col w-80 sm:pl-4 my-4'>

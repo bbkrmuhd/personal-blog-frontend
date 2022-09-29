@@ -7,11 +7,10 @@ const useFetch = ( uri ) => {
     const [data, setData] = useState(null)
     const [error, setError] = useState(null)
 
-
     useEffect(() => {
         setTimeout(() => {
             fetch("http://127.0.0.1:5000/api/v1/" + uri,)
-            .then(res => {
+            .then((res) => {
                 if(!res.ok){
                    throw Error("Could not fetch data")
                 }

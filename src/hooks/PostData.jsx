@@ -3,39 +3,42 @@ import { LocalStorageService } from '../services/LocalStorageService'
 
 
 
- export const PostData = (url, data) => {
-  const [result, setResult] = useState()
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState()
+  export const usePost = async (url, formData) => {
+    const [result, setResult] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
-  const token = LocalStorageService.loadJSON('access-token')
+    let token = LocalStorageService.loadJSON("access_token")
+    console.log("token", token)
 
-  const usePost = async (url, data) => {
-    let response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        'Authorization': `Bearer ${token}`,
-        "Access-Control-Allow-Origin": ''
-      },
-      body: JSON.stringify(data)
-    
-    })
-    let result =  await response.json()
-    console.log(result)
-    setResult(result)
-    setLoading(false)
-    console.log(result)
+    useEffect(() => {
+      if (!url && data) return;
+      const response = async (url) =>{
+        await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+            'Authorization': `Bearer ${token}`,
+          },
 
+          body: JSON.stringify(formData)
+        
+        })
+        const data = await response.json()
+        return data
+      }
+      
+
+      setResult(response)
+      setLoading(false)
+      
+      
+    }, [url])
+    console.log(error)
+    return {result, loading, error};
   }
 
 
-  useEffect(() => {
-    if (!url && data) return;
-    usePost(url, data).catch(setError)
-  }, [url])
-  console.log(error)
-  return {result, loading, error};
-}
+  
 
 

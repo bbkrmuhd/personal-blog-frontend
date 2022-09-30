@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Comment from './Comment'
 import CommentForm from './CommentForm'
+import H1 from './H1'
 
 
 
@@ -103,11 +104,10 @@ const Comments = ({ postSlug }) => {
 
 
   return (
-    <div className=''>
+    <div id='comments' className='p-4 sm:p-6 rounded-lg border border-gray-200 shadow-sm my-5 sm:my-10'>
     <div>
-        <p>comment form</p>
+        <H1 text='Comment Form' />
         <CommentForm labelText='Add Comment'  handleSubmit={onAddComment}/>
-
     </div>
     {parentComments && parentComments.map(parentComment => (
         <Comment key={parentComment.id} 

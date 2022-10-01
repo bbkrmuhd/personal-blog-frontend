@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { NavBar, Footer, H1, LatestPosts, ReadNext, ToDate, Comments } from '../components'
+import { NavBar, Footer, H1, LatestPosts, ReadNext, ToDate, Comments, LikeCommentShare } from '../components'
 import { MdDateRange } from 'react-icons/md'
 import Fetch from '../hooks/Fetch'
 
 
 const PostDetailData = ({ post: {author, title, body, update_on} }) => {
+  let p = [1,2,3,4,5,6,7,8,9,0,11,22,33,44,55,666,577,573]
   return (
     <>
     <div className='flex items-center gap-2 text-gray-500 text-xs'>
@@ -21,6 +22,9 @@ const PostDetailData = ({ post: {author, title, body, update_on} }) => {
           </div>
         <H1 text={`${title}`}/>
         <p>{body}</p>
+        {p.map(p => (
+          <p key={p}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ad impedit animi accusantium, reiciendis nostrum cupiditate nisi eos, suscipit earum nam. Ad quia molestiae repellat veritatis aliquid, mollitia vero unde!</p>
+        ))}
     </>
 
   )
@@ -51,22 +55,22 @@ const PostDetail = () => {
   return (
     <>   
     <NavBar /> 
-    <section className='container mx-auto flex my-10 relative'>
-      <div className='flex-none w-32 my-4'>
+    <section className='container mx-auto flex my-10'>
+      <div className='flex-none w-32 my-4 px-8 flex justify-end relative'>
+        <LikeCommentShare postSlug={postSlug} />
       </div>
-      <div className='flex-auto min-h-screen border-x sm:px-8 my-4'>
+
+
+      <div className='flex-auto min-h-screen border-x sm:px-12 my-4'>
       <PostDetailFetch postSlug={postSlug} />
       <Comments postSlug={postSlug}/>
       </div>
+
 
       <div className='flex-none flex flex-col w-80 sm:pl-4 my-4'>
        <H1 text='Popular Articles'/>
             <LatestPosts />
       </div>
-      
-
-      
-      
     </section>
     <section className='container mx-auto max-w-5xl'>
       <div className=''>

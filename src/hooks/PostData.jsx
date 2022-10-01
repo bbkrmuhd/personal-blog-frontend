@@ -24,8 +24,9 @@ import { LocalStorageService } from '../services/LocalStorageService'
           body: JSON.stringify(formData)
         
         })
-        const data = await response.json()
-        return data
+
+        return await response.json()
+
       }
       
 

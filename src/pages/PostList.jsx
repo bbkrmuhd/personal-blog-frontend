@@ -3,7 +3,7 @@ import Fetch from '../hooks/Fetch';
 import { MdDateRange } from 'react-icons/md';
 import {RiHeartLine} from 'react-icons/ri'
 import {FaRegComments} from 'react-icons/fa'
-import {NavBar, Categories, LatestPosts, H1, Footer, Button} from '../components'
+import {NavBar, Categories, LatestPosts, H1, Footer, Button, Pagination} from '../components'
 import { Link } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router-dom';
 import ToDate from '../components/ToDate';
@@ -22,13 +22,13 @@ const PostListDataList = ({ post }) => {
     <div className='flex flex-col flex-none gap-6 rounded-lg h-full '>
       <div className='flex gap-2 h-full'>
           <div className='flex-none w-48 relative'>
-            <Link to={`/post/detail/${post.slug}`}><img className='inset-0 absolute w-full h-full object-cover transform hover:scale-105' src="https://images.pexels.com/photos/4350767/pexels-photo-4350767.jpeg?auto=compress&cs=tinysrgb&w=800" alt="post image" loading='lazy' /></Link>
+            <Link to={`/post/detail/${post.slug}`}><img className='inset-0 absolute w-full h-full object-cover transition-all hover:scale-105' src="https://images.pexels.com/photos/4350767/pexels-photo-4350767.jpeg?auto=compress&cs=tinysrgb&w=800" alt="post image" loading='lazy' /></Link>
           </div>
           <div className='flex-auto p-2'>
               <div className='flex flex-col gap-2 h-full items-start justify-between'>
                 <div className='flex flex-col gap-2'>
                   <div className='flex items-center gap-1 text-gray-500 text-xs'>
-                      <img className='w-12' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
+                      <img className='w-12 transition-all duration-150 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
                       <p>by <span className='font-bold text-gray-900'>{post.author}</span></p>-
                       <p>5 min read</p>
                </div>
@@ -53,7 +53,7 @@ const PostListDataList = ({ post }) => {
                 <div className='flex items-center gap-2'>
                 <p className='flex items-center gap-2 hover:text-cyan-700 '>
                 <RiHeartLine />
-                <span className='text-xs'>11</span>
+                <span className='text-xs'>{post.likes_count}</span>
 
                 </p>
                 <p className='flex items-center gap-2 hover:text-cyan-700  '>
@@ -83,6 +83,8 @@ const PostListDataList = ({ post }) => {
 
 const PostListData = () => {
   return (
+    <>
+  
     <Fetch
     url="posts/list"
     renderSuccess={({ data: { posts } }) => (
@@ -91,7 +93,11 @@ const PostListData = () => {
       ))
   )}
 />
+<div className='text-center my-10'>
+        <Pagination />
 
+      </div>
+  </>
   )
 }
 
@@ -114,6 +120,7 @@ const PostList = () => {
       <div className='flex-auto min-h-screen border-x sm:px-8 my-4'>
           <H1 text='All Posts'/>
         <PostListData/>
+        
 
 
       </div>

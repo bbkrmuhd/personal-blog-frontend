@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Comment from './Comment'
 import CommentForm from './CommentForm'
 import H1 from './H1'
+import { baseUrl } from './baseUrl'
 
 
 
@@ -21,7 +22,7 @@ const Comments = ({ postSlug }) => {
     useEffect(() => {
         async function getComment(postSlug){
             const response = await fetch(
-                `http://127.0.0.1:5000/api/v1/comments/get/${postSlug}`)
+                `${baseUrl}comments/get/${postSlug}`)
                 .then((response) => response.json())
             
 
@@ -34,7 +35,7 @@ const Comments = ({ postSlug }) => {
 
     const handleAddComment =  async (formData, slug) => {
       return   await fetch(
-            `http://127.0.0.1:5000/api/v1/comment/create/${slug}`, {
+            `${baseUrl}comment/create/${slug}`, {
           method: 'POST',
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(formData)
@@ -57,7 +58,7 @@ const Comments = ({ postSlug }) => {
     }
     const handleDeleteComment = async(comment_id) => {
        return await fetch(
-            `http://127.0.0.1:5000/api/v1/comment/delete/${comment_id}`, {
+            `${baseUrl}comment/delete/${comment_id}`, {
           method: 'DELETE',        
         }).then(response => response.json())
 
@@ -77,7 +78,7 @@ const Comments = ({ postSlug }) => {
 
     const handleUpdateComment = async(formData, comment_id) => {
         return await fetch(
-            `http://127.0.0.1:5000/api/v1/comment/update/${comment_id}`, {
+            `${baseUrl}comment/update/${comment_id}`, {
           method: 'PUT',
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(formData)        

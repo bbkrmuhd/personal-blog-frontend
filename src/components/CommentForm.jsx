@@ -29,7 +29,6 @@ const CommentForm = ({ handleSubmit, labelText, initialText="", hasCancelButton=
         </button>
         {hasCancelButton &&  (
             <button className='bg-gray-200 text-gray-900 px-4 py-2 text-xs rounded-md hover:bg-gray-300 hover:drop-shadow-md' 
-            disabled={isDisabled} 
             onClick={handleCancel} >Cancel
             </button>
         )}

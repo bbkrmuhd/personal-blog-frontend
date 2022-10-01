@@ -3,6 +3,7 @@ import CommentForm from './CommentForm';
 import {RiReplyAllFill} from 'react-icons/ri'
 import {MdDelete, MdEdit} from 'react-icons/md'
 import ToDate from './ToDate';
+import ToTime from './ToTime';
 
 
 const Comment = ({ comment, 
@@ -15,7 +16,7 @@ const Comment = ({ comment,
                   reply_id = null,
                   onAddComment}) => {
     
-    const timeOut = 60000;
+    const timeOut = 60 * 60 ;
     const moderateTimeValid = new Date() - new Date(comment.created_on) > timeOut
     const canReply = Boolean(authorID)
     const canModerate = comment.author_id == authorID && !moderateTimeValid
@@ -39,7 +40,8 @@ const Comment = ({ comment,
         <div className='flex items-center gap-2 text-gray-500 text-xs'>
                       <img className='w-12 transition-all duration-150 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
                       <p className='font-bold text-gray-900'>Ameer</p>-
-                      <p><ToDate date={comment.created_on}/></p>
+                      <ToDate date={comment.created_on}/>at
+                      <ToTime date={comment.created_on}/>
                     
         </div>
         <div className='flex items-center gap-2 font-bold'>
@@ -66,11 +68,13 @@ const Comment = ({ comment,
                     setActiveComment={setActiveComment}/>}
     </div>
     <div>
-      {isReplying && (
+      {isReplying && 
         <CommentForm labelText='Reply' 
-        handleSubmit={(text) => onAddComment(text, replyId)} 
+        handleSubmit={(text) => onAddComment(text, replyId)}
+        hasCancelButton={true}
+        handleCancel={() => setActiveComment(null)} 
         setActiveComment={setActiveComment}/>
-      )}
+      }
     </div>
     <div className='ml-16'>
     {replies.length > 0 && (

@@ -17,38 +17,15 @@ const useFetch = ( uri ) => {
                 return res.json()})
             .then(setData, setLoading(false))
             .catch((error) => {
-                if (error.name === "AbortError") {
-                    console.log("fetch aborted");
-                } else {
                     setLoading(false)
                     setError(error.message)
-                }
             })
-        }, 500)
+        }, 0)
        
 
     }, [uri])
     return { data, loading, error};
 }
-
-
-// const useFetch = (url) => {
-//     const [loading, setLoading] = useState(true);
-//     const [data, setData] = useState(null);
-//     const [error, setError] = useState(null);
-
-
-//     useEffect(() => { 
-//         if (!url) return; 
-//         fetch(url)
-//         .then(data => data.json())
-//         .then(setData, setLoading(false))
-//         .catch(setError);
-//     }, [url]);
-
-//     return { loading, data,error };
-//  }
-  
 
 
 const Fetch = ({ url, 

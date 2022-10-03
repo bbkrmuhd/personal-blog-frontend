@@ -23,26 +23,26 @@ import { Link } from 'react-router-dom'
     </Link>
     <div className='flex flex-col my-5 gap-2 px-2'>
         <div>
-         <Link to={`/post/detail/${slug}`} > <h2 className='font-bold text-justify text-gray-900 hover:text-cyan-700' >{title}</h2></Link> 
+         <Link to={`/post/detail/${slug}`} > <h2 className='font-bold text-xl text-justify text-gray-900 hover:text-cyan-700 truncate-line-clamp' >{title} Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere rem quasi iure officiis commodi quia voluptates fugiat quaerat animi dolore, excepturi corporis similique nam ipsam et cupiditate ratione nostrum laudantium.</h2></Link> 
         </div>
         <div>
-            <p className='text-[10px] text-justify text-gray-700'>{body}</p>
+            <p className='sm:text-xs text-justify text-gray-700 truncate-line-clamp'>{body}</p>
 
         </div>
         <div></div>
-        <div className='flex items-center justify-between mt-3'>
-            <div className='flex items-center gap-1 text-gray-500 text-xs'>
+        <div className='flex items-center justify-between sm:flex-col sm:gap-2 mt-3 md:flex-row md:gap-0'>
+            <div className='flex items-center gap-1 text-gray-500 text-[10px] '>
             <img className='w-10 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
             <div className='flex flex-col gap-1'>
                 <div className='flex items-center gap-1'>
                 <p>by <span className='font-bold text-gray-900'>{author}</span></p>-
                  <p>5 min read</p>
                 </div>  
-                <div className='text-xs flex items-center gap-1'><span><MdDateRange/></span><ToDate date={created_on} /></div>
+                <div className='text-[10px] flex items-center gap-1'><span><MdDateRange/></span><ToDate date={created_on} /></div>
                 </div>
 
             </div>
-            <div className='flex items-center gap-2'>
+            <div className='flex items-center gap-2 '>
                 <p className='flex items-center gap-2 hover:text-red-500'>
                 <RiHeartLine />
                 <span className='text-xs'>{likes_count}</span>
@@ -75,7 +75,7 @@ const ForYou = () => {
                 <Button text={topic} textColor='gray' textSize='xs'/>
             ))}    
         </div>
-        <div className='grid grid-cols-1 md:grid-cols-2  gap-4 sm:gap-6 my-5'>
+        <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5'>
 
         <Fetch
             url="posts/list"

@@ -8,22 +8,22 @@ const Home = () => {
   return (
     <>   
     <NavBar /> 
-    <section className='container mx-auto flex my-10'>
-      <div className='hidden flex-none sm:block w-72 my-4'>
+    <section className='container mx-auto flex my-10 px-4'>
+      <div className='hidden flex-none md:block w-1/4 lg:px-4 my-4'>
         <div className='w-full sticky'>
-        <div className='ml-4'><H1 text='Categories'/></div>
+        <div className=''><H1 text='Categories'/></div>
         <Categories />
 
         </div>
        
       </div>
-      <div className='flex-auto min-h-screen border-x sm:px-8'>
-      <div className='flex items-center justify-between px-4 my-2 sm:my-4'>
+      <div className='flex-auto min-h-screen sm:px-8'>
+      <div className='flex items-center justify-between my-2 sm:my-4'>
        <H1 text='Article Of The Day'/>
-    <div>
-    <Link to="/posts">  <Button text='View More'/></Link>
-    </div>
-    </div>
+        <div>
+        <Link to="/posts"> <Button text='View More'/></Link>
+        </div>
+        </div>
 
       <Featured/>
       <ForYou />
@@ -32,13 +32,11 @@ const Home = () => {
 
       </div>
       </div>
-      <div className='hidden flex-none sm:flex flex-col w-72 sm:pl-4 my-4'>
+      <div className='hidden flex-none lg:flex flex-col w-1/4 sm:px-4 my-4'>
      <H1 text='Latest Posts'/>
            <LatestPosts />
       </div>
      
-
-      
       
     </section>
     <Footer />

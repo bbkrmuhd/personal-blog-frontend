@@ -15,7 +15,7 @@ const Comment = ({ comment,
                   reply_id = null,
                   onAddComment}) => {
     
-    const timeOut = 60 * 60 ;
+    const timeOut = 60 * 60 * 60 ;
     const moderateTimeValid = new Date() - new Date(comment.created_on) > timeOut
     const canReply = Boolean(authorID)
     const canModerate = comment.author_id == authorID && !moderateTimeValid
@@ -37,22 +37,22 @@ const Comment = ({ comment,
     <div className='p-4 my-4 flex flex-col sm:gap-4 bg-white border border-gray-200 shadow-sm w-full rounded-lg'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-2 text-gray-500 text-xs'>
-                      <img className='w-12 transition-all duration-150 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
+                      <img className='w-10 sm:w-12 transition-all duration-150 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
                       <p className='font-bold text-gray-900'>Ameer</p>-
                       <ToTime date={comment.created_on}/>
                     
-        </div>
-        <div className='flex items-center gap-2 font-bold'>
+        </div> 
+        <div className='flex flex-wrap items-center gap-2 font-bold justify-end'>
       
-          {canReply &&  <button className='flex items-center gap-2 text-cyan-700 hover:text-cyan-900 text-sm '
+          {canReply &&  <button className='flex items-center gap-2 text-cyan-700 hover:text-cyan-900 text-xs sm:text-sm font-bold'
            onClick={() => setActiveComment({id: comment.id, type: "replying"})}>  <span><RiReplyAllFill/></span>Reply</button>}
             
        
-        {canModerate &&  <button  className='flex items-center gap-2 text-gray-700 hover:text-gray-900 text-sm text-bold'
+        {canModerate &&  <button  className='flex items-center gap-2 text-gray-700 hover:text-gray-900 text-xs sm:text-sm text-bold'
            onClick={() => setActiveComment({id: comment.id, type: "editing"})}> <span><MdEdit/></span> Edit</button>}
          
      
-        {canModerate &&  <button className='flex items-center gap-2 text-red-700 hover:text-red-900 text-sm text-bold'
+        {canModerate &&  <button className='flex items-center gap-2 text-red-700 hover:text-red-900 text-xs sm:text-sm text-bold'
            onClick={() => onDeleteComment(comment.id)} >   <span><MdDelete/></span>Delete</button>}
            
       </div>

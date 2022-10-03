@@ -55,34 +55,31 @@ const PostDetail = () => {
   return (
     <>   
     <NavBar /> 
-    <section className='container mx-auto flex my-10'>
-      <div className='flex-none w-32 my-4 px-8 flex justify-end relative'>
+    <section className='container mx-auto sm:flex my-10 relative'>
+      <div className='absolute sm:flex-none sm:min-w-32 sm:my-4 sm:px-8 sm:flex sm:justify-end sm:relative '>
         <LikeCommentShare postSlug={postSlug} />
       </div>
 
-
-      <div className='flex-auto min-h-screen border-x sm:px-12 my-4'>
+      <div className='flex-auto min-h-screen px-4 sm:px-12 my-4'>
       <PostDetailFetch postSlug={postSlug} />
       <Comments postSlug={postSlug}/>
-      </div>
-
-
-      <div className='flex-none flex flex-col w-80 sm:pl-4 my-4'>
-       <H1 text='Popular Articles'/>
-            <LatestPosts />
-      </div>
-    </section>
-    <section className='container mx-auto max-w-5xl'>
-      <div className=''>
+  
+   
       <H1 text='Read Next'/>
-      <div className='my-10 grid grid-flow-row grid-cols-1 sm:grid-col-2 md:grid-cols-3 gap-6'>
+      <div className='my-10 grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
         {read.map(r => (
             <ReadNext/>
         ))}
       </div>
+      </div>
 
+
+      <div className='hidden flex-none lg:flex flex-col w-1/4 sm:px-4 my-4'>
+      <H1 text='Popular Articles'/>
+           <LatestPosts />
       </div>
     </section>
+    
     <Footer />
 
     </>

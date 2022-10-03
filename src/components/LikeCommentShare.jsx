@@ -66,7 +66,7 @@ const LikeCommentShare = ({ postSlug }) => {
 
 
   return (
-    <div className='mt-32 h-[15rem] flex flex-col gap-6 text-2xl sticky top-32 py-6 px-4 rounded-lg bg-gray-100 text-gray-800'>
+    <div className='sm:mt-32 sm:h-[15rem] flex sm:flex-col gap-6 text-2xl fixed w-full justify-around bottom-0  sm:sticky sm:justify-start sm:w-auto sm:top-32 sm:bottom-32 py-3 sm:py-6 sm:px-4 sm:rounded-lg bg-white sm:bg-gray-100 text-gray-800 bg-opacity-90'>
         <div className='flex flex-col items-center gap-2'>
            <p className={`${!like ? "hover:text-red-500": "text-red-500"}`} onClick={onLike}>{!like ? <FaRegHeart />: <FaHeart/>}</p>
             <p className='text-xs '>{post && post.likes}</p>

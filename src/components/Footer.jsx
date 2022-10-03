@@ -12,10 +12,10 @@ const Subscribe = () => {
             <h1 className='text-slate-700 tracking-wide sm:text-3xl '>Subscribe to my news latter to get latest updates and news</h1>
         </div>
         <div>
-        <form className='flex gap-2' action="">
-            <input className='border rounded-lg sm:px-6 text-gray-800 bg-gray-100 border-gray-500 focus:border-cyan-500 focus:ring-cyan-500' placeholder='Enter Your Email' type="email" />
+        <form className='sm:flex sm:gap-2' action="">
+            <input className='border rounded-lg px-6 text-gray-800 bg-gray-100 border-gray-500 focus:border-cyan-500 focus:ring-cyan-500' placeholder='Enter Your Email' type="email" />
             <label htmlFor=""></label>
-            <button className='px-4 py-2  bg-cyan-700 text-white sm:px-6 hover:bg-cyan-900 transition-all rounded-lg'>Subscribe</button>
+            <button className='my-2 sm:my-0 py-1 px-2 sm:py-2  bg-cyan-700 text-white sm:px-6 hover:bg-cyan-900 transition-all rounded-lg'>Subscribe</button>
         </form>
         </div>
     </div>

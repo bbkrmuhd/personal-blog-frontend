@@ -33,7 +33,7 @@ const PostListDataList = ({ post }) => {
                </div>
                <div className='flex flex-col gap-2'>
                <Link to={`/post/detail/${post.slug}`}> <h2 className='font-bold sm:text-xl text-justify text-slate-900 hover:text-cyan-700 capitalize cursor-pointer'>{post.title}</h2></Link>
-                  <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-line-clamp'>{post.body}Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore doloribus, velit odit possimus corrupti veritatis nostrum, optio liberoVelit.....</p>
+                  <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-featured'>{post.body}Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore doloribus, velit odit possimus corrupti veritatis nostrum, optio liberoVelit.....</p>
               </div>
               </div>
               <div className='flex flex-col gap-2 w-full'>
@@ -112,7 +112,7 @@ const PostList = () => {
 
     <>   
     <NavBar /> 
-    <section className='container mx-auto flex my-10 px-4'>
+    <section className='container mx-auto sm:flex my-10 px-4'>
       <div className='hidden flex-none md:block w-1/4 lg:px-4 my-4'>
         <div className='w-full sticky'>
         <div className=''><H1 text='Categories'/></div>

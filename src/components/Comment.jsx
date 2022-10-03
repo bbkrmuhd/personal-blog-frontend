@@ -2,7 +2,6 @@ import React from 'react'
 import CommentForm from './CommentForm';
 import {RiReplyAllFill} from 'react-icons/ri'
 import {MdDelete, MdEdit} from 'react-icons/md'
-import ToDate from './ToDate';
 import ToTime from './ToTime';
 
 
@@ -40,7 +39,6 @@ const Comment = ({ comment,
         <div className='flex items-center gap-2 text-gray-500 text-xs'>
                       <img className='w-12 transition-all duration-150 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
                       <p className='font-bold text-gray-900'>Ameer</p>-
-                      <ToDate date={comment.created_on}/>at
                       <ToTime date={comment.created_on}/>
                     
         </div>

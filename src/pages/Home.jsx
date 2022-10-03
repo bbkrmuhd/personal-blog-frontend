@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import {Categories, Featured, Footer, ForYou, H1, LatestPosts, NavBar, Pagination, Button} from '../components'
 
 const Home = () => {
@@ -27,6 +27,7 @@ const Home = () => {
 
       <Featured/>
       <ForYou />
+      <Outlet/>
       <div className='text-center my-10'>
         <Pagination />
 

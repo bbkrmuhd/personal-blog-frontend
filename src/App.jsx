@@ -8,9 +8,10 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+         <Route path='/posts' element={<PostList/>} />
         <Route path="about" element={<About />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/posts' element={<PostList/>} />
+      
         <Route path='/post/detail/:postSlug' element={<PostDetail/>} />
         <Route path='tag/:tagSlug' element={<PostList/>} />
         <Route

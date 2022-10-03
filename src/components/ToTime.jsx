@@ -1,9 +1,13 @@
 import React from 'react'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
 
 const ToTime = ({ date }) => {
-    let d = new Date(date)
+    TimeAgo.addDefaultLocale(en)
+    const timeAgo = new TimeAgo('en-US')
+    let time = timeAgo.format( new Date(date))
     return (
-      <div>{d.toLocaleTimeString()}</div>
+      <div>{time}</div>
     )
 }
 

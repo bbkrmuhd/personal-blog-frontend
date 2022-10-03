@@ -1,3 +1,4 @@
+import { Tooltip } from 'flowbite-react'
 import React from 'react'
 import {AiOutlineLinkedin, AiOutlineTwitter, AiOutlineGithub} from 'react-icons/ai'
 
@@ -6,9 +7,9 @@ import {AiOutlineLinkedin, AiOutlineTwitter, AiOutlineGithub} from 'react-icons/
 
 const Subscribe = () => {
   return (
-    <div className='p-6 my-2 sm:my-4 flex items-center justify-between drop-shadow-sm'>
-        <div className='w-3/6'>
-            <h1 className='text2xl text-slate-700 tracking-wide sm:text-3xl '>Subscribe to my news latter to get latest updates and news</h1>
+    <div className='p-2 sm:p-6 my-2 sm:my-4 flex flex-col sm:flex-row items-center gap-2 sm:gap-0 justify-between drop-shadow-sm'>
+        <div className='w-full sm:w-3/6'>
+            <h1 className='text-slate-700 tracking-wide sm:text-3xl '>Subscribe to my news latter to get latest updates and news</h1>
         </div>
         <div>
         <form className='flex gap-2' action="">
@@ -24,21 +25,19 @@ const Subscribe = () => {
 const Footer = () => {
   return (
     
-<footer className="container mx-auto p-4  bg-white border-t border-cyan-700 rounded-lg shadow-md my-4 flex flex-col sm:my-6  md:p-6 dark:bg-gray-800">
-    <div className='md:flex md:items-center md:justify-between mx-2 sm:mx-6'>
-    <div className='text-2xl text-cyan-700'>SadiqCodes</div>
+<footer className="container mx-auto p-4 bg-white border-t border-cyan-700 rounded-lg shadow-md my-4 flex flex-col sm:my-6  md:p-6 dark:bg-gray-800">
+    <div className='flex items-center justify-between mx-2 sm:mx-6'>
+    <div className='text-2xl text-cyan-700'>SC</div>
     <ul className='flex items-center justify-center space-x-4'>
-                    <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all '><AiOutlineTwitter/></li>
-                    <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineLinkedin/></li>
-                    <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineGithub/></li>
-                    <li></li>
-                </ul>
+    <Tooltip content="Twitter" >         <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all '><AiOutlineTwitter/></li></Tooltip>
+    <Tooltip content="LinkedIn" >         <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineLinkedin/></li></Tooltip>
+    <Tooltip content="Github" >          <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineGithub/></li></Tooltip>
    
-        
+    </ul>
     </div>
 
     <Subscribe />
-    <div className='md:flex md:items-center md:justify-between sm:mx-6'>
+    <div className='flex flex-col sm:flex-row items-center justify-between sm:mx-6'>
     <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="" className="hover:underline">SadiqCodes™</a>. All Rights Reserved.
     </span>
     <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 hover:text-cyan-700 dark:text-gray-400 sm:mt-0">

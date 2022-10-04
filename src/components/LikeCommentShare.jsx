@@ -66,17 +66,17 @@ const LikeCommentShare = ({ postSlug }) => {
 
 
   return (
-    <div className='sm:mt-32 sm:h-[15rem] flex sm:flex-col gap-6 text-2xl fixed w-full justify-around bottom-0  sm:sticky sm:justify-start sm:w-auto sm:top-32 sm:bottom-32 py-3 sm:py-6 sm:px-4 sm:rounded-lg bg-white sm:bg-gray-100 text-gray-800 bg-opacity-90'>
-        <div className='flex flex-col items-center gap-2'>
-           <p className={`${!like ? "hover:text-red-500": "text-red-500"}`} onClick={onLike}>{!like ? <FaRegHeart />: <FaHeart/>}</p>
+    <div className='sm:mt-32 sm:h-[16rem] flex sm:flex-col gap-6 text-2xl fixed w-full justify-around bottom-0  sm:sticky sm:justify-start sm:w-auto sm:top-32 sm:bottom-32 py-3 sm:py-4 sm:px-2 sm:rounded-lg bg-white sm:bg-gray-100 text-gray-800 bg-opacity-90'>
+        <div className='flex flex-col items-center '>
+           <p className={`${!like ? "hover:text-red-600 hover:bg-red-100 p-2 rounded-full": "text-red-600  p-2 "}`} onClick={onLike}>{!like ? <FaRegHeart />: <FaHeart/>}</p>
             <p className='text-xs '>{post && post.likes}</p>
         </div>
-        <div className='flex flex-col items-center gap-2'>
-         <a href='#comments' className='hover:text-cyan-500'> <FaRegComment /></a>
+        <div className='flex flex-col items-center '>
+         <a href='#comments' className='hover:text-cyan-600 hover:bg-cyan-100 p-2 rounded-full'> <FaRegComment /></a>
             <p className='text-xs '>{post && post.comments}</p>
         </div>
-        <div className='flex flex-col items-center gap-2'>
-           <p className='hover:text-purple-500'> <FaRegShareSquare /></p>
+        <div className='flex flex-col items-center '>
+           <p className='hover:text-purple-600 hover:bg-purple-100 p-2 rounded-full'> <FaRegShareSquare /></p>
             <p className='text-xs '>22</p>
 
         </div>

@@ -121,7 +121,7 @@ const PostList = () => {
         </div>
        
       </div>
-      <div className='flex-auto min-h-screen sm:px-8 my-4'>
+      <div className='flex-auto min-h-screen sm:px-4 my-4'>
         <H1 text='All Posts'/>
         <PostListData/>
       </div>

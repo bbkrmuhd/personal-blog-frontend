@@ -9,7 +9,7 @@ const PostDetailData = ({ post: {author, title, body, update_on} }) => {
   let p = [1,2,3,4,5,6,7,8,9,0,11,22,33,44,55,666,577,573]
   return (
     <>  
-    <div className='flex items-center gap-2 text-gray-500 text-xs'>
+    <div className='flex items-center gap-2 text-gray-500 text-xs '>
           <img className='w-12 hover:scale-105 transition-all hover:translate-y-1' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
           <div className='flex flex-col gap-1'>
               <div className='flex items-center gap-2'>
@@ -23,7 +23,7 @@ const PostDetailData = ({ post: {author, title, body, update_on} }) => {
         <H1 text={`${title}`}/>
         <p>{body}</p>
         {p.map(p => (
-          <p key={p}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ad impedit animi accusantium, reiciendis nostrum cupiditate nisi eos, suscipit earum nam. Ad quia molestiae repellat veritatis aliquid, mollitia vero unde!</p>
+          <p className='text-justify' key={p}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ad impedit animi accusantium, reiciendis nostrum cupiditate nisi eos, suscipit earum nam. Ad quia molestiae repellat veritatis aliquid, mollitia vero unde!</p>
         ))}
     </>
 

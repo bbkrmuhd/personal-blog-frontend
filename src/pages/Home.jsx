@@ -17,7 +17,7 @@ const Home = () => {
         </div>
        
       </div>
-      <div className='flex-auto min-h-screen sm:px-8'>
+      <div className='flex-auto min-h-screen sm:px-4'>
       <div className='flex items-center justify-between my-2 sm:my-4'>
        <H1 text='Article Of The Day'/>
         <div>

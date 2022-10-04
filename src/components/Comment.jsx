@@ -37,10 +37,10 @@ const Comment = ({ comment,
     <div className='p-4 my-4 flex flex-col sm:gap-4 bg-white border border-gray-200 shadow-sm w-full rounded-lg'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-2 text-gray-500 text-xs'>
-                      <img className='w-10 sm:w-12 transition-all duration-150 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
-                      <p className='font-bold text-gray-900'>Ameer</p>-
-                      <ToTime date={comment.created_on}/>
-                    
+          <img className='w-10 sm:w-12 transition-all duration-150 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
+          <p className='font-bold text-gray-900'>Ameer</p>-
+          <ToTime date={comment.created_on}/>
+        
         </div> 
         <div className='flex flex-wrap items-center gap-2 font-bold justify-end'>
       
@@ -74,7 +74,7 @@ const Comment = ({ comment,
         setActiveComment={setActiveComment}/>
       }
     </div>
-    <div className='ml-16'>
+    <div className='ml-8 sm:ml-16'>
     {replies.length > 0 && (
         replies.map((reply) => (
             <Comment key={reply.id} comment={reply} replies={[]} 

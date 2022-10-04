@@ -25,7 +25,7 @@ function LoginPage() {
             ).then((data) => {
               LocalStorageService.saveJSON("access_token", data.access_token)
               setLoading(false)
-              navigate('/')
+              navigate('/sirri')
               console.log("login successfully")
             })
       setEmail("")

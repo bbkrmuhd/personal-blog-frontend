@@ -11,4 +11,5 @@ export {default as ReadNext} from './ReadNext'
 export {default as ToDate} from './ToDate'
 export {default as Comments} from './Comments'
 export {default as LikeCommentShare} from './LikeCommentShare'
+export {default as AdminNavBar} from './admin/AdminNavBar'
 

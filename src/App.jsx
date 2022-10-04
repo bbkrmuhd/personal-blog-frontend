@@ -1,6 +1,6 @@
 import { Routes, Route} from "react-router-dom";
 import './App.css'
-import {Home, About, Login, PostList, PostDetail} from './pages'
+import {Home, About, Login, PostList, PostDetail, Admin} from './pages'
 
 
 export default function App() {
@@ -11,6 +11,7 @@ export default function App() {
          <Route path='/posts' element={<PostList/>} />
         <Route path="about" element={<About />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/sirri' element={<Admin />} />
       
         <Route path='/post/detail/:postSlug' element={<PostDetail/>} />
         <Route path='tag/:tagSlug' element={<PostList/>} />

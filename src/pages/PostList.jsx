@@ -10,9 +10,8 @@ import ToDate from '../components/ToDate';
 
 
 
-
-const PostListDataList = ({ post }) => {
-
+const PostListData = ({ post }) => {
+  
   let navigate = useNavigate()
   let { tagSlug } = useParams()
   console.log(tagSlug)
@@ -79,28 +78,6 @@ const PostListDataList = ({ post }) => {
 }
 
 
-
-const PostListData = () => {
-  return (
-    <>
-  
-    <Fetch
-    url="posts/list"
-    renderSuccess={({ data: { posts } }) => (
-      posts.map(post => (
-      <PostListDataList key={post.id} post={post} />
-      ))
-  )}
-/>
-    <div className='text-center my-10'>
-        <Pagination />
-
-      </div>
-  </>
-  )
-}
-
-
 const PostList = () => {
   // const {loading,data: posts, error} = Fetch("http://127.0.0.1:5000/api/v1/posts/list")
 
@@ -123,7 +100,23 @@ const PostList = () => {
       </div>
       <div className='flex-auto min-h-screen sm:px-4 my-4'>
         <H1 text='All Posts'/>
-        <PostListData/>
+      <Fetch
+        url="posts/list"
+        renderSuccess={({ data: { posts } }) => (
+          <>
+          {posts.map(post => (
+          <PostListData key={post.id} post={post} />
+          ))}
+          
+         {posts && (<div className='text-center my-10'>
+            <Pagination />
+
+          </div>
+          )
+          }
+        </>
+          )}
+        />
       </div>
      
       <div className='hidden flex-none lg:flex flex-col w-1/4 sm:px-4 my-4'>

@@ -5,12 +5,17 @@ import {useNavigate} from 'react-router-dom'
 
 
 function LoginPage() {
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
 
 
   const navigate = useNavigate()
+
+
+  console.log(sessionStorage.getItem("csrf_token"))
+  localStorage.setItem("hello", "hello")
+  LocalStorageService.saveJSON("user_name", "sadiqcodes")
 
 
   const handleLogin = (e) => {
@@ -23,6 +28,7 @@ function LoginPage() {
              body: JSON.stringify(login)
             }).then((result) => result.json()
             ).then((data) => {
+              console.log(data)
               LocalStorageService.saveJSON("access_token", data.access_token)
               setLoading(false)
               navigate('/sirri')

@@ -28,10 +28,7 @@ const Home = () => {
       <Featured/>
       <ForYou />
       <Outlet/>
-      <div className='text-center my-10'>
-        <Pagination />
-
-      </div>
+     
       </div>
       <div className='hidden flex-none lg:flex flex-col w-1/4 sm:px-4 my-4'>
      <H1 text='Latest Posts'/>

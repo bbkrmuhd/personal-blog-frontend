@@ -32,15 +32,15 @@ export const LatestPostsList = ({ post }) => {
 
 
 const LatestPosts = () => {
-  return (
-  <Fetch
-      url="posts/updated"
-      renderSuccess={({ data: { posts } }) => (
-        posts.map(post => (
-        <LatestPostsList key={post.title} post={post} />
-        ))
-    )}
-  />
-  )
+    return (
+    <Fetch
+        url="posts/updated"
+        renderSuccess={({ data: { posts } }) => (
+          posts.map(post => (
+          <LatestPostsList key={post.title} post={post} />
+          ))
+      )}
+    />
+    )
 }
 export default LatestPosts

@@ -37,10 +37,16 @@ const PostDetailData = ({ post: {author, title, body, update_on} }) => {
 const PostDetailFetch = ({ postSlug }) => {
 
   return (
-   <Fetch url={`/post/detail/${postSlug}`}
+
+<Fetch url={`/post/detail/${postSlug}`}
    renderSuccess={({ data: { post } }) => (
-    <PostDetailData post={post}/>
+    <>
+      <PostDetailData post={post}/>
+      {post && <Comments postSlug={postSlug}/>}
+      </>
   )}/>
+
+
   )
 }
 
@@ -62,7 +68,7 @@ const PostDetail = () => {
 
       <div className='flex-auto min-h-screen px-4 sm:px-12 my-4'>
       <PostDetailFetch postSlug={postSlug} />
-      <Comments postSlug={postSlug}/>
+     
   
    
       <H1 text='Read Next'/>

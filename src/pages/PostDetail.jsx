@@ -34,21 +34,6 @@ const PostDetailData = ({ post: {author, title, body, update_on} }) => {
 
 
 
-const PostDetailFetch = ({ postSlug }) => {
-
-  return (
-
-<Fetch url={`/post/detail/${postSlug}`}
-   renderSuccess={({ data: { post } }) => (
-    <>
-      <PostDetailData post={post}/>
-      {post && <Comments postSlug={postSlug}/>}
-      </>
-  )}/>
-
-
-  )
-}
 
 
 
@@ -62,23 +47,29 @@ const PostDetail = () => {
     <>   
     <NavBar /> 
     <section className='container mx-auto sm:flex my-10 relative'>
-      <div className='absolute sm:flex-none sm:min-w-32 sm:my-4 sm:px-8 sm:flex sm:justify-end sm:relative '>
+      <div className='absolute sm:flex-none sm:min-w-32 sm:my-4 sm:px-4 sm:flex sm:justify-end sm:relative '>
         <LikeCommentShare postSlug={postSlug} />
       </div>
-
       <div className='flex-auto min-h-screen px-4 sm:px-12 my-4'>
-      <PostDetailFetch postSlug={postSlug} />
-     
-  
-   
-      <H1 text='Read Next'/>
-      <div className='my-10 grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
-        {read.map(r => (
-            <ReadNext/>
-        ))}
-      </div>
-      </div>
+        <Fetch url={`/post/detail/${postSlug}`}
+          renderSuccess={({ data: { post } }) => (
+            <>
+              <PostDetailData post={post}/>
+              {post && <Comments postSlug={postSlug}/>}
 
+              {post && (
+                <>
+                <H1 text='Read Next'/>
+                <div className='my-10 grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+                  {read.map(r => (
+                      <ReadNext/>
+                  ))}
+                </div>
+                </>
+              )}
+              </>
+          )}/>
+      </div>
 
       <div className='hidden flex-none lg:flex flex-col w-1/4 sm:px-4 my-4'>
       <H1 text='Popular Articles'/>

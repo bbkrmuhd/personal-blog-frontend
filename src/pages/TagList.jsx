@@ -3,18 +3,15 @@ import Fetch from '../hooks/Fetch';
 import { MdDateRange } from 'react-icons/md';
 import {RiHeartLine} from 'react-icons/ri'
 import {FaRegComments} from 'react-icons/fa'
-import {NavBar, Categories, LatestPosts, H1, Footer, Button, Pagination} from '../components'
+import {H1, Button, Pagination} from '../components'
 import { Link } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router-dom';
 import ToDate from '../components/ToDate';
 
 
 
-const PostListData = ({ post }) => {
+const TagListData = ({ post }) => {
   
-  let navigate = useNavigate()
-  let { tagSlug } = useParams()
-  console.log(tagSlug)
   return (
     <div className='min-h-56 my-4 sm:my-6 shadow-md shadow-gray-200'>
     <div className='flex flex-col gap-6 rounded-lg h-full '>
@@ -31,14 +28,14 @@ const PostListData = ({ post }) => {
                       <p>5 min read</p>
                </div>
                <div className='flex flex-col gap-2'>
-               <Link to={`/post/detail/${post.slug}`}> <h2 className='font-bold sm:text-xl text-slate-900 hover:text-cyan-700 hover:underline capitalize cursor-pointer'>{post.title}</h2></Link>
+               <Link to={`/post/detail/${post.slug}`}> <h2 className='font-bold sm:text-xl text-justify text-slate-900 hover:text-cyan-700 capitalize cursor-pointer'>{post.title}</h2></Link>
                   <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-featured'>{post.body}Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore doloribus, velit odit possimus corrupti veritatis nostrum, optio liberoVelit.....</p>
               </div>
               </div>
               <div className='flex flex-col gap-2 w-full'>
               <div className='flex gap-2 flex-wrap'>
                 {post.tags && post.tags.map((tag => (
-                 <Link to={`/posts/tag/${tag.slug}`}><Button text={`#${tag.name}`} textSize='[10px]'/></Link>
+                <Link to={`/posts/tag/${tag.slug}`}><Button text={`#${tag.name}`} textSize='[10px]'/></Link>
                 )))}
               </div>
 
@@ -78,34 +75,29 @@ const PostListData = ({ post }) => {
 }
 
 
-const PostList = () => {
-  // const {loading,data: posts, error} = Fetch("http://127.0.0.1:5000/api/v1/posts/list")
-
-
-  // if (loading) return <p>Loading</p>
-  // if (error) return  <pre>{JSON.stringify(error, null, 2)}</pre>
-
-  return (
-      <div className='flex-auto min-h-screen sm:px-4 my-4'>
-        <H1 text='All Posts'/>
-      <Fetch
-        url="posts/list"
-        renderSuccess={({ data: { posts } }) => (
-          <>
-          {posts.map(post => (
-          <PostListData key={post.id} post={post} />
-          ))}
-          
-         {posts && (<div className='text-center my-10'>
-            <Pagination />
-
-          </div>
-          )
-          }
-        </>
-          )}
-        />
-      </div>
-  )
+const TagList = () => {
+    let { tagSlug } = useParams()
+    return (
+        <div className='flex-auto min-h-screen sm:px-4 my-4'>
+          <H1 text={`#${tagSlug}`}/>
+        <Fetch
+          url={`tags/${tagSlug}`}
+          renderSuccess={({ data: { posts } }) => (
+            <>
+            {posts.map(post => (
+            <TagListData key={post.id} post={post} />
+            ))}
+            
+           {posts && (<div className='text-center my-10'>
+              <Pagination />
+            </div>
+            )
+            }
+          </>
+            )}
+          />
+        </div>
+    )
 }
-export default PostList
+
+export default TagList

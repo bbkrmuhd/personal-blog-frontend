@@ -21,7 +21,7 @@ export const LatestPostsList = ({ post }) => {
                         <p>5 min read</p>
                  </div>
                
-                 <Link to={`/post/detail/${post.slug}`}><h2 className='font-bold text-sm text-black hover:text-cyan-700 capitalize max-w-[200px] truncate-line-clamp'>{post.title} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam quis ipsa molestiae qui architecto, doloribus dignissimos accusantium illum maxime ea tenetur debitis voluptatem quos magnam necessitatibus eveniet libero fuga. Debitis.</h2></Link>              
+                 <Link to={`/post/detail/${post.slug}`}><h2 className='font-bold text-sm text-black hover:underline hover:text-cyan-700 capitalize max-w-[200px] truncate-line-clamp'>{post.title} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam quis ipsa molestiae qui architecto, doloribus dignissimos accusantium illum maxime ea tenetur debitis voluptatem quos magnam necessitatibus eveniet libero fuga. Debitis.</h2></Link>              
                 <div className='text-xs flex items-center gap-1 text-gray-500'><span><MdDateRange/></span><ToDate date={post.update_on}/></div>
 
                 </div>

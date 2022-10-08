@@ -20,7 +20,7 @@ const Categories = () => {
     let c = ['Tech','Productivity', 'Writing', 'Studying']
   return (
     
-<aside className="min-w-64 my-8 rounded-lg shadow-sm shadow-gray-300" aria-label="Sidebar">
+<aside className="min-w-64 my-10 rounded-lg shadow-sm shadow-gray-300" aria-label="Sidebar">
    <div className="p-2 lg:py-4 lg:px-3 bg-gray-50 rounded dark:bg-gray-800">
       <ul className="space-y-2">
         {c.map(ct => (

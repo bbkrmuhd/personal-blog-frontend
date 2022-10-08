@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {ClipLoader} from 'react-spinners'
 
 
 
@@ -20,7 +21,7 @@ const useFetch = ( uri ) => {
                     setLoading(false)
                     setError(error.message)
             })
-        }, 0)
+        }, 1000)
        
 
     }, [uri])
@@ -29,7 +30,7 @@ const useFetch = ( uri ) => {
 
 
 const Fetch = ({ url, 
-    loadingFallback = <h1>Loading...</h1>, 
+    loadingFallback = <ClipLoader/>, 
     renderSuccess,
     renderError = error => {
         <pre>{JSON.stringify(error, null, 2)}</pre>

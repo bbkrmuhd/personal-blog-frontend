@@ -7,21 +7,13 @@ import remarkGfm from 'remark-gfm'
 
 const Write = () => {
     const [value, setValue] = useState("")
-    console.log(value)
 
   return (
     <>
-    <div className="container md:overflow-hidden overflow-auto md:hover:overflow-auto">
-    <MDEditor
-        value={value}
-        onChange={setValue}
-      />
-      </div>
-
-
-    <div className='container'>
-    <ReactMarkdown children={value} remarkPlugins={[remarkGfm]} />
-    </div>
+      <MDEditor
+          value={value}
+          onChange={setValue}
+        />
     </>
     
   )

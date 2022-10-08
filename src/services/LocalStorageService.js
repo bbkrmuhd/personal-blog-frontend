@@ -8,6 +8,10 @@ export const LocalStorageService =  {
 
     saveJSON(key, value){
     localStorage.setItem(key, JSON.stringify(value))
+    },
+
+    deleteJSON(key) {
+       key && localStorage.removeItem(key)     
     }
    
 }

@@ -3,16 +3,15 @@ import Fetch from '../hooks/Fetch';
 import { MdDateRange } from 'react-icons/md';
 import {RiHeartLine} from 'react-icons/ri'
 import {FaRegComments} from 'react-icons/fa'
-import {NavBar, Categories, LatestPosts, H1, Footer, Button, Pagination} from '../components'
+import {H1, Button, Pagination } from '../components'
 import { Link } from 'react-router-dom';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import ToDate from '../components/ToDate';
-
+import { ImageUrl } from '../components/ImageUrl';
 
 
 const PostListData = ({ post }) => {
   
-  let navigate = useNavigate()
   let { tagSlug } = useParams()
   console.log(tagSlug)
   return (
@@ -20,7 +19,7 @@ const PostListData = ({ post }) => {
     <div className='flex flex-col gap-6 rounded-lg h-full '>
       <div className='flex flex-col sm:flex-row gap-2 h-full'>
           <div className='flex-none h-44 w-auto sm:h-auto sm:w-48 relative'>
-            <Link to={`/post/detail/${post.slug}`}><img className='inset-0 absolute w-full h-full object-cover transition-all hover:scale-105' src="https://images.pexels.com/photos/4350767/pexels-photo-4350767.jpeg?auto=compress&cs=tinysrgb&w=800" alt="post image" loading='lazy' /></Link>
+            <Link to={`/post/detail/${post.slug}`}><img className='inset-0 absolute w-full h-full object-cover transition-all hover:scale-105' src={`${ImageUrl}${post.image}`} alt="post image" loading='lazy' /></Link>
           </div>
           <div className='flex-auto p-2'>
               <div className='flex flex-col gap-2 h-full items-start justify-between'>
@@ -79,11 +78,8 @@ const PostListData = ({ post }) => {
 
 
 const PostList = () => {
-  // const {loading,data: posts, error} = Fetch("http://127.0.0.1:5000/api/v1/posts/list")
-
-
-  // if (loading) return <p>Loading</p>
-  // if (error) return  <pre>{JSON.stringify(error, null, 2)}</pre>
+  
+  let page = useLocation().search
 
   return (
       <div className='flex-auto min-h-screen sm:px-4 my-4'>
@@ -97,7 +93,7 @@ const PostList = () => {
           ))}
           
          {posts && (<div className='text-center my-10'>
-            <Pagination />
+            <Pagination page={page} />
 
           </div>
           )

@@ -1,6 +1,6 @@
 import { Routes, Route} from "react-router-dom";
 import './App.css'
-import {Home, About, Login, PostList, PostDetail, Admin, TagList, Layout, AdminPosts, AdminComments, AdminCreatePost, AdminTags} from './pages'
+import {Home, About, Login, PostList, PostDetail, Admin, TagList, Layout, AdminPosts, AdminComments, AdminCreatePost, AdminTags, NotFound} from './pages'
 
 
 export default function App() {
@@ -26,9 +26,7 @@ export default function App() {
         <Route
         path="*"
         element={
-          <main style={{ padding: "1rem" }}>
-            <p>There's nothing here!</p>
-          </main>
+          <NotFound/>
         }
       />
       </Routes>

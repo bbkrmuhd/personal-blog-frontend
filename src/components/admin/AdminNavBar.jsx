@@ -7,7 +7,7 @@ const AdminNavBar = () => {
       <div className=''>SC ADMIN</div>
       <div className='flex items-center gap-2'>
         <div className=''>Welcome Ameer</div>
-         <Link to='/'><button className='py-2 px-6 bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:text-cyan-700'>Site</button></Link> 
+         <Link to='/'><button className='py-2 px-6 bg-gray-100 rounded-lg shadow-md hover:bg-gray-200 hover:text-cyan-700'>Site</button></Link> 
         </div>
       
 

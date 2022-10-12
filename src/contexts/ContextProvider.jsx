@@ -28,7 +28,6 @@ export const AuthContextProvider= ({children}) => {
            .then((data) => {
              setCurrentUser(null)
            })
-           LocalStorageService.deleteJSON("user")
     }
 
 

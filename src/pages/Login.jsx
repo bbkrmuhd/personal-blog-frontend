@@ -21,21 +21,21 @@ function LoginPage() {
     inputFocus.current.focus()
   }, [])
 
+  const isAdmin = async (user) => {
+    await  user.is_admin ?  navigate("/sirri") : navigate("/")
+
+  }
+
 
   const handleLogin = async (e) => {
       e.preventDefault()
+      if (!email && !password) return;
       const loginInputs = {email, password}
       setLoading(true)
       try {
         await login(loginInputs)
         setLoading(false)
-        if (currentUser.is_admin){
-          navigate("/sirri")
-
-        } else{
-          navigate("/")
-        }
-        
+        isAdmin(currentUser)
 
       } catch (error) {
         console.log(error)

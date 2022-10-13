@@ -12,14 +12,14 @@ const AdminPosts = () => {
       <div className='flex items-center justify-between '>
     
         <form onSubmit={onSubmit} className="flex items-center rounded-lg shadow-md bg-gray-100 h-18">
-        <input className='py-2 text-gray-700 shadow-sm rounded-lg focus:border-cyan-500 focus:outline-none focus:ring-cyan-500' type="search" />
-          <button className="py-2 px-4 text-gray-700 hover:text-cyan-700 font-semibold border-none" type="submit" value="search">Search</button>
+        <input className='py-1 w-4/5 sm:py-2 text-gray-700 shadow-sm rounded-lg focus:border-cyan-500 focus:outline-none focus:ring-cyan-500' type="search" />
+          <button className="sm:py-2 sm:px-4 text-sm sm:text-base text-gray-700 hover:text-cyan-700 font-semibold border-none" type="submit" value="search">Search</button>
           </form>
         
        
 
         <div>
-         <Link to='write'><button className='py-2 px-6 text-gray-700 bg-gray-100 rounded-lg shadow-md hover:bg-gray-200 hover:text-cyan-700'>Write</button></Link> 
+         <Link to='write'><button className='py-2 px-6 text-gray-700 bg-gray-100 rounded-lg text-sm sm:text-base shadow-md hover:bg-gray-200 hover:text-cyan-700'>Write</button></Link> 
         </div>
 
       </div>

@@ -21,10 +21,11 @@ function LoginPage() {
     inputFocus.current.focus()
   }, [])
 
-  const isAdmin = async (user) => {
-    await  user.is_admin ?  navigate("/sirri") : navigate("/")
-
-  }
+  // const isAdmin = () => {
+  //   const user = LocalStorageService.loadJSON("user")
+  //   console.log(user)
+  //   user.is_admin ? navigate("/sirri") : navigate("/")
+  // }
 
 
   const handleLogin = async (e) => {
@@ -35,7 +36,6 @@ function LoginPage() {
       try {
         await login(loginInputs)
         setLoading(false)
-        isAdmin(currentUser)
 
       } catch (error) {
         console.log(error)
@@ -48,8 +48,8 @@ function LoginPage() {
   return (  
     <div className='container mx-auto h-screen '>
       <div className='bg-red-500'>
-      <div className='max-w-2xl flex border rounded-xl absolute w-full left-1/2 right-1/2 translate-y-1/3 -translate-x-1/2 '>
-        <div className='hidden sm:block w-2/5 bg-login-image bg-cover'>
+      <div className='max-w-2xl flex flex-col sm:flex-row  border rounded-xl absolute w-full left-1/2 right-1/2 translate-y-1/3 -translate-x-1/2 '>
+        <div className='w-2/5 bg-login-image bg-cover'>
         </div>
         <div className='w-full sm:w-3/5 p-3 sm:p-8 '>
         <h2 className='text-2xl sm:text-3xl'>LOGIN</h2>

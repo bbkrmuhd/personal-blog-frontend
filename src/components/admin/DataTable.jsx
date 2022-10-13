@@ -59,9 +59,9 @@ const DataTable = ({  }) => {
 
 
 
-                <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-gray-200">
                 { headings.map(head => (
-                     <tr>
+                     <tr key={head}>
 
                      <td className="px-6 py-4 whitespace-nowrap text-center">
                            <a href="">
@@ -77,7 +77,7 @@ const DataTable = ({  }) => {
                       </a>
                      </td>
                      { table.map(ta => (
-                     <td className="px-6 py-4 whitespace-nowrap">
+                     <td key={ta} className="px-6 py-4 whitespace-nowrap">
                      <div className="text-sm text-gray-700">{ta}</div>
                      </td>
                      )) }
@@ -90,8 +90,9 @@ const DataTable = ({  }) => {
                                 font-medium
                                 "
                          >
-                       <a href="" className="text-indigo-400 hover:text-indigo-600">
-                             <span className="px-4 py-1 text-green-600 hover:bg- bg-green-200 rounded-full">Edit</span></a>
+                       <a href="" className="text-indigo-400 hover:text-indigo-600 p-3">
+                        <span className="px-4 py-1 text-blue-600 hover:bg- bg-blue-200 rounded-full">Edit</span>
+                    </a>
                      </td>
                        <td
                          className="
@@ -122,4 +123,4 @@ const DataTable = ({  }) => {
   )
 }
 
-export default DataTable
+export default DataTable;

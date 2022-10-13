@@ -1,4 +1,5 @@
 import { useState, createContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { LocalStorageService } from "../services/LocalStorageService";
 
 export const AuthContext = createContext()
@@ -14,9 +15,9 @@ export const AuthContextProvider= ({children}) => {
             body: JSON.stringify(inputs)})
             .then((result) => result.json())
             .then((data) => {
-
              setCurrentUser(data)
-           })  
+           })
+             
     }
 
     const logout = async (inputs) => {
@@ -32,9 +33,7 @@ export const AuthContextProvider= ({children}) => {
 
 
     useEffect(() => {
-
-        LocalStorageService.saveJSON("user", currentUser)
-    
+    LocalStorageService.saveJSON("user", currentUser)
     }, [currentUser])
 
 

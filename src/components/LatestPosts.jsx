@@ -13,7 +13,7 @@ export const LatestPostsList = ({ post }) => {
     <div className='flex flex-col min-h-32 gap-6 bg-gray-50 rounded-lg shadow-sm shadow-gray-200 my-4 max-w-70' >
         <div className='flex gap-2'>
             <div className='flex-none w-1/4 relative'>
-            <Link to={`/post/detail/${post.slug}`}>    <img className='inset-0 absolute w-full h-full object-cover rounded-l-lg transition-all hover:scale-105' src={`${ImageUrl}${post.image}`} alt="post image" loading='lazy' /></Link>
+            <Link to={`/post/detail/${post.slug}`}>    <img className='inset-0 absolute w-full h-full object-cover rounded-l-lg transition-all hover:scale-105' src={`${ImageUrl}${post?.image}`} alt="post image" loading='lazy' /></Link>
             </div>
                 <div className='flex flex-col h-full gap-2 justify-between p-2'>
                   <div className='flex items-center gap-1 text-gray-500 hover:text-gray-700 text-[10px] mb-2'>

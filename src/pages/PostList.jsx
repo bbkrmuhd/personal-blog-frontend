@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import ToDate from '../components/ToDate';
 import { ImageUrl } from '../components/ImageUrl';
+import MDEditor from '@uiw/react-md-editor';
+
 
 
 const PostListData = ({ post }) => {
@@ -31,7 +33,8 @@ const PostListData = ({ post }) => {
                </div>
                <div className='flex flex-col gap-2'>
                <Link to={`/post/detail/${post.slug}`}> <h2 className='font-bold sm:text-xl text-slate-900 hover:text-cyan-700 hover:underline capitalize cursor-pointer'>{post.title}</h2></Link>
-                  <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-featured'>{post.body}Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore doloribus, velit odit possimus corrupti veritatis nostrum, optio liberoVelit.....</p>
+                  <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-featured'>{post.body}</p>
+                  {/* <MDEditor.Markdown source={post.body} style={{ padding: "14px" }} /> */}
               </div>
               </div>
               <div className='flex flex-col gap-2 w-full'>

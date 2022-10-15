@@ -4,10 +4,9 @@ import { NavBar, Footer, H1, LatestPosts, ReadNext, ToDate, Comments, LikeCommen
 import { MdDateRange } from 'react-icons/md'
 import Fetch from '../hooks/Fetch'
 import { ImageUrl } from '../components/ImageUrl'
-
+import MDEditor from "@uiw/react-md-editor";
 
 const PostDetailData = ({ post: {author, title, body, update_on, image} }) => {
-  let p = [1,2,3,4,5,6,7,8,9,0,11,22,33,44,55,666,577,573]
   return (
     <>  
     <div className='flex items-center gap-2 text-gray-500 text-xs '>
@@ -25,11 +24,8 @@ const PostDetailData = ({ post: {author, title, body, update_on, image} }) => {
         <div className='my-3 sm:my-5'>
           <img className='rounded-lg inset-0 w-full h-full object-cover max-h-72 sm:max-h-[28rem]' src={`${ImageUrl}${image}`}  alt="Post Image" />
         </div>
-        <p>{body}</p>
-        {p.map(p => (
-          <p className='text-justify' key={p}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ad impedit animi accusantium, reiciendis nostrum cupiditate nisi eos, suscipit earum nam. Ad quia molestiae repellat veritatis aliquid, mollitia vero unde!</p>
-        ))}
-    </>
+        <MDEditor.Markdown source={body} style={{ padding: "14px" }} />
+        </>
 
   )
 }

@@ -1,12 +1,15 @@
 import { useState, createContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LocalStorageService } from "../services/LocalStorageService";
+import { loadJSON } from "../services/LoadJSON";
+import { saveJSON } from "../services/SaveJSON";
 
 export const AuthContext = createContext()
 
 
 export const AuthContextProvider= ({children}) => {
-    const [currentUser, setCurrentUser] = useState(LocalStorageService.loadJSON("user") || null)
+    const [currentUser, setCurrentUser] = useState(loadJSON('user') || null)
+
+    const navigate = useNavigate()
 
     const login = async (inputs) => {
         const res = await fetch("http://127.0.0.1:5000/api/v1/login", {
@@ -16,6 +19,10 @@ export const AuthContextProvider= ({children}) => {
             .then((result) => result.json())
             .then((data) => {
              setCurrentUser(data)
+             data.is_admin ? 
+              navigate("/sirri") : 
+              navigate("/")
+
            })
              
     }
@@ -33,7 +40,7 @@ export const AuthContextProvider= ({children}) => {
 
 
     useEffect(() => {
-    LocalStorageService.saveJSON("user", currentUser)
+    saveJSON('user', currentUser)
     }, [currentUser])
 
 

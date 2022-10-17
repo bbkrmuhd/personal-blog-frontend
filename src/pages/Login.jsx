@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef, useContext } from 'react'
-import { LocalStorageService } from '../services/LocalStorageService'
-import {useNavigate} from 'react-router-dom'
 import { AuthContext } from '../contexts/ContextProvider'
+
 
 
 
@@ -12,20 +11,13 @@ function LoginPage() {
  
 
 
-  const navigate = useNavigate()
   const inputFocus = useRef(null)
-  const {login, currentUser} = useContext(AuthContext)
+  const {login} = useContext(AuthContext)
 
 
   useEffect(() => {
     inputFocus.current.focus()
   }, [])
-
-  // const isAdmin = () => {
-  //   const user = LocalStorageService.loadJSON("user")
-  //   console.log(user)
-  //   user.is_admin ? navigate("/sirri") : navigate("/")
-  // }
 
 
   const handleLogin = async (e) => {
@@ -36,6 +28,7 @@ function LoginPage() {
       try {
         await login(loginInputs)
         setLoading(false)
+        
 
       } catch (error) {
         console.log(error)

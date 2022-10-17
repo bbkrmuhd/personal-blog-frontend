@@ -1,6 +1,6 @@
 import { Routes, Route} from "react-router-dom";
 import './App.css'
-import {Home, About, Login, PostList, PostDetail, Admin, TagList, Layout, AdminPosts, AdminComments, AdminCreatePost, AdminTags, NotFound} from './pages'
+import {Home, About, Login, PostList, PostDetail, Admin, TagList, Layout, AdminPosts, AdminComments, AdminCreatePost, AdminTags, NotFound, Category} from './pages'
 
 
 export default function App() {
@@ -11,6 +11,7 @@ export default function App() {
           <Route path='/' element={<Home/>} />
           <Route path='/posts' element={<PostList/>} />
           <Route path='/posts/tag/:tagSlug' element={<TagList/>} />
+          <Route path="/category/:categorySlug" element={<Category/>}/>
         </Route>
         <Route path="about" element={<About />} />
         <Route path='/login' element={<Login />} />

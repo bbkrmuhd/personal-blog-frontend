@@ -4,6 +4,7 @@ import { baseUrl } from '../../components/baseUrl';
 import { AuthContext } from '../../contexts/ContextProvider';
 import { useLocation } from 'react-router-dom';
 import { H1 } from '../../components';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AdminCreatePost = () => {
     const state = useLocation().state
@@ -40,7 +41,20 @@ const AdminCreatePost = () => {
           headers: {
             Authorization : `Bearer ${token}`
           }
-        }).then(response => console.log(response))
+        }).then(response => {
+          if (response.ok) {
+            toast('🦄 Wow so easy!', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              });
+          }
+          console.log(response)})
 
         : await fetch(`${baseUrl}post/create`, {
           method: "POST",
@@ -67,8 +81,9 @@ const AdminCreatePost = () => {
     }
 
   return (
-    <div className='h-full'>
-     
+    <>
+   
+        <div className='h-full'>
         <div className='flex flex-col gap-2 sm:w-[80%] sm:mx-auto shadow-sm p-4 sm:p-6 shadow-gray-200'>
         <div className='flex items-center justify-between'>
           <div><H1 text={state ? "Editing" :  "New Post"} /></div>
@@ -107,6 +122,8 @@ const AdminCreatePost = () => {
                 
         </div>
     </div>
+    </>
+  
   )
 }
 

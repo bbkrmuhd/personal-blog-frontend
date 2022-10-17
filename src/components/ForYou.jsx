@@ -71,23 +71,27 @@ const ForYou = () => {
                 <Button key={topic} text={topic} textColor='gray' textSize='xs'/>
             ))}    
         </div>
-        <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5'>
+        <div>
+
+     
+       
         <Fetch
             url="posts/list"
             renderSuccess={({ data: { posts } }) => (
             <>
+             <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
             {posts.map(post => (
-     
-
+    
             <ForYouPost key={post.title} post={post} />
-            
+           
             ))}
-            {posts && (
-            <div className='grid justify-content-center my-10 w-full'>
+             </div>
+             {posts && (<div className=' text-center my-10'>
             <Pagination />
-            </div>
-                )
-            }
+
+          </div>
+          )
+          }
             </>
             )}
             />

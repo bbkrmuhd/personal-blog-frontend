@@ -67,7 +67,7 @@ const AdminPosts = () => {
         
 
           <div>
-          <Link to='write'><button className='py-2 px-6 text-gray-700 bg-gray-100 rounded-lg text-sm sm:text-base shadow-md hover:bg-gray-200 hover:text-cyan-700'>Write</button></Link> 
+          <Link to='write'><button className='py-2 px-6 text-gray-700 bg-gray-100 rounded-lg text-sm sm:text-base shadow-md hover:bg-gray-200 hover:text-cyan-700'>Create Post</button></Link> 
           </div>
 
         </div>

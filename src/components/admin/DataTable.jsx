@@ -118,7 +118,7 @@ const DataTable = ({ data: posts, onDeletePost, loading}) => {
                               "
                        >
                      <div onClick={() => onDeletePost(post.slug)} className="text-indigo-400 hover:text-indigo-600"
-                        ><span className="px-4 py-1 text-red-600 hover:bg-red-300 bg-red-200 rounded-full">Delete</span>
+                        ><span className="px-4 py-1 text-red-600 hover:bg-red-300 bg-red-200 rounded-full cursor-pointer">Delete</span>
                         </div>
                    </td>
                  </tr>

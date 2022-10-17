@@ -50,10 +50,14 @@ const PostDetail = () => {
   return (
     <>   
     <NavBar /> 
-    <section className='container mx-auto sm:flex my-10 relative'>
-      <div className='absolute sm:flex-none sm:min-w-32 sm:my-4 sm:px-4 sm:flex sm:justify-end sm:relative '>
+    <section className='container mx-auto sm:flex my-10'>
+      {/* <div className='relative sm:h-full'> */}
+      <div className='absolute h-2 sm:flex-none sm:min-w-32 sm:my-4 sm:px-4 sm:flex sm:justify-end sm:relative '>
         <LikeCommentShare postSlug={postSlug} />
+      {/* </div> */}
+
       </div>
+      
       <div className='flex-auto min-h-screen px-4 sm:px-12 my-4'>
         <Fetch url={`/post/detail/${postSlug}`}
           renderSuccess={({ data: { post } }) => (

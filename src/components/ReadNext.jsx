@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const ReadNext = ({ }) => {
   return (
       <div className='flex sm:flex-col rounded-md shadow-sm shadow-gray-300'>
-          <div className='relative w-2/4'>
+          <div className='relative w-2/4 sm:w-auto'>
             <img className='inset-0 absolute w-full h-full object-cover' src="https://images.pexels.com/photos/4144179/pexels-photo-4144179.jpeg?auto=compress&cs=tinysrgb&w=800" alt="" />
           </div>
           

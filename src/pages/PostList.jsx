@@ -8,11 +8,17 @@ import { Link } from 'react-router-dom';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import ToDate from '../components/ToDate';
 import { ImageUrl } from '../components/ImageUrl';
-import MDEditor from '@uiw/react-md-editor';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 
 
 const PostListData = ({ post }) => {
+
+  const getText = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+
+  }
   
   let { tagSlug } = useParams()
   console.log(tagSlug)
@@ -33,8 +39,9 @@ const PostListData = ({ post }) => {
                </div>
                <div className='flex flex-col gap-2'>
                <Link to={`/post/detail/${post.slug}`}> <h2 className='font-bold sm:text-xl text-slate-900 hover:text-cyan-700 hover:underline capitalize cursor-pointer'>{post.title}</h2></Link>
-                  <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-featured'>{post.body}</p>
+                  <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-featured'>{getText(post.body)}</p>
                   {/* <MDEditor.Markdown source={post.body} style={{ padding: "14px" }} /> */}
+          {/* <ReactMarkdown value={post.body} skipHtml={true} /> */}
               </div>
               </div>
               <div className='flex flex-col gap-2 w-full'>

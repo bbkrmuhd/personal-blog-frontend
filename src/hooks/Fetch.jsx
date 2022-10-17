@@ -21,7 +21,7 @@ const useFetch = ( uri ) => {
                     setLoading(false)
                     setError(error.message)
             })
-        }, 1000)
+        }, 500)
        
 
     }, [uri])

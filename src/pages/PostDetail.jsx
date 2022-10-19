@@ -58,7 +58,7 @@ const PostDetail = () => {
 
       </div>
       
-      <div className='flex-auto min-h-screen px-4 sm:px-12 my-4'>
+      <div className='flex-auto max-w-4xl min-h-screen px-4 sm:px-12 my-4'>
         <Fetch url={`/post/detail/${postSlug}`}
           renderSuccess={({ data: { post } }) => (
             <>

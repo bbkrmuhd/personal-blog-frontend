@@ -1,11 +1,13 @@
 import React, {useEffect, useState}from 'react'
 import { Link } from 'react-router-dom'
 import { FaRegComment,FaRegHeart, FaHeart, FaRegShareSquare } from 'react-icons/fa'
+import {loadJSON} from '../services/LoadJSON'
+import {saveJSON} from '../services/SaveJSON'
 import { baseUrl } from './baseUrl'
 
 
 const LikeCommentShare = ({ postSlug }) => {
-    const [like, setLike] = useState(false)
+    const [like, setLike] = useState(JSON.parse(localStorage.getItem('has_like')) || false)
     const [post, setPost] = useState(null)
 
 
@@ -15,12 +17,13 @@ const LikeCommentShare = ({ postSlug }) => {
                             .then((res) => res.json())
          const { post } = response
          setPost(post)
-         setLike(post.has_like)
+         setLike(like)
         }
 
         getPost()
 
     }, [like, postSlug])
+    console.log(like)
 
 
 
@@ -45,6 +48,8 @@ const LikeCommentShare = ({ postSlug }) => {
             handleLike().then((data) => {
                 const { post } = data
                 setPost({...post, likes: post.likes})
+                saveJSON('has_like', true)
+                // localStorage.setItem(key, JSON.stringify(value))
                 setLike(like => !like)
             }
             ).catch((err) => {
@@ -55,6 +60,8 @@ const LikeCommentShare = ({ postSlug }) => {
             handleUnLike().then((data) => {
                 const { post } = data
                 setPost({...post, likes: post.likes})
+                saveJSON('has_like', false)
+                // localStorage.setItem(key, JSON.stringify(value))
                 setLike(like => !like)
            }
            ).catch((err) => {

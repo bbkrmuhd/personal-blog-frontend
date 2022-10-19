@@ -14,4 +14,5 @@ export {default as LikeCommentShare} from './LikeCommentShare'
 export {default as AdminNavBar} from './admin/AdminNavBar'
 export {default as AdminSideBar} from './admin/AdminSideBar'
 export {default as DataTable} from './admin/DataTable'
+export {default as Modal} from './Modal'
 

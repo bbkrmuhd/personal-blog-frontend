@@ -1,5 +1,8 @@
 import { Tooltip } from 'flowbite-react'
 import {AiOutlineLinkedin, AiOutlineTwitter, AiOutlineGithub, AiOutlineSearch} from 'react-icons/ai'
+import {MdDarkMode} from 'react-icons/md'
+import {BsSunFill} from 'react-icons/bs'
+import {HiSun} from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 
 const NavBar = () => {
@@ -22,10 +25,14 @@ const NavBar = () => {
             
                 <ul className='flex bg-gray-50 rounded-lg border sm:border-0 items-center justify-around sm:justify-center sm:space-x-4 sm:p-0 sm:m-0 sm:bg-white w-full sm:w-auto'>
                     <li>
-                    <label htmlFor="small-toggle" className="inline-flex relative items-center cursor-pointer mt-2">
-                        <input type="checkbox" value="" id="small-toggle" className="sr-only peer" />
-                        <div className="w-9 h-5 bg-gray-200 ring-2 ring-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-700 dark:peer-focus:ring-cyan-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-slate-700"></div>
+                        <label htmlFor="small-toggle" className="inline-flex relative items-center cursor-pointer mt-2">
+                        <input type="checkbox" value="" id="small-toggle" className="sr-only peer"/>
+                        <span className='text-md absolute left-0 text-gray-100'><HiSun/></span>
+
+                        <div className="w-9 h-5 bg-gray-200 ring-2 ring-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-700 dark:peer-focus:ring-cyan-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:z-10 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-gray-500"></div>
+                        <span className='text-lg absolute right-0 text-gray-500'><MdDarkMode/></span>
                         </label>
+                         
                     </li>
                     <Tooltip content="Twitter" > <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all '><AiOutlineTwitter/></li></Tooltip>
                     <Tooltip content="Linkedin" > <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineLinkedin/></li></Tooltip>

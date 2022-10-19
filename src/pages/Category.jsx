@@ -8,6 +8,7 @@ import {RiHeartLine} from 'react-icons/ri'
 import {FaRegComments} from 'react-icons/fa'
 import {MdDateRange} from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import {getText} from '../services/GetText'
 
 
 
@@ -84,7 +85,7 @@ export default Category
 
 
 
-const CategoryPost = ({ post: { author, title , created_on, body, comments_count, likes_count, slug, image } }) => {
+const CategoryPost = ({ post: { author, title , created_on, body_html, comments_count, likes_count, slug, image } }) => {
 
 
   return (
@@ -96,7 +97,7 @@ const CategoryPost = ({ post: { author, title , created_on, body, comments_count
       <div className='flex flex-col my-5 gap-2 px-2'>
         <div>
          <Link to={`/post/detail/${slug}`} > <h2 className='font-bold text-gray-900 hover:text-cyan-700 hover:underline truncate-line-clamp' >{title}Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere rem quasi iure officiis commodi quia voluptates fugiat quaerat animi dolore, excepturi corporis similique nam ipsam et cupiditate ratione nostrum laudantium.</h2></Link> 
-         <p className='text-sm text-justify text-gray-700 truncate-line-clamp'>{body}</p>
+         <p className='text-sm text-gray-700 truncate-line-clamp'>{getText(body_html)}</p>
         </div>
         <div className='flex items sm:items-center justify-between sm:flex-col sm:gap-2 mt-3 md:flex-row md:gap-0'>
             <div className='flex items-center gap-1 text-gray-500 text-[8px] sm:text-[10px]'>

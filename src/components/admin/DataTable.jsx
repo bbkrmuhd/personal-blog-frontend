@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import ToDate from '../ToDate'
 import { ImageUrl } from '../ImageUrl'
 import {ClipLoader} from 'react-spinners'
+import Modal from '../Modal'
+import { getText } from '../../services/GetText'
 
 const DataTable = ({ data: posts, onDeletePost, loading}) => {
     const headings = ['Photo', 'Title', 'Body',  'Date Created',]
@@ -10,6 +12,7 @@ const DataTable = ({ data: posts, onDeletePost, loading}) => {
 
   return (
     <>
+     <Modal id={"popup-modal"}/>
     <div className="flex flex-col text-left mt-10">
         <div className="-my-2 overflow-x-auto overflow-y-scroll sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -88,7 +91,7 @@ const DataTable = ({ data: posts, onDeletePost, loading}) => {
                    <div className="text-sm text-gray-700  truncate-admin  max-w-[150px]">{post.title}</div>
                    </td>
                    <td className="px-6 py-4 whitespace-nowrap">
-                   <div className="text-sm text-gray-700 truncate-admin max-w-[150px]">{post.body}</div>
+                   <div className="text-sm text-gray-700 truncate-admin max-w-[150px]">{getText(post.body_html)}</div>
                    </td>
                    <td className="px-6 py-4 whitespace-nowrap ">
                    <div className="text-sm text-gray-700"><ToDate date={post.created_on}/>
@@ -117,12 +120,15 @@ const DataTable = ({ data: posts, onDeletePost, loading}) => {
                               font-medium
                               "
                        >
-                     <div onClick={() => onDeletePost(post.slug)} className="text-indigo-400 hover:text-indigo-600"
-                        ><span className="px-4 py-1 text-red-600 hover:bg-red-300 bg-red-200 rounded-full cursor-pointer">Delete</span>
-                        </div>
+                        {/* onClick={() => onDeletePost(post.slug)} */}
+                     <button  className="text-indigo-400 hover:text-indigo-600 "
+                     
+                       data-modal-toggle="popup-modal" ><span className="px-4 py-1 text-red-600 hover:bg-red-300 bg-red-200 rounded-full cursor-pointer">Delete</span>
+                        </button>
                    </td>
                  </tr>
-                  ))}   
+                  ))}  
+                   
                
 
                </tbody>
@@ -136,6 +142,8 @@ const DataTable = ({ data: posts, onDeletePost, loading}) => {
 
         </div>
       </div>
+     
+
     </>
     
   )

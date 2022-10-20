@@ -4,9 +4,10 @@ import { NavBar, Footer, H1, LatestPosts, ReadNext, ToDate, Comments, LikeCommen
 import { MdDateRange } from 'react-icons/md'
 import Fetch from '../hooks/Fetch'
 import { ImageUrl } from '../components/ImageUrl'
+import { minutesRead } from '../services/MinutesRead'
 import MDEditor from "@uiw/react-md-editor";
 
-const PostDetailData = ({ post: {author, title, body, update_on, image} }) => {
+const PostDetailData = ({ post: {author, title, body, body_html, update_on, image} }) => {
   return (
     <>  
     <div className='flex items-center gap-2 text-gray-500 text-xs '>
@@ -14,7 +15,7 @@ const PostDetailData = ({ post: {author, title, body, update_on, image} }) => {
           <div className='flex flex-col gap-1'>
               <div className='flex items-center gap-2'>
               <p>by <span className='font-bold text-gray-900'>{author}</span></p>-
-              <p>5 min read</p>
+              <p>{`${minutesRead(body_html)} min read`}</p>
               </div>  
               <div className='text-xs flex items-center gap-2'><span><MdDateRange/></span><ToDate date={update_on} /></div>
               </div>

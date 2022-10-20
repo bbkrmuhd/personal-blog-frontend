@@ -4,6 +4,7 @@ import {MdDateRange} from 'react-icons/md'
 import ToDate from './ToDate'
 import Fetch from '../hooks/Fetch'
 import {ImageUrl} from './ImageUrl'
+import { minutesRead } from '../services/MinutesRead'
 
 
 
@@ -19,7 +20,7 @@ export const LatestPostsList = ({ post }) => {
                   <div className='flex items-center gap-1 text-gray-500 hover:text-gray-700 text-[10px] mb-2'>
                         <img className='w-8 transform hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
                         <p>by <span className='font-bold text-gray-900'>{post.author}</span></p>-
-                        <p>5 min read</p>
+                        <p>{`${minutesRead(post.body_html)} min read`}</p>
                  </div>
                
                  <Link to={`/post/detail/${post.slug}`}><h2 className='font-bold text-sm text-black hover:underline hover:text-cyan-700 capitalize max-w-[200px] truncate-line-clamp'>{post.title} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam quis ipsa molestiae qui architecto, doloribus dignissimos accusantium illum maxime ea tenetur debitis voluptatem quos magnam necessitatibus eveniet libero fuga. Debitis.</h2></Link>              

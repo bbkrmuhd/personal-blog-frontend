@@ -10,7 +10,7 @@ import ToDate from '../components/ToDate';
 import { ImageUrl } from '../components/ImageUrl';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import {getText} from '../services/GetText'
-
+import { minutesRead } from '../services/MinutesRead';
 
 
 const PostListData = ({ post }) => {
@@ -28,13 +28,11 @@ const PostListData = ({ post }) => {
                   <div className='flex items-center gap-1 text-gray-500 text-xs'>
                       <img className='w-10 sm:w-12 transition-all duration-150 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
                       <p>by <span className='font-bold text-gray-900'>{post.author}</span></p>-
-                      <p>5 min read</p>
+                      <p>{`${minutesRead(post.body_html)} min read`}</p>
                </div>
                <div className='flex flex-col gap-2'>
                <Link to={`/post/detail/${post.slug}`}> <h2 className='font-bold sm:text-xl text-slate-900 hover:text-cyan-700 hover:underline capitalize cursor-pointer'>{post.title}</h2></Link>
                   <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-featured'>{getText(post.body_html)}</p>
-                  {/* <MDEditor.Markdown source={post.body} style={{ padding: "14px" }} /> */}
-                  {/* <ReactMarkdown value={post.body} skipHtml={true} /> */}
               </div>
               </div>
               <div className='flex flex-col gap-2 w-full'>

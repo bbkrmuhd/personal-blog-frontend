@@ -57,7 +57,7 @@ const Comment = ({ comment,
            
       </div>
       </div>
-      {!isEditing && <p className='py-1 sm:py-2 text-gray-900'> {comment.body} </p>}
+      {!isEditing && <p className='py-1 sm:py-2 text-sm  sm:text-base text-gray-900'> {comment.body} </p>}
       {isEditing && <CommentForm labelText='Update' 
                     handleSubmit={(text) => onUpdateComment(text, comment.id)}
                     initialText={comment.body}

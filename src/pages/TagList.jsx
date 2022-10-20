@@ -7,6 +7,8 @@ import {H1, Button, Pagination} from '../components'
 import { Link } from 'react-router-dom';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import ToDate from '../components/ToDate';
+import { minutesRead } from '../services/MinutesRead';
+import { getText } from '../services/GetText';
 
 
 
@@ -25,11 +27,11 @@ const TagListData = ({ post }) => {
                   <div className='flex items-center gap-1 text-gray-500 text-xs'>
                       <img className='w-10 sm:w-12 transition-all duration-150 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
                       <p>by <span className='font-bold text-gray-900'>{post.author}</span></p>-
-                      <p>5 min read</p>
+                      <p>{`${minutesRead(post.body_html)} min read`}</p>
                </div>
                <div className='flex flex-col gap-2'>
                <Link to={`/post/detail/${post.slug}`}> <h2 className='font-bold sm:text-xl text-justify text-slate-900 hover:text-cyan-700 capitalize cursor-pointer'>{post.title}</h2></Link>
-                  <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-featured'>{post.body}Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore doloribus, velit odit possimus corrupti veritatis nostrum, optio liberoVelit.....</p>
+                  <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-featured'>{getText(post.body)}</p>
               </div>
               </div>
               <div className='flex flex-col gap-2 w-full'>

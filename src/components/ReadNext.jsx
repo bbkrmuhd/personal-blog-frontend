@@ -3,8 +3,9 @@ import {RiHeartLine} from 'react-icons/ri'
 import {FaRegComments} from 'react-icons/fa'
 import {MdDateRange} from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import { minutesRead } from '../services/MinutesRead'
 
-const ReadNext = ({ }) => {
+const ReadNext = () => {
   return (
       <div className='flex sm:flex-col rounded-md shadow-sm shadow-gray-300'>
           <div className='flex flex-col items-center justify-between p-1 sm:p-2 w-full'>
@@ -17,7 +18,7 @@ const ReadNext = ({ }) => {
             <div className='flex flex-col gap-1'>
                 <div className='flex items-center gap-1'>
                 <p>by <span className='font-bold text-gray-900'>Ameer</span></p>-
-                   <p>5 min read</p>
+                {/* <p>{`${minutesRead(body_html)} min read`}</p> */}
                 </div>  
                 <div className='flex items-center gap-1'><span><MdDateRange/></span><p>Sep 3 2022</p></div>
                 </div>          

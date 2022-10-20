@@ -31,6 +31,7 @@ const AdminPosts = () => {
       } catch (error) {
         setError(error)
       }
+      console.log("i run")
       
 
     } , [])

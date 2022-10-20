@@ -2,24 +2,23 @@ import React,{useState, useContext}from 'react'
 import MDEditor, { commands }  from "@uiw/react-md-editor";
 import { baseUrl } from '../../components/baseUrl';
 import { AuthContext } from '../../contexts/ContextProvider';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { H1 } from '../../components';
 import { toast, ToastContainer } from 'react-toastify';
 
 const AdminCreatePost = () => {
     const state = useLocation().state
+    const navigate = useNavigate()
     const tags = state?.tags ? state.tags.map(tag => tag.name) : ""
-    const [data, setData] = useState({"category": state?.category.name || "", "tags": tags, "title": state?.title || ""})
+    const [data, setData] = useState({"category": state?.category.name || "", 
+                                  "tags": tags, "title": state?.title || ""})
     const [imageFile, setImageFile] = useState(null)
     const [postBody, setPostBody] = useState(state?.body || "")
 
     const { currentUser } = useContext(AuthContext)
-    console.log(currentUser?.access_token)
-    const token ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2NTY5NjMwMiwianRpIjoiN2JlZTE0ZDgtOWE3Mi00YTZmLWE2ZDQtZWZmM2ZjZTlhYjU2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImJia3JtdWhkc2FkZGlxQGdtYWlsLmNvbSIsIm5iZiI6MTY2NTY5NjMwMiwiY3NyZiI6ImE2ZDhiOGUxLTBhZTYtNGI0Mi1iNmU2LTUxMzMwODk5YzYyMSIsImV4cCI6MTY2NjMwMTEwMn0.wYVFHsfrbXiV9L5L4jhRMQ_TRQUvBV7CIqDIkRjYwP0"
+    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2NjIyMTQzOSwianRpIjoiZWVlMDhiMjktZDdlZS00OWUwLTkxYjktYWU2YWNjYzliZjZhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImJia3JtdWhkc2FkZGlxQGdtYWlsLmNvbSIsIm5iZiI6MTY2NjIyMTQzOSwiY3NyZiI6IjFhMjY1NmRmLWEyNmMtNDQ2My05NTI4LTVkYjdmZWZkNGYxMiIsImV4cCI6MTY2NjgyNjIzOX0.XwbgB1FkSBcQaHLiQ8bOdVaEjBoQvtUGZaAZ5wrxhnU"
 
-
-
-
+  
     const handleChange = e => {
       console.log(e.target.name, e.target.value)
       setData(prev => ({...prev, [e.target.name]: e.target.value}))
@@ -43,9 +42,8 @@ const AdminCreatePost = () => {
           }
         }).then(response => {
           if (response.ok) {
-            toast('🦄 Wow so easy!', {
+            toast.success('Article updated successfully', {
               position: "top-right",
-              autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -54,7 +52,8 @@ const AdminCreatePost = () => {
               theme: "light",
               });
           }
-          console.log(response)})
+          navigate('/sirri/posts')})
+          
 
         : await fetch(`${baseUrl}post/create`, {
           method: "POST",
@@ -62,7 +61,19 @@ const AdminCreatePost = () => {
           headers: {
             Authorization : `Bearer ${token}`
           }
-        }).then(response => console.log(response))
+        }).then(response => {
+          if (response.ok) {
+            toast.success('Article created successfully', {
+              position: "top-right",
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              });
+          }
+          navigate('/sirri/posts')})
         
       } catch (error) {
         console.log(error);

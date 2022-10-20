@@ -1,5 +1,5 @@
 import React from 'react'
-import { AiFillMedicineBox } from 'react-icons/ai'
+import {BiCategory} from 'react-icons/bi'
 import { Link, NavLink } from 'react-router-dom'
 import {MdOutlineArticle} from 'react-icons/md'
 import { FaRegComment } from 'react-icons/fa'
@@ -17,6 +17,11 @@ const AdminSideBar = () => {
          </NavLink>
 
         ))}
+        <NavLink to='category' onClick={() => {}}  className={({ isActive}) => isActive ? activeLink : normalLink}>
+          
+          <BiCategory />
+        <p className=''>Category</p>
+      </NavLink>
           <NavLink to='comments' onClick={() => {}}  className={({ isActive}) => isActive ? activeLink : normalLink}>
           
           <FaRegComment />

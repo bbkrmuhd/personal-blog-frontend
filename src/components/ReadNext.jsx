@@ -7,10 +7,6 @@ import { Link } from 'react-router-dom'
 const ReadNext = ({ }) => {
   return (
       <div className='flex sm:flex-col rounded-md shadow-sm shadow-gray-300'>
-          <div className='relative w-2/4 sm:w-auto'>
-            <img className='inset-0 absolute w-full h-full object-cover' src="https://images.pexels.com/photos/4144179/pexels-photo-4144179.jpeg?auto=compress&cs=tinysrgb&w=800" alt="" />
-          </div>
-          
           <div className='flex flex-col items-center justify-between p-1 sm:p-2 w-full'>
           <div className='flex flex-col gap-2 mb-2 sm:mt-2 px-2 '>
               <Link to={`/post/detail/`}><p className='font-bold text-justify text-sm sm:text-base text-slate-900 hover:text-cyan-700 capitalize cursor-pointer truncate-line-clamp'></p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Link>

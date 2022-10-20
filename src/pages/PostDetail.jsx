@@ -51,10 +51,10 @@ const PostDetail = () => {
     <>   
     <NavBar /> 
     <section className='container mx-auto sm:flex my-10'>
-      {/* <div className='relative sm:h-full'> */}
+      <div className='relative sm:h-full'>
       <div className='absolute h-2 sm:flex-none sm:min-w-32 sm:my-4 sm:px-4 sm:flex sm:justify-end sm:relative '>
         <LikeCommentShare postSlug={postSlug} />
-      {/* </div> */}
+      </div>
 
       </div>
       

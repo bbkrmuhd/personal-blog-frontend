@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from './App'
 import { AuthContextProvider } from './contexts/ContextProvider';
 import './index.css'
+import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -13,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <div className='absolute'>
       <ToastContainer
         position="top-left"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

@@ -11,9 +11,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
     <AuthContextProvider>
-      <div className='absolute'>
       <ToastContainer
-        position="top-left"
+        position="top-right"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -24,11 +23,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         pauseOnHover
         theme="light"
         />
-        {/* Same as */}
-        
-      </div>
-   
-        <ToastContainer />
        <App />
     </AuthContextProvider>
     </BrowserRouter>

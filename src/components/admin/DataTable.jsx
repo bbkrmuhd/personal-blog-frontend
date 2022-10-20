@@ -5,9 +5,12 @@ import { ImageUrl } from '../ImageUrl'
 import {ClipLoader} from 'react-spinners'
 import Modal from '../Modal'
 import { getText } from '../../services/GetText'
+import { toast } from 'react-toastify'
 
 const DataTable = ({ data: posts, onDeletePost, loading}) => {
     const headings = ['Photo', 'Title', 'Body',  'Date Created',]
+
+    const notify_delete = (title) => toast.success(`${title} deleted successfully`)
 
 
   return (
@@ -119,8 +122,11 @@ const DataTable = ({ data: posts, onDeletePost, loading}) => {
                               font-medium
                               "
                        >
-                        {/* onClick={() => onDeletePost(post.slug)} */}
-                     <button  className="text-indigo-400 hover:text-indigo-600 "
+                    
+                     <button onClick={() => {
+                      onDeletePost(post.slug)
+                      notify_delete(post.title)
+                    }} className="text-indigo-400 hover:text-indigo-600 "
                      
                        data-modal-toggle="popup-modal" ><span className="px-4 py-1 text-red-600 hover:bg-red-300 bg-red-200 rounded-full cursor-pointer">Delete</span>
                         </button>

@@ -16,9 +16,9 @@ const FeaturedPost = ({ post: {slug, title, body_html, image } }) => {
         <div className='flex flex-col gap-4 p-4 sm:basis-1/2 justify-between'>
           <div className='w-full'>
           <h1 className=' text-2xl sm:text-4xl text-white tracking-wide font-bold leading-6 my-10 drop-shadow-lg truncate-featured'>{title}</h1>
-        <p className='text-gray-300 text-xs sm:text-sm leading-4 drop-shadow-lg'>{getText(body_html)}</p>
+        <p className='text-slate-300 text-xs sm:text-sm leading-4 drop-shadow-lg truncate-line-clamp '>{getText(body_html)}</p>
           </div>
-       <div>
+         <div>
         <Link to={`/post/detail/${slug}`}><Button text='Read Now' bgColor='' textColor='white' /></Link>
        </div>
         </div>

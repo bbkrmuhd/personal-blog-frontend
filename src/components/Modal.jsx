@@ -26,7 +26,7 @@ const ModalToggle = ({id, text, onClick, onClose }) => {
         </div>
     </div>
 </div> */}
-<React.Fragment>
+{/* <React.Fragment> */}
   <Button onClick={onClick}>
     Toggle modal
   </Button>
@@ -61,7 +61,7 @@ const ModalToggle = ({id, text, onClick, onClose }) => {
       </Button>
     </Modal.Footer>
     </Modal>
-    </React.Fragment>
+    {/* </React.Fragment> */}
     </>
 
   )

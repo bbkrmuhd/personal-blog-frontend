@@ -13,7 +13,7 @@ import {getText} from '../services/GetText'
 import { minutesRead } from '../services/MinutesRead';
 
 
-const PostListData = ({ post }) => {
+export const PostListData = ({ post }) => {
 
   return (
     <div className='min-h-56 my-4 sm:my-6 shadow-md shadow-gray-200'>

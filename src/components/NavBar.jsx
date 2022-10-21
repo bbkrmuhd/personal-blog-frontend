@@ -1,5 +1,6 @@
 import { Tooltip } from 'flowbite-react'
 import {AiOutlineLinkedin, AiOutlineTwitter, AiOutlineGithub, AiOutlineSearch} from 'react-icons/ai'
+import {GiHamburgerMenu} from 'react-icons/gi'
 import {MdDarkMode} from 'react-icons/md'
 import {BsSunFill} from 'react-icons/bs'
 import {HiSun} from 'react-icons/hi'
@@ -10,7 +11,11 @@ const NavBar = () => {
     <div className='container mx-auto border-b px-4'>
         <div className='flex flex-col w-full gap-2 sm:flex-row items-center justify-between py-4 static top-0'>
         <div className='flex items-center space-x-4 bg-gray-50 rounded-lg border sm:border-0 sm:bg-white w-full justify-between sm:justify-start'>
-            <Link to='/'><div className='text-2xl text-cyan-700'>SC</div></Link> 
+            <div className=' text-cyan-700 flex items-center gap-1'>
+            <span className='text-3xl sm:hidden'><GiHamburgerMenu/></span>
+            <Link to='/'><div className='text-2xl'>SC</div></Link> 
+            </div>
+
                 <form>   
             <label htmlFor="default-search" className="text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
          <div className="relative">
@@ -21,7 +26,7 @@ const NavBar = () => {
             <button type="submit" className="text-white absolute  right-1 bottom-1 bg-cyan-700 hover:bg-cyan-800 focus:ring-1 focus:outline-none focus:ring-cyan-300 font-medium rounded-md text-xs px-2 pt-1 pb-1.5 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Search</button>
             </div>
             </form>
-            </div>
+        </div>
             
                 <ul className='flex bg-gray-50 rounded-lg border sm:border-0 items-center justify-around sm:justify-center sm:space-x-4 sm:p-0 sm:m-0 sm:bg-white w-full sm:w-auto'>
                     <li>
@@ -34,9 +39,10 @@ const NavBar = () => {
                         </label>
                          
                     </li>
-                    <Tooltip content="Twitter" > <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all '><AiOutlineTwitter/></li></Tooltip>
-                    <Tooltip content="Linkedin" > <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineLinkedin/></li></Tooltip>
-                    <Tooltip content="Github" > <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineGithub/></li></Tooltip>
+                    <Tooltip content="Twitter" >      <a href="https://twitter.com/sadiqcodes"  target="_blank" > <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all '><AiOutlineTwitter/></li></a></Tooltip>
+                    <Tooltip content="LinkedIn" >       <a href="https://www.linkedin.com/in/abubakar-muhammad-sadiq/" target="_blank"> <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineLinkedin/></li></a></Tooltip>
+                    <Tooltip content="Github" >       <a href="https://github.com/bbkrmuhd" target="_blank">   <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineGithub/></li></a></Tooltip>
+                
                     <li></li>
                 </ul>
         </div>

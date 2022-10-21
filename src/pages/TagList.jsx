@@ -96,7 +96,7 @@ const TagList = () => {
             <TagListData key={post.id} post={post} />
             ))}
             
-           {posts && (<div className='text-center my-10'>
+           {!posts && (<div className='text-center my-10'>
               <Pagination />
             </div>
             )

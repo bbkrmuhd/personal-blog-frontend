@@ -81,13 +81,14 @@ const PostListData = ({ post }) => {
 const PostList = () => {
   
   let page = useLocation().search
+  const page_num = 1
 
   return (
       <div className='flex-auto min-h-screen sm:px-4 my-4'>
         <H1 text='All Posts'/>
       <Fetch
-        url="posts/list"
-        renderSuccess={({ data: { posts } }) => (
+        url={`posts/list?page=${page_num}`}
+        renderSuccess={({ data: { posts, next_url, prev_url } }) => (
           <>
           {posts.map(post => (
           <PostListData key={post.id} post={post} />

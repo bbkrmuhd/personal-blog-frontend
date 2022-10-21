@@ -10,7 +10,7 @@ const useFetch = ( uri ) => {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch("http://127.0.0.1:5000/api/v1/" + uri,)
+            fetch("https://hammerhead-app-hwatt.ondigitalocean.app/api/v1/" + uri,)
             .then((res) => {
                 if(!res.ok){
                    throw Error("Could not fetch data")

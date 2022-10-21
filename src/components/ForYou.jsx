@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from './Button'
 import {RiHeartLine} from 'react-icons/ri'
 import {FaRegComments} from 'react-icons/fa'
@@ -61,6 +61,21 @@ import {minutesRead} from '../services/MinutesRead'
 
 const ForYou = () => {
     let topics = ['Javascript', 'React', 'Django', 'Python', 'SQL', 'Postgres' ]
+    const [tags, setTags] = useState([])
+
+    // useEffect(() => {
+    //   const getTags  = async () => {
+
+    //     const res  = await fetch("", {
+
+        
+    //     }).then(data => data.json()
+    //     ).then(setTags)
+    //     .catch(error => console.log(error))
+
+    //   }
+    //   getTags()
+    // }, [])
 
   return (
     <div className='my-10'>
@@ -68,7 +83,7 @@ const ForYou = () => {
        <H1 text='Topic Match For You' />
         <div className='flex items-center flex-wrap gap-4'>
             {topics.map(topic => (
-                <Button key={topic} text={topic} textColor='gray' textSize='xs'/>
+              <Link to={`/posts/tag/${topic.toLowerCase()}`}><Button key={topic} text={topic} textColor='gray' textSize='xs'/></Link>
             ))}    
         </div>
         <div>

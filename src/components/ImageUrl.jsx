@@ -1,1 +1,1 @@
-export const ImageUrl = "http://127.0.0.1:5000/"
+export const ImageUrl = "https://hammerhead-app-hwatt.ondigitalocean.app/"

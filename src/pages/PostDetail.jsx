@@ -25,7 +25,11 @@ const PostDetailData = ({ post: {author, title, body, body_html, update_on, imag
         <div className='my-3 sm:my-5'>
           <img className='rounded-lg inset-0 w-full h-full object-cover max-h-72 sm:max-h-[28rem]' src={`${ImageUrl}${image}`}  alt="Post Image" />
         </div>
-        <MDEditor.Markdown source={body} style={{ padding: "14px" }} />
+        <div className='px-1 sm:px-2'>
+        <MDEditor.Markdown source={body} />
+
+        </div>
+      
         </>
 
   )
@@ -61,7 +65,7 @@ const PostDetail = () => {
       
       <div className='flex-auto max-w-4xl min-h-screen px-4 sm:px-12 my-4'>
         <Fetch url={`/post/detail/${postSlug}`}
-          renderSuccess={({ data: { post } }) => (
+          renderSuccess={({ data: { post, related } }) => (
             <>
               <PostDetailData post={post}/>
               {post && <Comments postSlug={postSlug}/>}
@@ -70,8 +74,12 @@ const PostDetail = () => {
                 <>
                 <H1 text='Read Next'/>
                 <div className='my-10 grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
-                  {read.map(r => (
-                      <ReadNext post={post}/>
+                  {related.map(rPost => (
+                    <>
+                    {console.log(rPost)}
+                      <ReadNext key={rPost.id} post={rPost}/>
+                    </>
+                    
                   ))}
                 </div>
                 </>

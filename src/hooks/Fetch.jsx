@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {ClipLoader} from 'react-spinners'
+import { baseUrl } from '../components/baseUrl'
 
 
 
@@ -10,7 +11,7 @@ const useFetch = ( uri ) => {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch("https://hammerhead-app-hwatt.ondigitalocean.app/api/v1/" + uri,)
+            fetch(baseUrl + uri)
             .then((res) => {
                 if(!res.ok){
                    throw Error("Could not fetch data")

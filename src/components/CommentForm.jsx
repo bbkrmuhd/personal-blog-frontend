@@ -10,7 +10,7 @@ const CommentForm = ({ handleSubmit, labelText, initialText="", hasCancelButton=
         setText("")
     }
   return (
-      <form onSubmit={onSubmit}  className='flex flex-col sm:flex-row items-start justify-center sm:gap-4 p-4 bg-white border border-gray-200 shadow-sm w-full rounded-lg'>
+      <form onSubmit={onSubmit}  className='flex flex-col sm:flex-row items-start justify-center sm:gap-4 p-4 bg-white border border-gray-200 shadow-sm w-full rounded-lg dark:bg-gray-800 dark:border-gray-700'>
         <div className='flex items-start gap-2 sm:w-4/5'>
         <img className='w-10 sm:w-12 transform hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
         <div className='w-full'>
@@ -20,7 +20,7 @@ const CommentForm = ({ handleSubmit, labelText, initialText="", hasCancelButton=
             onChange={(e) =>  
             setText(e.target.value) }
             placeholder='Add a comment'
-             className='border-1 border-gray-200 focus:border-cyan-700 focus:ring-cyan-700 w-full sm:h-28 rounded-md'>
+             className='border-1 border-gray-200 focus:border-cyan-700 focus:ring-cyan-700 w-full sm:h-28 rounded-md dark:bg-gray-800 dark:text-white dark:border-gray-600'>
         </textarea>
         </div>
         </div>

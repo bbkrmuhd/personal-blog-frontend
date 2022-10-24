@@ -105,7 +105,7 @@ const Comments = ({ postSlug }) => {
 
 
   return (
-    <div id='comments' className='p-4 sm:p-6 rounded-lg border border-gray-200 shadow-sm my-5 sm:my-10'>
+    <div id='comments' className='p-4 sm:p-6 rounded-lg border border-gray-200 shadow-sm my-5 sm:my-10 dark:border-gray-700'>
     <div>
         <H1 text='Comment Form' />
         <CommentForm labelText='Add Comment'  handleSubmit={onAddComment}/>

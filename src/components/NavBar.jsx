@@ -55,8 +55,8 @@ const NavBar = () => {
 
   return (
     <div className='container mx-auto border-b px-4 dark:border-b-gray-700'>
-        <div className='flex flex-col w-full gap-2 sm:flex-row items-center justify-between py-4 static top-0'>
-        <div className='flex items-center space-x-4 bg-gray-50 w-full sm:w-auto dark:bg-gray-800 sm:dark:bg-gray-900 rounded-lg border sm:border-0 sm:bg-white justify-between sm:justify-start dark:border-gray-700'>
+        <div className='flex flex-col w-full gap-2 sm:flex-row items-center justify-between py-4'>
+        <div className='flex items-center space-x-4 bg-gray-50 w-full sm:w-auto dark:bg-gray-800 sm:dark:bg-gray-900 rounded-lg border sm:border-0 sm:bg-white justify-between sm:justify-start dark:border-gray-700 sticky'>
             <div className=' text-cyan-700 dark:text-cyan-500 flex items-center gap-1'>
             <span className='sm:hidden transition duration-75 eases text-2xl' onClick={onClick}>{active ? <BsArrowBarLeft/> : <BsArrowBarRight/>}</span>
             <Link to='/'><div className='sm:text-2xl'>SadiqBlogs</div></Link> 

@@ -10,7 +10,7 @@ const CategoryList = ({ category } ) => {
   return (
     <li>
       <Link to={`category/${category.slug}`}>
-    <div  className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg cursor-pointer hover:drop-shadow-md dark:text-white hover:bg-cyan-700 hover:text-white dark:hover:bg-gray-700">
+    <div  className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg cursor-pointer hover:drop-shadow-md dark:text-white hover:bg-cyan-700 hover:text-white dark:hover:bg-gray-600">
         <span className='text-xl'>🎓</span>  
         <span className="ml-3 font-bold capitalize ">{category.name}</span>
     </div>

@@ -1,19 +1,63 @@
 import { Tooltip } from 'flowbite-react'
-import {AiOutlineLinkedin, AiOutlineTwitter, AiOutlineGithub, AiOutlineSearch} from 'react-icons/ai'
-import {GiHamburgerMenu} from 'react-icons/gi'
+import {AiOutlineLinkedin, AiOutlineTwitter, AiOutlineGithub, AiOutlineSearch,AiOutlineBars} from 'react-icons/ai'
 import {MdDarkMode} from 'react-icons/md'
-import {BsSunFill} from 'react-icons/bs'
 import {HiSun} from 'react-icons/hi'
 import { Link } from 'react-router-dom'
+import { useEffect, useLayoutEffect, useState } from 'react'
+import Categories from './Categories'
+import H1 from './H1'
+import {BsArrowBarRight, BsArrowBarLeft} from 'react-icons/bs'
 
 const NavBar = () => {
+    const [active, setActive] = useState(false)
+    const [checked, setChecked] = useState(false)
+   
+
+    const activeNav = 'bg-white h-full w-full absolute left-0 z-10 transition duration-300 ease' 
+    const unActiveNav = "transform -translate-x-full transition-all duration-75 absolute left-0"
+    
+    const  onClick  = () => {
+        console.log(active)
+        setActive(active => !active)
+        
+    }
+
+
+    useLayoutEffect(() => {
+        if (localStorage.getItem('color-theme') === 'dark' 
+        || (!('color-theme' in localStorage) 
+        && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+            setChecked(true)
+        } else {
+            document.documentElement.classList.remove('dark')
+            localStorage.setItem('color-theme', 'light');
+            setChecked(false)
+        }
+    }, [])
+
+    const onChange = () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                    setChecked(false)
+                    
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                    setChecked(true)
+                  
+                    }
+    }
+
   return (
     <div className='container mx-auto border-b px-4'>
         <div className='flex flex-col w-full gap-2 sm:flex-row items-center justify-between py-4 static top-0'>
-        <div className='flex items-center space-x-4 bg-gray-50 rounded-lg border sm:border-0 sm:bg-white w-full justify-between sm:justify-start'>
+        <div className='flex items-center space-x-4 bg-gray-50 dark:bg-slate-800 rounded-lg border sm:border-0 sm:bg-white w-full justify-between sm:justify-start'>
             <div className=' text-cyan-700 flex items-center gap-1'>
-            <span className='text-3xl sm:hidden'><GiHamburgerMenu/></span>
-            <Link to='/'><div className='text-2xl'>SC</div></Link> 
+            <span className='sm:hidden transition duration-75 eases text-2xl' onClick={onClick}>{active ? <BsArrowBarLeft/> : <BsArrowBarRight/>}</span>
+            <Link to='/'><div className='sm:text-2xl'>SadiqBlogs</div></Link> 
             </div>
 
                 <form>   
@@ -30,21 +74,32 @@ const NavBar = () => {
             
                 <ul className='flex bg-gray-50 rounded-lg border sm:border-0 items-center justify-around sm:justify-center sm:space-x-4 sm:p-0 sm:m-0 sm:bg-white w-full sm:w-auto'>
                     <li>
-                        <label htmlFor="small-toggle" className="inline-flex relative items-center cursor-pointer mt-2">
-                        <input type="checkbox" value="" id="small-toggle" className="sr-only peer"/>
-                        <span className='text-md absolute left-0 text-gray-100'><HiSun/></span>
+                        <label  htmlFor="small-toggle" className="inline-flex relative items-center cursor-pointer mt-2">
+                        <input onClick={() => onChange()} checked={checked} type="checkbox" value="" id="small-toggle" className="sr-only peer"/>
+                        <div className='text-md absolute left-0 text-gray-100'><HiSun/></div>
 
                         <div className="w-9 h-5 bg-gray-200 ring-2 ring-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-700 dark:peer-focus:ring-cyan-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:z-10 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-gray-500"></div>
-                        <span className='text-lg absolute right-0 text-gray-500'><MdDarkMode/></span>
+                        <div className='text-lg absolute right-0 text-gray-500'><MdDarkMode/></div>
                         </label>
                          
                     </li>
-                    <Tooltip content="Twitter" >      <a href="https://twitter.com/sadiqcodes"  target="_blank" > <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all '><AiOutlineTwitter/></li></a></Tooltip>
-                    <Tooltip content="LinkedIn" >       <a href="https://www.linkedin.com/in/abubakar-muhammad-sadiq/" target="_blank"> <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineLinkedin/></li></a></Tooltip>
-                    <Tooltip content="Github" >       <a href="https://github.com/bbkrmuhd" target="_blank">   <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineGithub/></li></a></Tooltip>
+                    <Tooltip content="Twitter" ><a href="https://twitter.com/sadiqcodes"  target="_blank" > <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all '><AiOutlineTwitter/></li></a></Tooltip>
+                    <Tooltip content="LinkedIn" ><a href="https://www.linkedin.com/in/abubakar-muhammad-sadiq/" target="_blank"> <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineLinkedin/></li></a></Tooltip>
+                    <Tooltip content="Github" ><a href="https://github.com/bbkrmuhd" target="_blank">   <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineGithub/></li></a></Tooltip>
                 
                     <li></li>
                 </ul>
+        </div>
+
+        <div className={`${active ? activeNav : unActiveNav}`}>
+            <div className='mx-4 bg-white h-1/2'>
+                <div className='px-2'>
+                    <H1 text={"Categories"}/>
+                </div>
+                <Categories/>
+
+            </div>
+
         </div>
 
     </div>

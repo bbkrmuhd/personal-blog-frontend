@@ -23,7 +23,7 @@ const CategoryList = ({ category } ) => {
 const Categories = () => {
   return (
     
-<aside className="min-w-64 my-10 rounded-lg drop-shadow-sm shadow-sm" aria-label="Sidebar">
+<aside className="min-w-64 sm:my-10 rounded-lg drop-shadow-sm shadow-sm" aria-label="Sidebar">
    <div className="p-2 lg:py-4 lg:px-3 bg-gray-50 rounded dark:bg-gray-800">
       <ul className="space-y-2">
       <Fetch

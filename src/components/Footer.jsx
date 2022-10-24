@@ -28,7 +28,7 @@ const Footer = () => {
 <footer className="container mx-auto">
     <div className='p-4 bg-white border-t border-cyan-700 rounded-lg shadow-md my-4 flex flex-col md:p-6 dark:bg-gray-800'>
     <div className=' flex items-center justify-between mx-2 sm:mx-6 '>
-    <div className='text-2xl text-cyan-700'>SC</div>
+    <a href='/' className='sm:text-2xl text-cyan-700'>SadiqBlogs</a>
     <ul className='flex items-center justify-center space-x-4'>
     <Tooltip content="Twitter" >      <a href="https://twitter.com/sadiqcodes" target="_blank"> <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all '><AiOutlineTwitter/></li></a></Tooltip>
     <Tooltip content="LinkedIn" >       <a href="https://www.linkedin.com/in/abubakar-muhammad-sadiq/" target="_blank"> <li className='text-3xl text-gray-500 hover:text-cyan-700'><AiOutlineLinkedin/></li></a></Tooltip>

@@ -51,7 +51,7 @@ const Category = () => {
   return (
     <div className='flex-auto min-h-screen sm:px-4'>
     <div className='flex items-center justify-between my-2 sm:my-4'>
-     <H1 text={` ${categoryName} `}/>
+     <H1 text={`Category: ${categoryName} `}/>
       </div>
       <div>
         

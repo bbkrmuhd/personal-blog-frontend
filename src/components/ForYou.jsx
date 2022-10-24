@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useLayoutEffect } from 'react'
 import Button from './Button'
+import { useLocation } from 'react-router-dom'
 import {RiHeartLine} from 'react-icons/ri'
 import {FaRegComments} from 'react-icons/fa'
 import {MdDateRange} from 'react-icons/md'
@@ -62,6 +63,16 @@ import {minutesRead} from '../services/MinutesRead'
 const ForYou = () => {
     let topics = ['Javascript', 'React', 'Django', 'Python', 'SQL', 'Postgres' ]
     const [tags, setTags] = useState([])
+    const initialNum = Number(useLocation().search.split("=")[1])
+    const pathname = useLocation().search
+    const [pageNum , setPageNum] = useState(initialNum? initialNum: 1)
+    const [prevUrl, setPrevUrl] = useState(null)
+    const [nextUrl, setNextUrl] = useState(null)
+
+    useLayoutEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
 
     // useEffect(() => {
     //   const getTags  = async () => {
@@ -92,17 +103,18 @@ const ForYou = () => {
        
         <Fetch
             url="posts/list"
-            renderSuccess={({ data: { posts } }) => (
+            renderSuccess={({ data: { posts, next_url, prev_url } }) => (
             <>
+             {setPrevUrl(prev_url)}{setNextUrl(next_url)}
              <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
             {posts.map(post => (
-    
+
             <ForYouPost key={post.title} post={post} />
            
             ))}
              </div>
              {posts && (<div className=' text-center my-10'>
-            <Pagination />
+             <Pagination pageNum={pageNum} prevUrl={prevUrl} nextUrl={nextUrl} setPageNum={setPageNum}/>
 
           </div>
           )

@@ -17,9 +17,7 @@ const NavBar = () => {
     const unActiveNav = "transform -translate-x-full transition-all duration-75 absolute left-0"
     
     const  onClick  = () => {
-        console.log(active)
         setActive(active => !active)
-        
     }
 
 

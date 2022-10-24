@@ -23,9 +23,9 @@ const PostDetailData = ({ post: {author, title, body, body_html, update_on, imag
           </div>
         <H1 text={`${title}`}/>
         <div className='my-3 sm:my-5'>
-          <img className='rounded-lg inset-0 w-full h-full object-cover max-h-72 sm:max-h-[28rem]' src={`${ImageUrl}${image}`}  alt="Post Image" />
+          <img className='rounded-lg inset-0 w-full h-full object-cover max-h-72 sm:max-h-[28rem] shadow-md  dark:shadow-gray-700' src={`${ImageUrl}${image}`}  alt="Post Image" />
         </div>
-        <MDEditor.Markdown source={body} className="px-1 sm:px-2  dark:bg-gray-900" />      
+        <MDEditor.Markdown source={body} className="px-1 sm:px-2  dark:bg-gray-800" />      
         </>
 
   )
@@ -39,8 +39,6 @@ const PostDetailData = ({ post: {author, title, body, body_html, update_on, imag
 
 
 const PostDetail = () => {
-  let read = [2,2,2,]
-
   let { postSlug } = useParams()
   const { pathname } = useLocation();
 
@@ -71,11 +69,7 @@ const PostDetail = () => {
                 <H1 text='Read Next'/>
                 <div className='my-10 grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
                   {related.map(rPost => (
-                    <>
-                    {console.log(rPost)}
                       <ReadNext key={rPost.id} post={rPost}/>
-                    </>
-                    
                   ))}
                 </div>
                 </>

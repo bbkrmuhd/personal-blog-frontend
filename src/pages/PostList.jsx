@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import Fetch from '../hooks/Fetch';
 import { MdDateRange } from 'react-icons/md';
 import {RiHeartLine} from 'react-icons/ri'
@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import ToDate from '../components/ToDate';
 import { ImageUrl } from '../components/ImageUrl';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import {getText} from '../services/GetText'
 import { minutesRead } from '../services/MinutesRead';
 
@@ -26,7 +25,7 @@ export const PostListData = ({ post }) => {
               <div className='flex flex-col gap-2 h-full items-start justify-between'>
                 <div className='flex flex-col gap-2'>
                   <div className='flex items-center gap-1 text-gray-500 text-xs dark:text-gray-100'>
-                      <img className='w-10 sm:w-12 transition-all duration-150 hover:scale-105 border' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
+                      <img className='w-10 sm:w-12 transition-all duration-150 hover:scale-105 border rounded-full' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
                       <p>by <span className='font-bold text-gray-900 dark:text-gray-100'>{post.author}</span></p>-
                       <p>{`${minutesRead(post.body_html)} min read`}</p>
                </div>
@@ -79,23 +78,31 @@ export const PostListData = ({ post }) => {
 
 
 const PostList = () => {
-  
-  let page = useLocation().search
-  const page_num = 1
+  const initialNum = Number(useLocation().search.split("=")[1])
+  const pathname = useLocation().search
+  const [pageNum , setPageNum] = useState(initialNum)
+  const [prevUrl, setPrevUrl] = useState(null)
+  const [nextUrl, setNextUrl] = useState(null)
 
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  
   return (
       <div className='flex-auto min-h-screen sm:px-4 my-4'>
         <H1 text='All Posts'/>
       <Fetch
-        url={`posts/list?page=${page_num}`}
+        url={`posts/list?page=${pageNum}`}
         renderSuccess={({ data: { posts, next_url, prev_url } }) => (
           <>
+          {setPrevUrl(prev_url)}{setNextUrl(next_url)}
           {posts.map(post => (
           <PostListData key={post.id} post={post} />
           ))}
           
          {posts && (<div className='text-center my-10'>
-            <Pagination page={page} />
+            <Pagination pageNum={pageNum} prevUrl={prevUrl} nextUrl={nextUrl} setPageNum={setPageNum}/>
 
           </div>
           )

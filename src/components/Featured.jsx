@@ -11,7 +11,7 @@ import {getText} from '../services/GetText'
 const FeaturedPost = ({ post: {slug, title, body_html, image } }) => {
   return (
  
-    <div className='max-h-96 sm:my-5 rounded-lg bg-cover bg-no-repeat bg-center flex drop-shadow-xl drop-shadow-gray-300 bg-gradient-to-t from-black/75 via-black/0' style={{'backgroundImage': `url(${ImageUrl}${image})`}}>
+    <div className='max-h-96 sm:my-5 rounded-lg bg-cover bg-no-repeat bg-center flex drop-shadow-xl drop-shadow-gray-300 bg-gradient-to-t from-black/75 via-black/0' style={{'backgroundImage': `url(${image})`}}>
 
         <div className='flex flex-col gap-4 p-4 sm:basis-1/2 justify-between'>
           <div className='w-full'>

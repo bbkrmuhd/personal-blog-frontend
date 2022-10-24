@@ -4,11 +4,12 @@ import {FaRegComments} from 'react-icons/fa'
 import {MdDateRange} from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import { minutesRead } from '../services/MinutesRead'
+import ToDate from './ToDate'
 
 const ReadNext = ({post: {title, author,slug, body_html, likes_count, comments_count, created_on}}) => {
   return (
       <div className='flex sm:flex-col rounded-md shadow-sm shadow-gray-300 dark:shadow-gray-700 dark:bg-gray-800'>
-          <div className='flex flex-col items-center justify-between p-1 sm:p-2 w-full'>
+          <div className='flex flex-col items-center justify-between p-1 sm:p-2 w-full h-full'>
           <div className='flex flex-col gap-2 mb-2 sm:mt-2 px-2 w-full'>
             
 
@@ -26,7 +27,7 @@ const ReadNext = ({post: {title, author,slug, body_html, likes_count, comments_c
                 <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{author}</span></p>-
                 <p>{`${minutesRead(body_html)} min read`}</p>
                 </div>  
-                <div className='flex items-center gap-1'><span><MdDateRange/></span><p>Sep 3 2022</p></div>
+                <div className='flex items-center gap-1'><span><MdDateRange/></span><ToDate date={created_on} /></div>
                 </div>          
 
             </div>

@@ -8,9 +8,9 @@ const Home = () => {
   return (
       <div className='flex-auto min-h-screen sm:px-4'>
       <div className='flex items-center justify-between my-2 sm:my-4'>
-       <H1 text='Article Of The Day'/>
+       <H1 text='Featured Article'/>
         <div>
-        <Link to="/posts?page=1"> <Button text='View More'/></Link>
+        <Link to="/posts?page=1"> <Button text='View More' textSize='md'/></Link>
         </div>
         </div>
       <Featured/>

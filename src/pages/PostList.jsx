@@ -16,7 +16,7 @@ import { minutesRead } from '../services/MinutesRead';
 export const PostListData = ({ post }) => {
 
   return (
-    <div className='min-h-56 my-4 sm:my-6 shadow-md shadow-gray-200'>
+    <div className='min-h-56 my-4 sm:my-6 shadow-sm shadow-gray-200 dark:shadow-gray-700 dark:bg-gray-800'>
     <div className='flex flex-col gap-6 rounded-lg h-full '>
       <div className='flex flex-col sm:flex-row gap-2 h-full'>
           <div className='flex-none h-44 w-auto sm:h-auto sm:w-48 relative'>
@@ -25,24 +25,24 @@ export const PostListData = ({ post }) => {
           <div className='flex-auto p-2'>
               <div className='flex flex-col gap-2 h-full items-start justify-between'>
                 <div className='flex flex-col gap-2'>
-                  <div className='flex items-center gap-1 text-gray-500 text-xs'>
-                      <img className='w-10 sm:w-12 transition-all duration-150 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
-                      <p>by <span className='font-bold text-gray-900'>{post.author}</span></p>-
+                  <div className='flex items-center gap-1 text-gray-500 text-xs dark:text-gray-100'>
+                      <img className='w-10 sm:w-12 transition-all duration-150 hover:scale-105 border' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
+                      <p>by <span className='font-bold text-gray-900 dark:text-gray-100'>{post.author}</span></p>-
                       <p>{`${minutesRead(post.body_html)} min read`}</p>
                </div>
                <div className='flex flex-col gap-2'>
-               <Link to={`/post/detail/${post.slug}`}> <h2 className='font-bold sm:text-xl text-slate-900 hover:text-cyan-700 hover:underline capitalize cursor-pointer'>{post.title}</h2></Link>
-                  <p className='text-slate-700 text-xs sm:text-sm leading-4 truncate-featured'>{getText(post.body_html)}</p>
+               <Link to={`/post/detail/${post.slug}`}> <h2 className='font-bold sm:text-xl text-slate-900 hover:text-cyan-700 hover:underline capitalize cursor-pointer dark:text-white'>{post.title}</h2></Link>
+                  <p className='text-slate-700 text-sm leading-4 truncate-featured dark:text-gray-500'>{getText(post.body_html)}</p>
               </div>
               </div>
               <div className='flex flex-col gap-2 w-full'>
               <div className='flex gap-2 flex-wrap'>
                 {post.tags && post.tags.map((tag => (
-                 <Link to={`/posts/tag/${tag.slug}`}><Button text={`#${tag.name}`} textSize='[10px]'/></Link>
+                 <Link to={`/posts/tag/${tag.slug}`}><Button text={`#${tag.name}`} textSize='xs'/></Link>
                 )))}
               </div>
 
-              <div className='flex items-center text-gray-500 text-xs w-full justify-between'>
+              <div className='flex items-center text-gray-500 text-xs w-full justify-between dark:text-gray-100'>
 
                 <div className='flex items-center gap-1 hover:text-cyan-700'>
                 <span><MdDateRange/></span><ToDate date={post.created_on}/>

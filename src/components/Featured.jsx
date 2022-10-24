@@ -19,7 +19,7 @@ const FeaturedPost = ({ post: {slug, title, body_html, image } }) => {
         <p className='text-slate-300 text-xs sm:text-sm leading-4 drop-shadow-lg truncate-line-clamp '>{getText(body_html)}</p>
           </div>
          <div>
-        <Link to={`/post/detail/${slug}`}><Button text='Read Now' bgColor='' textColor='white' /></Link>
+        <Link to={`/post/detail/${slug}`}><Button text='Read Now' bgColor='' textColor='white' textSize='md' /></Link>
        </div>
         </div>
         <div>

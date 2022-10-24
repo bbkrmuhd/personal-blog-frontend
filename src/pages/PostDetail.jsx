@@ -10,11 +10,11 @@ import MDEditor from "@uiw/react-md-editor";
 const PostDetailData = ({ post: {author, title, body, body_html, update_on, image} }) => {
   return (
     <>  
-    <div className='flex items-center gap-2 text-gray-500 text-xs '>
-          <img className='w-12 hover:scale-105 transition-all hover:translate-y-1' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
+    <div className='flex items-center gap-2 text-gray-500 text-xs dark:text-gray-100'>
+          <img className='w-12 hover:scale-105 transition-all hover:translate-y-1 border' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
           <div className='flex flex-col gap-1'>
               <div className='flex items-center gap-2'>
-              <p>by <span className='font-bold text-gray-900'>{author}</span></p>-
+              <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{author}</span></p>-
               <p>{`${minutesRead(body_html)} min read`}</p>
               </div>  
               <div className='text-xs flex items-center gap-2'><span><MdDateRange/></span><ToDate date={update_on} /></div>
@@ -25,7 +25,7 @@ const PostDetailData = ({ post: {author, title, body, body_html, update_on, imag
         <div className='my-3 sm:my-5'>
           <img className='rounded-lg inset-0 w-full h-full object-cover max-h-72 sm:max-h-[28rem]' src={`${ImageUrl}${image}`}  alt="Post Image" />
         </div>
-        <MDEditor.Markdown source={body} className="px-1 sm:px-2 dark:bg-gray-400" />      
+        <MDEditor.Markdown source={body} className="px-1 sm:px-2  dark:bg-gray-900" />      
         </>
 
   )

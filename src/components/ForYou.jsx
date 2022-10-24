@@ -19,28 +19,28 @@ import {minutesRead} from '../services/MinutesRead'
 
 
   return (
-    <div className='shadow-md flex sm:flex-col rounded-lg'>
+    <div className='shadow-md flex sm:flex-col rounded-lg dark:bg-gray-800 '>
        <Link to={`/post/detail/${slug}`}>
         <div className='w-28 h-full sm:h-40 sm:w-full rounded-lg bg-center bg-no-repeat bg-cover transition-all hover:scale-105 hover:translate-y-1 ' style={{'backgroundImage': `url(${ImageUrl}${image})`}}>
         </div>
         </Link>
       <div className='flex flex-col my-5 gap-2 px-2 w-full'>
         <div className='flex flex-col gap-2'>
-         <Link to={`/post/detail/${slug}`} > <h2 className='font-bold text-gray-900 hover:text-cyan-700 hover:underline truncate-line-clamp' >{title}</h2></Link> 
-         <p className='text-sm leading-4 text-gray-700 max-w-[200px] sm:max-w-full truncate-line-clamp'>{getText(body_html)}</p>
+         <Link to={`/post/detail/${slug}`} > <h2 className='font-bold text-gray-900 hover:text-cyan-700 hover:underline truncate-line-clamp dark:text-white' >{title}</h2></Link> 
+         <p className='text-sm leading-4 text-gray-700 max-w-[200px] sm:max-w-full truncate-line-clamp dark:text-gray-400'>{getText(body_html)}</p>
         </div>
         <div className='flex items sm:items-center justify-between sm:gap-2 mt-3 md:flex-row md:gap-0'>
-            <div className='flex items-center gap-1 text-gray-500 text-[8px] sm:text-[10px]'>
-            <img className='w-10 hover:scale-105' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
+            <div className='flex items-center gap-1 text-gray-500 text-[8px] sm:text-[10px] dark:text-gray-100'>
+            <img className='w-10 hover:scale-105 border' src='../assets/profile-pic-4.png' alt="" />
             <div className='flex flex-col gap-1'>
                 <div className='flex items-center gap-1'>
-                <p>by <span className='font-bold text-gray-900'>{author}</span></p>-
+                <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{author}</span></p>-
                  <p>{`${minutesRead(body_html)} min read`}</p>
                 </div>  
                 <div className='text-[8px] sm:text-[8px] flex items-center gap-1'><span><MdDateRange/></span><ToDate date={created_on} /></div>
                 </div>
             </div>
-            <div className='flex items-center gap-2 text-[10px] sm:text-xs'>
+            <div className='flex items-center gap-2 text-[10px] sm:text-xs dark:text-gray-100'>
                 <p className='flex items-center gap-2 hover:text-red-500'>
                 <RiHeartLine />
                 <span className=''>{likes_count}</span>
@@ -83,7 +83,7 @@ const ForYou = () => {
        <H1 text='Topic Match For You' />
         <div className='flex items-center flex-wrap gap-4'>
             {topics.map(topic => (
-              <Link to={`/posts/tag/${topic.toLowerCase()}`}><Button key={topic} text={topic} textColor='gray' textSize='xs'/></Link>
+              <Link to={`/posts/tag/${topic.toLowerCase()}`}><Button key={topic} text={topic} textColor='gray' textSize='sm'/></Link>
             ))}    
         </div>
         <div>

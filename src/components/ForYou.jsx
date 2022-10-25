@@ -22,7 +22,7 @@ import {minutesRead} from '../services/MinutesRead'
   return (
     <div className='shadow-md flex sm:flex-col rounded-lg dark:bg-gray-800'>
        <Link to={`/post/detail/${slug}`}>
-        <div className='w-28 h-full sm:h-40 sm:w-full rounded-lg bg-center bg-no-repeat bg-cover transition-all hover:scale-105 hover:translate-y-1 ' style={{'backgroundImage': `url(${image})`}}>
+        <div className='w-28 h-full sm:h-40 sm:w-full rounded-lg bg-center bg-no-repeat bg-cover transition-all hover:scale-105 hover:translate-y-1 ' style={{'backgroundImage': `url(${ImageUrl}${image})`}}>
         </div>
         </Link>
       <div className='flex flex-col my-5 gap-2 px-2 w-full'>

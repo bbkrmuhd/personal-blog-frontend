@@ -1,7 +1,7 @@
 import React,{useState, useContext}from 'react'
 import MDEditor, { commands }  from "@uiw/react-md-editor";
 import { baseUrl } from '../../components/baseUrl';
-import { AuthContext } from '../../contexts/ContextProvider';
+import { useStateContext } from '../../contexts/ContextProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { H1 } from '../../components';
 import { toast, ToastContainer } from 'react-toastify';
@@ -15,7 +15,7 @@ const AdminCreatePost = () => {
     const [imageFile, setImageFile] = useState(null)
     const [postBody, setPostBody] = useState(state?.body || "")
 
-    const { currentUser } = useContext(AuthContext)
+    const { currentUser } = useStateContext()
     const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2NjIyMTQzOSwianRpIjoiZWVlMDhiMjktZDdlZS00OWUwLTkxYjktYWU2YWNjYzliZjZhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImJia3JtdWhkc2FkZGlxQGdtYWlsLmNvbSIsIm5iZiI6MTY2NjIyMTQzOSwiY3NyZiI6IjFhMjY1NmRmLWEyNmMtNDQ2My05NTI4LTVkYjdmZWZkNGYxMiIsImV4cCI6MTY2NjgyNjIzOX0.XwbgB1FkSBcQaHLiQ8bOdVaEjBoQvtUGZaAZ5wrxhnU"
 
   

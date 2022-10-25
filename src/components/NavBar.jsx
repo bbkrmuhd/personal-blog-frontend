@@ -7,10 +7,11 @@ import { useEffect, useLayoutEffect, useState } from 'react'
 import Categories from './Categories'
 import H1 from './H1'
 import {BsArrowBarRight, BsArrowBarLeft} from 'react-icons/bs'
+import { useStateContext } from '../contexts/ContextProvider'
 
 const NavBar = () => {
-    const [active, setActive] = useState(false)
     const [checked, setChecked] = useState(false)
+    const {active, setActive} = useStateContext()
    
 
     const activeNav = 'bg-white h-full w-full absolute left-0 z-10 transition duration-300 ease' 
@@ -18,6 +19,10 @@ const NavBar = () => {
     
     const  onClick  = () => {
         setActive(active => !active)
+    }
+
+    const setUnActive = () => {
+        setActive(false)
     }
 
 
@@ -94,10 +99,16 @@ const NavBar = () => {
 
         <div className={`dark:bg-gray-900 ${active ? activeNav : unActiveNav}`}>
             <div className='mx-4 h-1/2'>
+                <div>
                 <div className='px-2'>
                     <H1 text={"Categories"}/>
                 </div>
-                <Categories/>
+                <Categories setUnActive={setUnActive}/>
+
+                </div>
+                <div className='my-4'>
+                 <Link to='/login' onClick={setUnActive} ><button className='px-6 py-2 bg-cyan-600 text-white rounded-md hover:drop-shadow-md'>Login</button></Link>   
+                </div>
 
             </div>
 

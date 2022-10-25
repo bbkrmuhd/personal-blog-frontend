@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { AdminNavBar, AdminSideBar } from '../components'
 import Write from '../components/admin/Write'
-import { AuthContext } from '../contexts/ContextProvider'
+import { useStateContext} from '../contexts/ContextProvider'
 
 const Admin = () => {
-  const { currentUser } = useContext(AuthContext)
+  const { currentUser } = useStateContext()
 
   return (
     <>

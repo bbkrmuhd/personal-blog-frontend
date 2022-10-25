@@ -1,13 +1,14 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loadJSON } from "../services/LoadJSON";
 import { saveJSON } from "../services/SaveJSON";
 
-export const AuthContext = createContext()
+const StateContext = createContext()
 
 
-export const AuthContextProvider= ({children}) => {
+export const ContextProvider= ({children}) => {
     const [currentUser, setCurrentUser] = useState(loadJSON('user') || null)
+    const [active, setActive] = useState(false)
 
     const navigate = useNavigate()
 
@@ -44,9 +45,11 @@ export const AuthContextProvider= ({children}) => {
     }, [currentUser])
 
 
-    return (<AuthContext.Provider value={{currentUser, login, logout}}>
+    return (<StateContext.Provider value={{currentUser, login, logout, active, setActive}}>
                 {children}
-            </AuthContext.Provider>)
+            </StateContext.Provider>)
     
 
 }
+
+export const useStateContext = () => useContext(StateContext)

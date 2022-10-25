@@ -25,7 +25,7 @@ const PostDetailData = ({ post: {author, title, body, body_html, update_on, imag
         <div className='my-3 sm:my-5'>
           <img className='rounded-lg inset-0 w-full h-full object-cover max-h-72 sm:max-h-[28rem] shadow-md  dark:shadow-gray-700' src={`${ImageUrl}${image}`}  alt="Post Image" />
         </div>
-        <MDEditor.Markdown source={body} className="px-1 sm:px-2  dark:bg-gray-800" />      
+        <MDEditor.Markdown source={body} className="px-1 sm:px-2  dark:bg-gray-900" />      
         </>
 
   )

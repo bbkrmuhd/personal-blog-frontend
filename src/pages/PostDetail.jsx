@@ -11,7 +11,7 @@ const PostDetailData = ({ post: {author, title, body, body_html, update_on, imag
   return (
     <>  
     <div className='flex items-center gap-2 text-gray-500 text-xs dark:text-gray-100'>
-          <img className='w-12 hover:scale-105 transition-all hover:translate-y-1 border rounded-full' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
+    <Link to="/about">   <img className='w-12 hover:scale-105 transition-all hover:translate-y-1 border rounded-full' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" /></Link>
           <div className='flex flex-col gap-1'>
               <div className='flex items-center gap-2'>
               <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{author}</span></p>-

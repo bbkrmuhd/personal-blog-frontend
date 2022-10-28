@@ -19,7 +19,7 @@ export const LatestPostsList = ({ post }) => {
             </div>
                 <div className='flex flex-col h-full gap-2 justify-between p-2'>
                   <div className='flex items-center gap-1 text-gray-500 hover:text-gray-700 text-[10px] mb-2 dark:text-gray-100'>
-                        <img className='w-8 transform hover:scale-105 border rounded-full' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
+                  <Link to="/about">       <img className='w-8 transform hover:scale-105 border rounded-full' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" /></Link>
                         <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{post.author}</span></p>-
                         <p>{`${minutesRead(post.body_html)} min read`}</p>
                  </div>

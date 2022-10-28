@@ -32,7 +32,7 @@ import {minutesRead} from '../services/MinutesRead'
         </div>
         <div className='flex items sm:items-center justify-between sm:gap-2 mt-3 md:flex-row md:gap-0'>
             <div className='flex items-center gap-1 text-gray-500 text-[8px] sm:text-[10px] dark:text-gray-100'>
-            <img className='w-10 hover:scale-105 border rounded-full' src="https://avatars.githubusercontent.com/u/68012668?v=4"alt="" />
+            <Link to="/about">    <img className='w-10 hover:scale-105 border rounded-full' src="https://avatars.githubusercontent.com/u/68012668?v=4"alt="" /></Link>
             <div className='flex flex-col gap-1'>
                 <div className='flex items-center gap-1'>
                 <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{author}</span></p>-

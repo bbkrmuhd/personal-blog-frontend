@@ -21,7 +21,7 @@ const ReadNext = ({post: {title, author,slug, body_html, likes_count, comments_c
           </div>
           <div className='flex items-end sm:items-center justify-between w-full'>
           <div className='flex items-center gap-1 text-gray-500 text-xs sm:text-[10px] dark:text-gray-100'>
-            <img className='w-10' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" />
+          <Link to="/about">    <img className='w-10' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="" /></Link>
             <div className='flex flex-col gap-1'>
                 <div className='flex items-center gap-1'>
                 <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{author}</span></p>-

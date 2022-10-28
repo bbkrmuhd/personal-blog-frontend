@@ -40,7 +40,7 @@ function LoginPage() {
 
   return (  
     <div className='container mx-auto h-screen '>
-      <div className='px-4 sm:px-0 mt-20 sm:my-0'>
+      <div className='px-4 sm:px-0 mt-[40%] sm:mt-0'>
       <div className='max-w-2xl flex flex-col sm:flex-row  border dark:border-gray-700 rounded-xl sm:absolute w-full sm:left-1/2 sm:right-1/2 sm:translate-y-1/3 sm:-translate-x-1/2 '>
         <div className='h-44 sm:h-auto sm:w-2/5 bg-login-image bg-cover'>
         </div>

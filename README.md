@@ -54,7 +54,7 @@ This project needs a backend that will provide metadata for you to see and inter
 environmental variable for runtime configuraion.
 
 ```bash
-export BASE_URL = http://localhost:5000/api/v1
+export BASE_URL=http://localhost:5000/api/v1
 ```
 
 

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {ClipLoader} from 'react-spinners'
-import { baseUrl } from '../components/baseUrl'
+import { config } from '../config/environment'
 
 
 
@@ -11,7 +11,7 @@ const useFetch = ( uri ) => {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch(baseUrl + uri)
+            fetch(config.base_url + uri)
             .then((res) => {
                 if(!res.ok){
                    throw Error("Could not fetch data")
@@ -22,7 +22,7 @@ const useFetch = ( uri ) => {
                     setLoading(false)
                     setError(error.message)
             })
-        }, 500)
+        }, 250)
        
 
     }, [uri])

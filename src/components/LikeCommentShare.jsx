@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FaRegComment,FaRegHeart, FaHeart, FaRegShareSquare } from 'react-icons/fa'
 import {loadJSON} from '../services/LoadJSON'
 import {saveJSON} from '../services/SaveJSON'
-import { baseUrl } from './baseUrl'
+import {config} from '../config/environment'
 
 
 const LikeCommentShare = ({ postSlug }) => {
@@ -13,7 +13,7 @@ const LikeCommentShare = ({ postSlug }) => {
 
     useEffect(() => {
         const getPost = async () => {
-          const response = await fetch(`${baseUrl}get/comments/likes/${postSlug}`)
+          const response = await fetch(`${config.base_url}get/comments/likes/${postSlug}`)
                             .then((res) => res.json())
          const { post } = response
          setPost(post)
@@ -28,7 +28,7 @@ const LikeCommentShare = ({ postSlug }) => {
 
 
     const handleLike = async () => {
-        return await fetch(`${baseUrl}post/like/${postSlug}`,{
+        return await fetch(`${config.base_url}post/like/${postSlug}`,{
                     method: 'PUT',
                     headers: {"Content-Type": "application/json"},
                 }).then((res) => res.json())
@@ -36,7 +36,7 @@ const LikeCommentShare = ({ postSlug }) => {
     }
 
     const handleUnLike = async () => {
-        return  await fetch(`${baseUrl}post/unlike/${postSlug}`, {
+        return  await fetch(`${config.base_url}post/unlike/${postSlug}`, {
                     method: 'DELETE',
                     headers: {"Content-Type": "application/json"}, 
                 }).then((res) => res.json())

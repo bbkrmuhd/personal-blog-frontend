@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { DataTable } from '../../components'
 import Fetch from '../../hooks/Fetch'
-import { baseUrl } from '../../components/baseUrl'
+import { config } from '../../config/environment'
 
 const AdminPosts = () => {
   const [posts, setPosts] = useState([])
@@ -18,7 +18,7 @@ const AdminPosts = () => {
         async function getPosts(){
           setLoading(true)
           const response = await fetch(
-              `${baseUrl}posts/list`)
+              `${config.base_url}posts/list`)
               .then((response) => response.json())
 
           let { posts, prev_url, next_url} = response
@@ -38,7 +38,7 @@ const AdminPosts = () => {
 
   const handleDeletePost = async(post_slug) => {
     return await fetch(
-          `${baseUrl}post/delete/${post_slug}`, {
+          `${config.base_url}post/delete/${post_slug}`, {
         method: 'DELETE',        
       }).then(response => response.json())
 

@@ -81,7 +81,7 @@ const NavBar = () => {
                 <ul className='flex bg-gray-50 rounded-lg border sm:border-0 items-center justify-around sm:justify-center pl-4 sm:gap-4 sm:p-0 sm:m-0 sm:bg-white w-full sm:w-auto dark:bg-gray-800 sm:dark:bg-gray-900 dark:border-gray-700'>
                     <li>
                         <label  htmlFor="small-toggle" className="inline-flex relative items-center cursor-pointer mt-2">
-                        <input onClick={() => onChange()} checked={checked} type="checkbox" value="" id="small-toggle" className="sr-only peer"/>
+                        <input onClick={() => onChange()} defaultChecked={checked} type="checkbox" value="" id="small-toggle" className="sr-only peer"/>
                         <div className='text-md absolute left-0 text-gray-100'><HiSun/></div>
 
                         <div className="w-9 h-5 bg-gray-200 ring-2 ring-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-700 dark:peer-focus:ring-cyan-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-gray-400 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:z-10 after:bg-white after:border-gray-400 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-gray-500 dark:ring-cyan-700"></div>

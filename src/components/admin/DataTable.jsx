@@ -1,11 +1,11 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import ToDate from '../ToDate'
-import { ImageUrl } from '../ImageUrl'
 import {ClipLoader} from 'react-spinners'
 import Modal from '../Modal'
 import { getText } from '../../services/GetText'
 import { toast } from 'react-toastify'
+import { config } from '../../config/environment'
 
 const DataTable = ({ data: posts, onDeletePost, loading}) => {
     const headings = ['Photo', 'Title', 'Body',  'Date Created',]
@@ -81,7 +81,7 @@ const DataTable = ({ data: posts, onDeletePost, loading}) => {
                        <div className="flex-shrink-0 h-10 w-10">
                          <img
                               className="h-10 w-10 rounded-full"
-                              src={`${ImageUrl}${post?.image}`} 
+                              src={`${config.image_url}${post?.image}`} 
                               alt="post image"
                               />
                        </div>

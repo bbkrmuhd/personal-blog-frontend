@@ -1,14 +1,7 @@
 import React, {useLayoutEffect} from 'react'
 import Fetch from '../hooks/Fetch';
-import { MdDateRange } from 'react-icons/md';
-import {RiHeartLine} from 'react-icons/ri'
-import {FaRegComments} from 'react-icons/fa'
 import {H1, Button, Pagination} from '../components'
-import { Link } from 'react-router-dom';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import ToDate from '../components/ToDate';
-import { minutesRead } from '../services/MinutesRead';
-import { getText } from '../services/GetText';
+import {useParams, useLocation } from 'react-router-dom';
 import { PostListData as TagListData } from './PostList';
 
 const TagList = () => {

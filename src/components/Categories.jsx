@@ -30,10 +30,10 @@ const Categories = () => {
       <ul className="space-y-2">
       <Fetch
             url="category/list"
-            renderSuccess={({ data: { categories } }) => (
+            renderSuccess={({ data: { categories }}) => (
             <>
             {categories.map(category => (
-             <CategoryList key={category} category={category} />
+             <CategoryList key={category.id} category={category} />
               ))} 
             </>
             )}

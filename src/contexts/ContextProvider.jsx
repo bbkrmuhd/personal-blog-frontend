@@ -2,7 +2,7 @@ import { useState, createContext, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loadJSON } from "../services/LoadJSON";
 import { saveJSON } from "../services/SaveJSON";
-import { baseUrl } from '../components/baseUrl'
+import { config } from '../config/environment'
 
 const StateContext = createContext()
 
@@ -14,7 +14,7 @@ export const ContextProvider= ({children}) => {
     const navigate = useNavigate()
 
     const login = async (inputs) => {
-        const res = await fetch(`${baseUrl}login`, {
+        const res = await fetch(`${config.base_url}login`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(inputs)})
@@ -30,7 +30,7 @@ export const ContextProvider= ({children}) => {
     }
 
     const logout = async (inputs) => {
-        const res = await fetch(`${baseUrl}logout`, {
+        const res = await fetch(`${config.base_url}logout`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(inputs)})

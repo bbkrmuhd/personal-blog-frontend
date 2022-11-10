@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Comment from './Comment'
 import CommentForm from './CommentForm'
 import H1 from './H1'
-import { baseUrl } from './baseUrl'
+import { config } from '../config/environment'
 
 
 
@@ -22,7 +22,7 @@ const Comments = ({ postSlug }) => {
     useEffect(() => {
         async function getComment(postSlug){
             const response = await fetch(
-                `${baseUrl}comments/get/${postSlug}`)
+                `${config.base_url}comments/get/${postSlug}`)
                 .then((response) => response.json())
             
 
@@ -35,7 +35,7 @@ const Comments = ({ postSlug }) => {
 
     const handleAddComment =  async (formData, slug) => {
       return   await fetch(
-            `${baseUrl}comment/create/${slug}`, {
+            `${config.base_url}comment/create/${slug}`, {
           method: 'POST',
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(formData)
@@ -58,7 +58,7 @@ const Comments = ({ postSlug }) => {
     }
     const handleDeleteComment = async(comment_id) => {
        return await fetch(
-            `${baseUrl}comment/delete/${comment_id}`, {
+            `${config.base_url}comment/delete/${comment_id}`, {
           method: 'DELETE',        
         }).then(response => response.json())
 
@@ -78,7 +78,7 @@ const Comments = ({ postSlug }) => {
 
     const handleUpdateComment = async(formData, comment_id) => {
         return await fetch(
-            `${baseUrl}comment/update/${comment_id}`, {
+            `${config.base_url}comment/update/${comment_id}`, {
           method: 'PUT',
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(formData)        

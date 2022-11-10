@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 import {MdDateRange} from 'react-icons/md'
 import ToDate from './ToDate'
 import Fetch from '../hooks/Fetch'
-// import {ImageUrl} from './ImageUrl'
 import { minutesRead } from '../services/MinutesRead'
-import { ImageUrl } from './ImageUrl'
+import { config } from '../config/environment'
 
 
 
@@ -15,7 +14,7 @@ export const LatestPostsList = ({ post }) => {
     <div className='flex flex-col min-h-32 gap-6 bg-gray-50 rounded-lg shadow-sm shadow-gray-200 my-4 max-w-70 dark:bg-gray-800 dark:shadow-gray-700' >
         <div className='flex gap-2'>
             <div className='flex-none w-1/4 relative'>
-            <Link to={`/post/detail/${post.slug}`}>    <img className='inset-0 absolute w-full h-full object-cover rounded-l-lg transition-all hover:scale-105' src={`${ImageUrl}${post?.image}`} alt="post image" loading='lazy' /></Link>
+            <Link to={`/post/detail/${post.slug}`}>    <img className='inset-0 absolute w-full h-full object-cover rounded-l-lg transition-all hover:scale-105' src={`${config.image_url}${post?.image}`} alt="post image" loading='lazy' /></Link>
             </div>
                 <div className='flex flex-col h-full gap-2 justify-between p-2'>
                   <div className='flex items-center gap-1 text-gray-500 hover:text-gray-700 text-[10px] mb-2 dark:text-gray-100'>

@@ -1,10 +1,10 @@
 import React,{useState, useContext}from 'react'
 import MDEditor, { commands }  from "@uiw/react-md-editor";
-import { baseUrl } from '../../components/baseUrl';
 import { useStateContext } from '../../contexts/ContextProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { H1 } from '../../components';
 import { toast, ToastContainer } from 'react-toastify';
+import { config } from '../../config/environment';
 
 const AdminCreatePost = () => {
     const state = useLocation().state
@@ -34,7 +34,7 @@ const AdminCreatePost = () => {
       formData.append("body", postBody)
       try {
        state 
-        ? await fetch(`${baseUrl}post/update/${state.slug}`, {
+        ? await fetch(`${config.base_url}post/update/${state.slug}`, {
           method: "PUT",
           body: formData,
           headers: {
@@ -55,7 +55,7 @@ const AdminCreatePost = () => {
           navigate('/sirri/posts')})
           
 
-        : await fetch(`${baseUrl}post/create`, {
+        : await fetch(`${config.base_url}post/create`, {
           method: "POST",
           body: formData,
           headers: {

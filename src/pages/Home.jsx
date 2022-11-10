@@ -1,7 +1,7 @@
 
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
-import {Categories, Featured, Footer, ForYou, H1, LatestPosts, NavBar, Pagination, Button} from '../components'
+import { Link } from 'react-router-dom'
+import {Featured, ForYou, H1, Button} from '../components'
 
 const Home = () => {
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import Button from './Button'
 import { useLocation } from 'react-router-dom'
 import {RiHeartLine} from 'react-icons/ri'
@@ -9,7 +9,7 @@ import H1 from './H1'
 import ToDate from './ToDate'
 import { Link } from 'react-router-dom'
 import Pagination from './Pagination'
-import {ImageUrl} from './ImageUrl'
+import { config } from '../config/environment'
 import {getText} from '../services/GetText'
 import {minutesRead} from '../services/MinutesRead'
 
@@ -22,7 +22,7 @@ import {minutesRead} from '../services/MinutesRead'
   return (
     <div className='shadow-md flex sm:flex-col rounded-lg dark:bg-gray-800'>
        <Link to={`/post/detail/${slug}`}>
-        <div className='w-28 h-full sm:h-40 sm:w-full rounded-lg bg-center bg-no-repeat bg-cover transition-all hover:scale-105 hover:translate-y-1 ' style={{'backgroundImage': `url(${ImageUrl}${image})`}}>
+        <div className='w-28 h-full sm:h-40 sm:w-full rounded-lg bg-center bg-no-repeat bg-cover transition-all hover:scale-105 hover:translate-y-1 ' style={{'backgroundImage': `url(${config.image_url}${image})`}}>
         </div>
         </Link>
       <div className='flex flex-col my-5 gap-2 px-2 w-full'>
@@ -62,12 +62,9 @@ import {minutesRead} from '../services/MinutesRead'
 
 const ForYou = () => {
     let topics = ['Javascript', 'React', 'Django', 'Python', 'SQL', 'Postgres' ]
-    const [tags, setTags] = useState([])
-    const initialNum = Number(useLocation().search.split("=")[1])
+    // const [tags, setTags] = useState([])
     const pathname = useLocation().search
-    const [pageNum , setPageNum] = useState(initialNum? initialNum: 1)
-    const [prevUrl, setPrevUrl] = useState(null)
-    const [nextUrl, setNextUrl] = useState(null)
+
 
     useLayoutEffect(() => {
       window.scrollTo(0, 0);
@@ -103,9 +100,8 @@ const ForYou = () => {
        
         <Fetch
             url="posts/list"
-            renderSuccess={({ data: { posts, next_url, prev_url } }) => (
+            renderSuccess={({ data: { posts } }) => (
             <>
-             {setPrevUrl(prev_url)}{setNextUrl(next_url)}
              <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
             {posts.map(post => (
 
@@ -114,7 +110,7 @@ const ForYou = () => {
             ))}
              </div>
              {posts && (<div className=' text-center my-10'>
-             <Pagination pageNum={pageNum} prevUrl={prevUrl} nextUrl={nextUrl} setPageNum={setPageNum}/>
+             {/* <Pagination pageNum={pageNum} prevUrl={prevUrl} nextUrl={nextUrl} setPageNum={setPageNum}/> */}
 
           </div>
           )

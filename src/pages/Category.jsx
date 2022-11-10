@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ClipLoader } from 'react-spinners'
-import { H1, Pagination, ToDate } from '../components'
-import { baseUrl } from '../components/baseUrl'
-import {ImageUrl} from '../components/ImageUrl'
-import {RiHeartLine} from 'react-icons/ri'
-import {FaRegComments} from 'react-icons/fa'
-import {MdDateRange} from 'react-icons/md'
-import { Link } from 'react-router-dom'
-import {getText} from '../services/GetText'
-import { minutesRead } from '../services/MinutesRead'
+import { H1, Pagination } from '../components'
+import { config } from '../config/environment'
 import { ForYouPost as CategoryPost } from '../components/ForYou'
 
 
@@ -27,7 +20,7 @@ const Category = () => {
           async function getPosts(){
             setLoading(true)
             const response = await fetch(
-                `${baseUrl}category/${categoryName}`)
+                `${config.base_url}category/${categoryName}`)
                 .then((response) => response.json())
   
             let { posts, prev_url, next_url} = response

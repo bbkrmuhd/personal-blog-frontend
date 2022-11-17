@@ -2,6 +2,7 @@ import { useState, createContext, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loadJSON, saveJSON } from "../services/services";
 import { config } from '../config/environment'
+import { data } from "autoprefixer";
 
 const StateContext = createContext()
 
@@ -12,6 +13,10 @@ export const ContextProvider= ({children}) => {
 
     const navigate = useNavigate()
 
+    const redirectPath = (data) => {
+        return  data.is_admin ? "sirri" : '/'
+    }
+
     const login = async (inputs) => {
         const res = await fetch(`${config.base_url}login`, {
             method: 'POST',
@@ -20,16 +25,14 @@ export const ContextProvider= ({children}) => {
             .then((result) => result.json())
             .then((data) => {
              setCurrentUser(data)
-             data.is_admin ? 
-              navigate("/sirri") : 
-              navigate("/")
+             navigate(redirectPath(data), { replace: true })
 
            })
              
     }
 
     const logout = async (inputs) => {
-        const res = await fetch(`${config.base_url}logout`, {
+        await fetch(`${config.base_url}logout`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(inputs)})

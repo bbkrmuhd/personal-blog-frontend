@@ -87,7 +87,6 @@ const Comments = ({ postSlug }) => {
 
     const onUpdateComment = (text, comment_id) => {
         const formData = {"comment": text, comment_id}
-        console.log(comment_id)
         handleUpdateComment(formData, comment_id).then(({ comment }) => {
             const updatedComments = comments.map((commentToUpdate) => {
                 if (commentToUpdate.id === comment.id){ 

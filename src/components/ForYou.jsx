@@ -8,7 +8,6 @@ import Fetch from '../hooks/Fetch'
 import H1 from './H1'
 import ToDate from './ToDate'
 import { Link } from 'react-router-dom'
-import Pagination from './Pagination'
 import { config } from '../config/environment'
 import {getText} from '../services/GetText'
 import {minutesRead} from '../services/MinutesRead'
@@ -101,21 +100,12 @@ const ForYou = () => {
         <Fetch
             url="posts/list"
             renderSuccess={({ data: { posts } }) => (
-            <>
              <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
             {posts.map(post => (
-
-            <ForYouPost key={post.title} post={post} />
-           
+              <ForYouPost key={post.slug} post={post} />
             ))}
              </div>
-             {posts && (<div className=' text-center my-10'>
-             {/* <Pagination pageNum={pageNum} prevUrl={prevUrl} nextUrl={nextUrl} setPageNum={setPageNum}/> */}
-
-          </div>
-          )
-          }
-            </>
+         
             )}
             />
                         

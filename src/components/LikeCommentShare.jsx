@@ -23,7 +23,6 @@ const LikeCommentShare = ({ postSlug }) => {
         getPost()
 
     }, [like, postSlug])
-    console.log(like)
 
 
 

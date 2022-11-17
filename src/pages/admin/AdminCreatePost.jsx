@@ -20,7 +20,6 @@ const AdminCreatePost = () => {
 
   
     const handleChange = e => {
-      console.log(e.target.name, e.target.value)
       setData(prev => ({...prev, [e.target.name]: e.target.value}))
     }
 

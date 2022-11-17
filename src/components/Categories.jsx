@@ -33,7 +33,7 @@ const Categories = () => {
             renderSuccess={({ data: { categories }}) => (
             <>
             {categories.map(category => (
-             <CategoryList key={category.id} category={category} />
+             <CategoryList key={category.name} category={category} />
               ))} 
             </>
             )}

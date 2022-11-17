@@ -23,14 +23,9 @@ const Category = () => {
                 `${config.base_url}category/${categoryName}`)
                 .then((response) => response.json())
   
-            let { posts, prev_url, next_url} = response
-            setTimeout(()=> {
+            let { posts } = response
                 setLoading(false)
                 setPosts(posts)
-
-            }, 500)
-          
-           
         }
   
         getPosts()
@@ -50,21 +45,13 @@ const Category = () => {
         
         {loading ? <ClipLoader/>
         :
-        <>
              <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
             {posts.map(post => (
     
             <CategoryPost key={post.id} post={post} />
            
             ))}
-             </div>
-             {posts && (<div className=' text-center my-10'>
-            <Pagination />
-
-          </div>
-          )
-          }
-            </>
+            </div>
         
         }
       </div>

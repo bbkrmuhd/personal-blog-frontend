@@ -6,11 +6,9 @@ import {FaRegComments} from 'react-icons/fa'
 import {MdDateRange} from 'react-icons/md'
 import Fetch from '../hooks/Fetch'
 import H1 from './H1'
-import ToDate from './ToDate'
 import { Link } from 'react-router-dom'
 import { config } from '../config/environment'
-import {getText} from '../services/GetText'
-import {minutesRead} from '../services/MinutesRead'
+import { getText, minutesRead, toDate} from '../services/services'
 
 
 
@@ -37,7 +35,7 @@ import {minutesRead} from '../services/MinutesRead'
                 <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{author}</span></p>-
                  <p>{`${minutesRead(body_html)} min read`}</p>
                 </div>  
-                <div className='text-[8px] sm:text-[8px] flex items-center gap-1'><span><MdDateRange/></span><ToDate date={created_on} /></div>
+                <div className='text-[8px] sm:text-[8px] flex items-center gap-1'><span><MdDateRange/></span>{toDate(created_on)}</div>
                 </div>
             </div>
             <div className='flex items-center gap-2 text-[10px] sm:text-xs dark:text-gray-100'>

@@ -1,10 +1,10 @@
 import React, {useLayoutEffect} from 'react'
 import { Link, useParams, useLocation } from 'react-router-dom'
-import { NavBar, Footer, H1, LatestPosts, ReadNext, ToDate, Comments, LikeCommentShare } from '../components'
+import { NavBar, Footer, H1, LatestPosts, ReadNext, Comments, LikeCommentShare } from '../components'
 import { MdDateRange } from 'react-icons/md'
 import Fetch from '../hooks/Fetch'
 import { config } from '../config/environment'
-import { minutesRead } from '../services/MinutesRead'
+import { minutesRead, toDate } from '../services/services'
 import MDEditor from "@uiw/react-md-editor";
 
 const PostDetailData = ({ post: {author, title, body, body_html, update_on, image} }) => {
@@ -17,7 +17,7 @@ const PostDetailData = ({ post: {author, title, body, body_html, update_on, imag
               <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{author}</span></p>-
               <p>{`${minutesRead(body_html)} min read`}</p>
               </div>  
-              <div className='text-xs flex items-center gap-2'><span><MdDateRange/></span><ToDate date={update_on} /></div>
+              <div className='text-xs flex items-center gap-2'><span className='capitalize'>last updated</span><span><MdDateRange/></span><span>{toDate(update_on)}</span></div>
               </div>
 
           </div>

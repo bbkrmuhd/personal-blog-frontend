@@ -6,10 +6,8 @@ import {FaRegComments} from 'react-icons/fa'
 import {H1, Button, Pagination } from '../components'
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import ToDate from '../components/ToDate';
 import { config } from '../config/environment';
-import {getText} from '../services/GetText'
-import { minutesRead } from '../services/MinutesRead';
+import { minutesRead, getText, toDate } from '../services/services';
 
 
 export const PostListData = ({ post }) => {
@@ -44,7 +42,8 @@ export const PostListData = ({ post }) => {
               <div className='flex items-center text-gray-500 text-xs w-full justify-between dark:text-gray-100'>
 
                 <div className='flex items-center gap-1 hover:text-cyan-700'>
-                <span><MdDateRange/></span><ToDate date={post.created_on}/>
+                <span><MdDateRange/></span>
+                <span>{toDate(post.created_on)}</span>
                 </div>
 
                 <div className='flex items-center gap-2'>

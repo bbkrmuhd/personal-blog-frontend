@@ -1,7 +1,6 @@
 import { useState, createContext, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { loadJSON } from "../services/LoadJSON";
-import { saveJSON } from "../services/SaveJSON";
+import { loadJSON, saveJSON } from "../services/services";
 import { config } from '../config/environment'
 
 const StateContext = createContext()

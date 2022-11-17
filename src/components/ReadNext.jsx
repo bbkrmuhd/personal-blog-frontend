@@ -3,8 +3,8 @@ import {RiHeartLine} from 'react-icons/ri'
 import {FaRegComments} from 'react-icons/fa'
 import {MdDateRange} from 'react-icons/md'
 import { Link } from 'react-router-dom'
-import { minutesRead } from '../services/MinutesRead'
-import ToDate from './ToDate'
+import { minutesRead, toDate} from '../services/services'
+
 
 const ReadNext = ({post: {title, author,slug, body_html, likes_count, comments_count, created_on}}) => {
   return (
@@ -27,7 +27,7 @@ const ReadNext = ({post: {title, author,slug, body_html, likes_count, comments_c
                 <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{author}</span></p>-
                 <p>{`${minutesRead(body_html)} min read`}</p>
                 </div>  
-                <div className='flex items-center gap-1'><span><MdDateRange/></span><ToDate date={created_on} /></div>
+                <div className='flex items-center gap-1'><span><MdDateRange/></span>{toDate(created_on)}</div>
                 </div>          
 
             </div>

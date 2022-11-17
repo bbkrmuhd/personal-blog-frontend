@@ -3,7 +3,7 @@ import MDEditor, { commands }  from "@uiw/react-md-editor";
 import { useStateContext } from '../../contexts/ContextProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { H1 } from '../../components';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { config } from '../../config/environment';
 
 const AdminCreatePost = () => {

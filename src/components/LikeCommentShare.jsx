@@ -1,8 +1,7 @@
 import React, {useEffect, useState}from 'react'
 import { Link } from 'react-router-dom'
 import { FaRegComment,FaRegHeart, FaHeart, FaRegShareSquare } from 'react-icons/fa'
-import {loadJSON} from '../services/LoadJSON'
-import {saveJSON} from '../services/SaveJSON'
+import {saveJSON, loadJSON} from '../services/services'
 import {config} from '../config/environment'
 
 

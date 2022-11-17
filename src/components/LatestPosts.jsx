@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {MdDateRange} from 'react-icons/md'
-import ToDate from './ToDate'
 import Fetch from '../hooks/Fetch'
-import { minutesRead } from '../services/MinutesRead'
+import { minutesRead, toDate } from '../services/services'
 import { config } from '../config/environment'
 
 
@@ -24,7 +23,7 @@ export const LatestPostsList = ({ post }) => {
                  </div>
                
                  <Link to={`/post/detail/${post.slug}`}><h2 className='font-bold text-sm text-black hover:underline hover:text-cyan-700 capitalize max-w-[200px] truncate-line-clamp dark:text-white'>{post.title}</h2></Link>              
-                <div className='text-xs flex items-center gap-1 text-gray-500 dark:text-gray-100'><span><MdDateRange/></span><ToDate date={post.update_on}/></div>
+                <div className='text-xs flex items-center gap-1 text-gray-500 dark:text-gray-100'><span><MdDateRange/></span>{toDate(post.created_on)}</div>
 
                 </div>
         </div>

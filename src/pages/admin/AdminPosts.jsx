@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { DataTable } from '../../components'
-import Fetch from '../../hooks/Fetch'
 import { config } from '../../config/environment'
 
 const AdminPosts = () => {

@@ -1,5 +1,5 @@
 import { Tooltip } from 'flowbite-react'
-import {AiOutlineLinkedin, AiOutlineTwitter, AiOutlineGithub, AiOutlineSearch,AiOutlineBars} from 'react-icons/ai'
+import {AiOutlineLinkedin, AiOutlineTwitter, AiOutlineGithub, AiOutlineSearch } from 'react-icons/ai'
 import {MdDarkMode} from 'react-icons/md'
 import {HiSun} from 'react-icons/hi'
 import { Link } from 'react-router-dom'

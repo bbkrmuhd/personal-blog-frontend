@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Fetch from '../hooks/Fetch'
 import Button from './Button'
 import { config } from '../config/environment'
-import {getText} from '../services/GetText'
+import { getText } from '../services/services'
 
 
 

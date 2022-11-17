@@ -1,9 +1,7 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import ToDate from '../ToDate'
 import {ClipLoader} from 'react-spinners'
-import Modal from '../Modal'
-import { getText } from '../../services/GetText'
+import { getText, toDate } from '../../services/services'
 import { toast } from 'react-toastify'
 import { config } from '../../config/environment'
 
@@ -96,8 +94,9 @@ const DataTable = ({ data: posts, onDeletePost, loading}) => {
                    <div className="text-sm text-gray-700 truncate-admin max-w-[150px]">{getText(post.body_html)}</div>
                    </td>
                    <td className="px-6 py-4 whitespace-nowrap ">
-                   <div className="text-sm text-gray-700"><ToDate date={post.created_on}/>
-                </div>
+                   <div className="text-sm text-gray-700">
+                    {toDate(post.created_on)}
+                    </div>
                    </td>
          
                   

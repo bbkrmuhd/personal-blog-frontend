@@ -6,10 +6,7 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Euclid Circular A', sans-serif;                               
+  /* font-family: 'Euclid Circular A', sans-serif;                                */
 }                
 
 .truncate-line-clamp {

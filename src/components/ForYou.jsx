@@ -7,7 +7,6 @@ import {MdDateRange} from 'react-icons/md'
 import Fetch from '../hooks/Fetch'
 import H1 from './H1'
 import { Link } from 'react-router-dom'
-import { config } from '../config/environment'
 import { getText, minutesRead, toDate} from '../services/services'
 
 
@@ -19,7 +18,7 @@ import { getText, minutesRead, toDate} from '../services/services'
   return (
     <div className='shadow-md flex sm:flex-col rounded-lg dark:bg-gray-800'>
        <Link to={`/post/detail/${slug}`}>
-        <div className='w-28 h-full sm:h-40 sm:w-full rounded-lg bg-center bg-no-repeat bg-cover transition-all hover:scale-105 hover:translate-y-1 ' style={{'backgroundImage': `url(${config.image_url}${image})`}}>
+        <div className='w-28 h-full sm:h-40 sm:w-full rounded-lg bg-center bg-no-repeat bg-cover transition-all hover:scale-105 hover:translate-y-1 ' style={{'backgroundImage': `url(${image})`}}>
         </div>
         </Link>
       <div className='flex flex-col my-5 gap-2 px-2 w-full'>
@@ -29,7 +28,7 @@ import { getText, minutesRead, toDate} from '../services/services'
         </div>
         <div className='flex items sm:items-center justify-between sm:gap-2 mt-3 md:flex-row md:gap-0'>
             <div className='flex items-center gap-1 text-gray-500 text-[8px] sm:text-[10px] dark:text-gray-100'>
-            <Link to="/about">    <img className='w-10 hover:scale-105 border rounded-full' src="https://avatars.githubusercontent.com/u/68012668?v=4"alt="" /></Link>
+            <Link to="/about"> <img width='40px' className='hover:scale-105 border rounded-full' src="https://avatars.githubusercontent.com/u/68012668?v=4" alt="avatar" /></Link>
             <div className='flex flex-col gap-1'>
                 <div className='flex items-center gap-1'>
                 <p>by <span className='font-bold text-gray-900 dark:text-gray-200'>{author}</span></p>-

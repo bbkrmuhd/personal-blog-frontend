@@ -16,7 +16,7 @@ const AdminCreatePost = () => {
     const [postBody, setPostBody] = useState(state?.body || "")
 
     const { currentUser } = useStateContext()
-    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2NjIyMTQzOSwianRpIjoiZWVlMDhiMjktZDdlZS00OWUwLTkxYjktYWU2YWNjYzliZjZhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImJia3JtdWhkc2FkZGlxQGdtYWlsLmNvbSIsIm5iZiI6MTY2NjIyMTQzOSwiY3NyZiI6IjFhMjY1NmRmLWEyNmMtNDQ2My05NTI4LTVkYjdmZWZkNGYxMiIsImV4cCI6MTY2NjgyNjIzOX0.XwbgB1FkSBcQaHLiQ8bOdVaEjBoQvtUGZaAZ5wrxhnU"
+    // const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2NjIyMTQzOSwianRpIjoiZWVlMDhiMjktZDdlZS00OWUwLTkxYjktYWU2YWNjYzliZjZhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImJia3JtdWhkc2FkZGlxQGdtYWlsLmNvbSIsIm5iZiI6MTY2NjIyMTQzOSwiY3NyZiI6IjFhMjY1NmRmLWEyNmMtNDQ2My05NTI4LTVkYjdmZWZkNGYxMiIsImV4cCI6MTY2NjgyNjIzOX0.XwbgB1FkSBcQaHLiQ8bOdVaEjBoQvtUGZaAZ5wrxhnU"
 
   
     const handleChange = e => {
@@ -37,7 +37,7 @@ const AdminCreatePost = () => {
           method: "PUT",
           body: formData,
           headers: {
-            Authorization : `Bearer ${token}`
+            Authorization : `Bearer ${currentUser.access_token}`
           }
         }).then(response => {
           if (response.ok) {
@@ -50,15 +50,14 @@ const AdminCreatePost = () => {
               progress: undefined,
               theme: "light",
               });
-          }
-          navigate('/sirri/posts')})
-          
+              navigate('/sirri/posts')}
+          }).catch(e => alert(e)) 
 
         : await fetch(`${config.base_url}post/create`, {
           method: "POST",
           body: formData,
           headers: {
-            Authorization : `Bearer ${token}`
+            Authorization : `Bearer ${currentUser.access_token}`
           }
         }).then(response => {
           if (response.ok) {
@@ -71,9 +70,9 @@ const AdminCreatePost = () => {
               progress: undefined,
               theme: "light",
               });
+              navigate('/sirri/posts')
           }
-          navigate('/sirri/posts')})
-        
+          }).catch(e => alert(e))
       } catch (error) {
         console.log(error);
       }

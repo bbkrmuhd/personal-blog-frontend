@@ -6,7 +6,6 @@ import {FaRegComments} from 'react-icons/fa'
 import {H1, Button, Pagination } from '../components'
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { config } from '../config/environment';
 import { minutesRead, getText, toDate } from '../services/services';
 
 
@@ -17,7 +16,7 @@ export const PostListData = ({ post }) => {
     <div className='flex flex-col gap-6 rounded-lg h-full '>
       <div className='flex flex-col sm:flex-row gap-2 h-full'>
           <div className='flex-none h-44 w-auto sm:h-auto sm:w-48 relative'>
-            <Link to={`/post/detail/${post.slug}`}><img className='inset-0 absolute w-full h-full object-cover transition-all hover:scale-105' src={`${config.image_url}${post.image}`} alt="post image" loading='lazy' /></Link>
+            <Link to={`/post/detail/${post.slug}`}><img className='inset-0 w-full h-full absolute object-cover transition-all hover:scale-105' src={post.image} alt="post image" loading='lazy' /></Link>
           </div>
           <div className='flex-auto p-2'>
               <div className='flex flex-col gap-2 h-full items-start justify-between'>

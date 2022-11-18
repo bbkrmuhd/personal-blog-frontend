@@ -28,9 +28,8 @@ const AdminPosts = () => {
       getPosts()
 
       } catch (error) {
-        setError(error)
+        alert(error)
       }
-      console.log("i run")
       
 
     } , [])
@@ -45,7 +44,6 @@ const AdminPosts = () => {
   } 
 
   const onDeletePost = (post_slug) => {
-      console.log(post_slug)
       handleDeletePost(post_slug).then(() => {
           const updatedPosts = posts.filter((
               post) =>  post.slug !== post_slug)

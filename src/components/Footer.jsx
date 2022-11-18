@@ -30,9 +30,9 @@ const Footer = () => {
     <div className=' flex items-center justify-between mx-2 sm:mx-6 '>
     <a href='/' className='sm:text-2xl text-cyan-700 dark:text-cyan-500'>SadiqBlogs</a>
     <ul className='flex items-center justify-center space-x-4'>
-    <Tooltip content="Twitter" ><a href="https://twitter.com/sadiqcodes" target="_blank"> <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all dark:text-cyan-600 dark:hover:text-gray-400'><AiOutlineTwitter/></li></a></Tooltip>
-    <Tooltip content="LinkedIn" ><a href="https://www.linkedin.com/in/abubakar-muhammad-sadiq/" target="_blank"> <li className='text-3xl text-gray-500 hover:text-cyan-700 dark:text-cyan-600 dark:hover:text-gray-400'><AiOutlineLinkedin/></li></a></Tooltip>
-    <Tooltip content="Github" ><a href="https://github.com/bbkrmuhd" target="_blank">   <li className='text-3xl text-gray-500 hover:text-cyan-700 dark:text-cyan-600 dark:hover:text-gray-400'><AiOutlineGithub/></li></a></Tooltip>
+    <Tooltip content="Twitter" ><a href="https://twitter.com/sadiqcodes" target="_blank" aria-label='Twitter'> <li className='text-3xl text-gray-500 hover:text-cyan-700 transition-all dark:text-cyan-600 dark:hover:text-gray-400'><AiOutlineTwitter/></li></a></Tooltip>
+    <Tooltip content="LinkedIn" ><a href="https://www.linkedin.com/in/abubakar-muhammad-sadiq/" target="_blank" aria-label='LinkedIn'> <li className='text-3xl text-gray-500 hover:text-cyan-700 dark:text-cyan-600 dark:hover:text-gray-400'><AiOutlineLinkedin/></li></a></Tooltip>
+    <Tooltip content="Github" ><a href="https://github.com/bbkrmuhd" target="_blank" aria-label='GitHub'>   <li className='text-3xl text-gray-500 hover:text-cyan-700 dark:text-cyan-600 dark:hover:text-gray-400'><AiOutlineGithub/></li></a></Tooltip>
    
     </ul>
     </div>

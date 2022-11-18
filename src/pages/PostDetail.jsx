@@ -3,7 +3,6 @@ import { Link, useParams, useLocation } from 'react-router-dom'
 import { NavBar, Footer, H1, LatestPosts, ReadNext, Comments, LikeCommentShare } from '../components'
 import { MdDateRange } from 'react-icons/md'
 import Fetch from '../hooks/Fetch'
-import { config } from '../config/environment'
 import { minutesRead, toDate } from '../services/services'
 import MDEditor from "@uiw/react-md-editor";
 
@@ -23,7 +22,7 @@ const PostDetailData = ({ post: {author, title, body, body_html, update_on, imag
           </div>
         <H1 text={`${title}`}/>
         <div className='my-3 sm:my-5'>
-          <img className='rounded-lg inset-0 w-full h-full object-cover max-h-72 sm:max-h-[28rem]' src={`${config.image_url}${image}`}  alt="Post Image" />
+          <img className='rounded-lg inset-0 w-full h-full object-cover max-h-72 sm:max-h-[28rem]' src={image}  alt="Post Image" />
         </div>
         <MDEditor.Markdown source={body} className="px-1 sm:px-2  dark:bg-gray-900" />      
         </>

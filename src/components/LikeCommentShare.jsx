@@ -6,7 +6,7 @@ import {config} from '../config/environment'
 
 
 const LikeCommentShare = ({ postSlug }) => {
-    const [like, setLike] = useState(JSON.parse(localStorage.getItem('has_like')) || false)
+    const [like, setLike] = useState(JSON.parse(localStorage.getItem('like')) || null)
     const [post, setPost] = useState(null)
 
 
@@ -16,6 +16,7 @@ const LikeCommentShare = ({ postSlug }) => {
                             .then((res) => res.json())
          const { post } = response
          setPost(post)
+         console.log(post)
          setLike(like)
         }
 
@@ -42,13 +43,13 @@ const LikeCommentShare = ({ postSlug }) => {
 
 
     const onLike = () => {
-        if (!like) {
+        if (!like.has_like) {
             handleLike().then((data) => {
                 const { post } = data
                 setPost({...post, likes: post.likes})
-                saveJSON('has_like', true)
+                saveJSON('like', {'has_like': true, 'post_id': post.id})
                 // localStorage.setItem(key, JSON.stringify(value))
-                setLike(like => !like)
+                setLike(like => !like.has_like)
             }
             ).catch((err) => {
                 console.log(err)
@@ -58,9 +59,9 @@ const LikeCommentShare = ({ postSlug }) => {
             handleUnLike().then((data) => {
                 const { post } = data
                 setPost({...post, likes: post.likes})
-                saveJSON('has_like', false)
+                saveJSON("like", {'has_like': false, 'post_id': post.id})
                 // localStorage.setItem(key, JSON.stringify(value))
-                setLike(like => !like)
+                setLike(like => !like.has_like)
            }
            ).catch((err) => {
             console.log(err)
@@ -73,7 +74,7 @@ const LikeCommentShare = ({ postSlug }) => {
   return (
     <div className='sm:mt-32 sm:h-[16rem] flex sm:flex-col gap-6 sm:text-2xl fixed w-full justify-around bottom-0  sm:sticky sm:justify-start sm:w-auto sm:top-32 sm:bottom-32 py-3 sm:py-4 sm:px-2 sm:rounded-lg bg-white sm:bg-gray-100 text-gray-800 bg-opacity-90 z-10 dark:bg-gray-800 dark:text-white'>
         <div className='flex flex-col items-center '>
-           <p className={`${!like ? "hover:text-red-600 hover:bg-red-100 p-2 rounded-full": "text-red-600  p-2 "}`} onClick={onLike}>{!like ? <FaRegHeart />: <FaHeart/>}</p>
+           <p className={`${!like.has_like ? "hover:text-red-600 hover:bg-red-100 p-2 rounded-full": "text-red-600  p-2 "}`} onClick={onLike}>{!like ? <FaRegHeart />: <FaHeart/>}</p>
             <p className='text-xs'>{post && post.likes}</p>
         </div>
         <div className='flex flex-col items-center '>

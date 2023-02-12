@@ -4,10 +4,10 @@ import { useLocation } from 'react-router-dom'
 import {RiHeartLine} from 'react-icons/ri'
 import {FaRegComments} from 'react-icons/fa'
 import {MdDateRange} from 'react-icons/md'
-import Fetch from '../hooks/Fetch'
 import H1 from './H1'
 import { Link } from 'react-router-dom'
 import { getText, minutesRead, toDate} from '../services/services'
+import {useForYou} from '../hooks/FetchData'
 
 
 
@@ -58,28 +58,23 @@ import { getText, minutesRead, toDate} from '../services/services'
 
 const ForYou = () => {
     let topics = ['Javascript', 'React', 'Django', 'Python', 'SQL', 'Postgres' ]
-    // const [tags, setTags] = useState([])
     const pathname = useLocation().search
 
+    const {isLoading, data, error, isError} = useForYou()
+
+
+    if (isLoading){
+      return <h1>Loading..</h1>
+    }
+
+    if (isError) {
+      return <div>{error.message}</div>
+    }
 
     useLayoutEffect(() => {
       window.scrollTo(0, 0);
     }, [pathname]);
 
-
-    // useEffect(() => {
-    //   const getTags  = async () => {
-
-    //     const res  = await fetch("", {
-
-        
-    //     }).then(data => data.json()
-    //     ).then(setTags)
-    //     .catch(error => console.log(error))
-
-    //   }
-    //   getTags()
-    // }, [])
 
   return (
     <div className='my-10'>
@@ -92,20 +87,14 @@ const ForYou = () => {
         </div>
         <div>
 
-     
-       
-        <Fetch
-            url="posts/list"
-            renderSuccess={({ data: { posts } }) => (
-             <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
-            {posts.map(post => (
+
+        <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
+            {data?.data.posts.map(post => (
               <ForYouPost key={post.slug} post={post} />
             ))}
-             </div>
+          </div>
+
          
-            )}
-            />
-                        
 
         </div>
         </div>

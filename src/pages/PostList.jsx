@@ -1,5 +1,4 @@
 import React, { useLayoutEffect, useState } from 'react'
-import Fetch from '../hooks/Fetch';
 import { MdDateRange } from 'react-icons/md';
 import {RiHeartLine} from 'react-icons/ri'
 import {FaRegComments} from 'react-icons/fa'
@@ -7,10 +6,11 @@ import {H1, Button, Pagination } from '../components'
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { minutesRead, getText, toDate } from '../services/services';
+import  {usePostList} from '../hooks/FetchData'
 
 
 export const PostListData = ({ post }) => {
-
+ 
   return (
     <div className='min-h-56 my-4 sm:my-6 shadow-sm shadow-gray-200 dark:shadow-gray-700 dark:bg-gray-800'>
     <div className='flex flex-col gap-6 rounded-lg h-full '>
@@ -61,8 +61,6 @@ export const PostListData = ({ post }) => {
 
 
               </div>
-            
-
               </div>
           </div>
 
@@ -76,11 +74,18 @@ export const PostListData = ({ post }) => {
 
 
 const PostList = () => {
-  const initialNum = Number(useLocation().search.split("=")[1])
   const pathname = useLocation().search
-  const [pageNum , setPageNum] = useState(initialNum)
-  const [prevUrl, setPrevUrl] = useState(null)
-  const [nextUrl, setNextUrl] = useState(null)
+  const {isLoading,data, error, isError} = usePostList()
+  
+
+  if (isLoading){
+    return <h1>Loading..</h1>
+  }
+
+  if (isError) {
+    return <div>{error.message}</div>
+  }
+
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -90,25 +95,10 @@ const PostList = () => {
   return (
       <div className='flex-auto min-h-screen sm:px-4 my-4'>
         <H1 text='All Posts'/>
-      <Fetch
-        url={`posts/list?page=${pageNum}`}
-        renderSuccess={({ data: { posts, next_url, prev_url } }) => (
-          <>
-          {setPrevUrl(prev_url)}{setNextUrl(next_url)}
-          {posts.map(post => (
-          <PostListData key={post.id} post={post} />
-          ))}
-          
-         {posts && (<div className='text-center my-10'>
-            <Pagination pageNum={pageNum} prevUrl={prevUrl} nextUrl={nextUrl} setPageNum={setPageNum}/>
-
-          </div>
-          )
-          }
-        </>
-          )}
-        />
+        {data?.data.posts.map(post => {
+          return <PostListData key={post.id} post={post}/>
+        })}
       </div>
   )
 }
-export default PostList
+export default PostList;

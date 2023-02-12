@@ -12,6 +12,14 @@ const fetchFeaturedArticle = () => {
     return axios.get(`${base_url}/posts/featured`)
 }
 
+const fetchPostList = () => {
+    return axios.get(`${base_url}/posts/list`)
+}
+
+const fetchForYou = () => {
+    return axios.get(`${base_url}/posts/list`)
+}
+
 
 export const useCategoriesData = () => {
     return useQuery('categories', fetchCategories)
@@ -19,4 +27,12 @@ export const useCategoriesData = () => {
 
 export const useFeaturedArticleData = () => {
     return useQuery('featured-article', fetchFeaturedArticle)
+}
+
+export const usePostList = () => {
+    return useQuery('post-list', fetchPostList)
+}
+
+export const useForYou = () => {
+    return useQuery('for-you', fetchForYou)
 }

@@ -10,7 +10,7 @@ const Home = () => {
       <div className='flex items-center justify-between my-2 sm:my-4'>
        <H1 text='Featured Article'/>
         <div>
-        <Link to="/posts?page=1"> <Button text='View More' textSize='md'/></Link>
+        <Link to="/posts"> <Button text='View More' textSize='md'/></Link>
         </div>
         </div>
       <Featured/>

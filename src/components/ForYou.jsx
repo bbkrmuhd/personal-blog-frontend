@@ -7,7 +7,7 @@ import {MdDateRange} from 'react-icons/md'
 import H1 from './H1'
 import { Link } from 'react-router-dom'
 import { getText, minutesRead, toDate} from '../services/services'
-import {useForYou} from '../hooks/FetchData'
+import { useForYouData } from '../hooks/FetchData'
 
 
 
@@ -60,7 +60,12 @@ const ForYou = () => {
     let topics = ['Javascript', 'React', 'Django', 'Python', 'SQL', 'Postgres' ]
     const pathname = useLocation().search
 
-    const {isLoading, data, error, isError} = useForYou()
+    const {isLoading, data, error, isError} = useForYouData()
+
+
+    useLayoutEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
 
 
     if (isLoading){
@@ -71,10 +76,7 @@ const ForYou = () => {
       return <div>{error.message}</div>
     }
 
-    useLayoutEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-
+   
 
   return (
     <div className='my-10'>

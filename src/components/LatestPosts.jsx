@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {MdDateRange} from 'react-icons/md'
-import Fetch from '../hooks/Fetch'
+import {useLatestPostsData} from '../hooks/FetchData'
 import { minutesRead, toDate } from '../services/services'
 
 
@@ -33,15 +33,22 @@ export const LatestPostsList = ({ post }) => {
 
 
 const LatestPosts = () => {
+  const {isLoading, data, error, isError} = useLatestPostsData()
+
+
+    if (isLoading){
+    return <h1>Loading..</h1>
+  }
+
+  if (isError) {
+    return <div>{error.message}</div>
+  }
     return (
-    <Fetch
-        url="posts/updated"
-        renderSuccess={({ data: { posts } }) => (
-          posts.map(post => (
-          <LatestPostsList key={post.title} post={post} />
-          ))
-      )}
-    />
+      <>
+      {data.data.posts.map(post => (
+        <LatestPostsList key={post.title} post={post} />
+        ))}
+      </>
     )
 }
 export default LatestPosts

@@ -6,7 +6,7 @@ import {H1, Button, Pagination } from '../components'
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { minutesRead, getText, toDate } from '../services/services';
-import  {usePostList} from '../hooks/FetchData'
+import  { usePostListData } from '../hooks/FetchData'
 
 
 export const PostListData = ({ post }) => {
@@ -75,8 +75,12 @@ export const PostListData = ({ post }) => {
 
 const PostList = () => {
   const pathname = useLocation().search
-  const {isLoading,data, error, isError} = usePostList()
+  const {isLoading,data, error, isError} = usePostListData()
   
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
 
   if (isLoading){
     return <h1>Loading..</h1>
@@ -86,10 +90,6 @@ const PostList = () => {
     return <div>{error.message}</div>
   }
 
-
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
   
   return (

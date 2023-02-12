@@ -2,7 +2,7 @@ import React, {useLayoutEffect} from 'react'
 import { Link, useParams, useLocation } from 'react-router-dom'
 import { NavBar, Footer, H1, LatestPosts, ReadNext, Comments, LikeCommentShare } from '../components'
 import { MdDateRange } from 'react-icons/md'
-import Fetch from '../hooks/Fetch'
+import { usePostDetailData } from '../hooks/FetchData'
 import { minutesRead, toDate } from '../services/services'
 import MDEditor from "@uiw/react-md-editor";
 
@@ -40,10 +40,21 @@ const PostDetailData = ({ post: {author, title, body, body_html, update_on, imag
 const PostDetail = () => {
   let { postSlug } = useParams()
   const { pathname } = useLocation();
+  const {isLoading, data, error, isError} = usePostDetailData(postSlug)
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+
+  if (isLoading){
+    return <h1>Loading..</h1>
+  }
+
+  if (isError) {
+    return <div>{error.message}</div>
+  }
+
 
   return (
     <>   
@@ -51,30 +62,25 @@ const PostDetail = () => {
     <section className='container mx-auto sm:flex my-10'>
       <div className='relative sm:h-full'>
       <div className='absolute h-2 sm:flex-none sm:min-w-32 sm:my-4 sm:px-4 sm:flex sm:justify-end sm:relative '>
-        <LikeCommentShare postSlug={postSlug} />
+        {/* <LikeCommentShare postSlug={postSlug} /> */}
       </div>
 
       </div>
       
       <div className='flex-auto max-w-4xl min-h-screen px-4 sm:px-12 my-4'>
-        <Fetch url={`/post/detail/${postSlug}`}
-          renderSuccess={({ data: { post, related } }) => (
-            <>
-              <PostDetailData post={post}/>
-              {post && <Comments postSlug={postSlug}/>}
+            <PostDetailData post={data?.data.post}/>
+              {data?.data.post && <Comments postSlug={postSlug}/>}
 
-              {post && (
+              {data?.data.post && (
                 <>
                 <H1 text='Read Next'/>
                 <div className='my-10 grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
-                  {related.map(rPost => (
+                  {data?.data.related.map(rPost => (
                       <ReadNext key={rPost.id} post={rPost}/>
                   ))}
                 </div>
                 </>
               )}
-              </>
-          )}/>
       </div>
 
       <div className='hidden flex-none lg:flex flex-col w-1/4 sm:px-4 my-4'>

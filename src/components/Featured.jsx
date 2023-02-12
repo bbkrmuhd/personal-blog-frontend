@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Fetch from '../hooks/Fetch'
 import Button from './Button'
 import { getText } from '../services/services'
+import { useFeaturedArticleData } from '../hooks/FetchData'
 
 
 
@@ -29,14 +30,18 @@ const FeaturedPost = ({ post: {slug, title, body_html, image } }) => {
 
 
 const Featured = () => {
+  const {isLoading, data, error, isError} = useFeaturedArticleData()
+
+  if (isLoading){
+    return <h1>Loading..</h1>
+  }
+
+  if (isError) {
+    return <div>{error.message}</div>
+  }
+
   return (
-    <Fetch
-    url="/posts/featured"
-    renderSuccess={({data}) => (
-      <FeaturedPost post={data}/>
-    )}
-/>
-   
+      <FeaturedPost post={data.data}/> 
   )
 }
 

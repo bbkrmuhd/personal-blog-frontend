@@ -1,12 +1,17 @@
 import { Routes, Route} from "react-router-dom";
 import './App.css'
+import { QueryClient, QueryClientProvider,  } from "react-query";
+import { ReactQueryDevtools } from 'react-query/devtools'
 import {Home, About, Login, PostList, PostDetail, Admin, TagList, Layout, AdminPosts,
  AdminComments, AdminCreatePost, AdminTags, NotFound, Category, BaseLayout, } from './pages'
  import { RequireAuth } from "./components";
 
+ const queryClient = new QueryClient()
+
 
 export default function App() {
   return (
+    <QueryClientProvider client={queryClient}>
     <>
       <Routes>
         <Route path="/" element={<BaseLayout/>}>
@@ -38,6 +43,7 @@ export default function App() {
       />
       </Routes>
     </>
-     
+    <ReactQueryDevtools initialIsOpen={true} position='bottom-right'/>
+    </QueryClientProvider>
   )
 }

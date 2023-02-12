@@ -2,9 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useStateContext } from '../contexts/ContextProvider'
 import Fetch from '../hooks/Fetch'
-
-
-
+import { useCategoriesData } from '../hooks/FetchData'
 
 
 const CategoryList = ({ category } ) => {
@@ -23,12 +21,23 @@ const CategoryList = ({ category } ) => {
 
 
 const Categories = () => {
+
+  const {isLoading, data, error, isError} = useCategoriesData()
+
+  if (isLoading){
+    return <h1>Loading..</h1>
+  }
+
+  if (isError) {
+    return <div>{error.message}</div>
+  }
+
   return (
     
 <aside className="min-w-64 sm:my-10 rounded-lg drop-shadow-sm shadow-sm" aria-label="Sidebar">
    <div className="p-2 lg:py-4 lg:px-3 bg-gray-50 rounded dark:bg-gray-800">
       <ul className="space-y-2">
-      <Fetch
+      {/* <Fetch
             url="category/list"
             renderSuccess={({ data: { categories }}) => (
             <>
@@ -37,7 +46,10 @@ const Categories = () => {
               ))} 
             </>
             )}
-        />
+        /> */}
+        {data?.data.categories.map(category => {
+           return <CategoryList key={category.name} category={category} />
+        })}
       </ul>
    </div>
 </aside>

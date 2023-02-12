@@ -64,7 +64,7 @@ const NavBar = () => {
         <div className='flex items-center space-x-4 bg-gray-50 w-full sm:w-auto dark:bg-gray-800 sm:dark:bg-gray-900 rounded-lg border sm:border-0 sm:bg-white justify-between sm:justify-start dark:border-gray-700 sticky'>
             <div className=' text-cyan-700 dark:text-cyan-500 flex items-center gap-1'>
             <span className='sm:hidden transition duration-75 eases text-2xl' onClick={onClick}>{active ? <BsArrowBarLeft/> : <BsArrowBarRight/>}</span>
-            <Link to='/'><div className='sm:text-2xl font-bold'>SadiqBlogs</div></Link> 
+            <Link to='/'><div className='sm:text-2xl font-bold'>Avid Pythonista</div></Link> 
             </div>
 
                 <form>   
@@ -73,7 +73,7 @@ const NavBar = () => {
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <span className='w-3 h-3 text-gray-500 dark:text-gray-400'><AiOutlineSearch/></span>
             </div>
-            <input type="search" id="default-search" className="block p-2 px-7  w-full text-xs text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-cyan-500 focus:border-cyan-500 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-cyan-500 dark:focus:border-cyan-500" placeholder="Search blog" required/>
+            <input type="search" id="default-search" disabled={true} className="block p-2 px-7  w-full text-xs text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-cyan-500 focus:border-cyan-500 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-cyan-500 dark:focus:border-cyan-500" placeholder="Search blog" required/>
             <button type="submit" className="text-white absolute  right-1 bottom-1 bg-cyan-700 hover:bg-cyan-800 focus:ring-1 focus:outline-none focus:ring-cyan-300 font-medium rounded-md text-xs px-2 pt-1 pb-1.5 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800 dark:text-gray-200">Search</button>
             </div>
             </form>

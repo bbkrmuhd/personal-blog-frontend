@@ -10,8 +10,6 @@ const Comments = ({ postSlug }) => {
     const [comments, setComments] = useState([])
     const [activeComment, setActiveComment] = useState(null)
 
-
-
     const parentComments = comments.filter((comment) => comment.reply_comment_id == null)
 
     const getReplies = comment_id => {
@@ -61,8 +59,6 @@ const Comments = ({ postSlug }) => {
             `${config.base_url}comment/delete/${comment_id}`, {
           method: 'DELETE',        
         }).then(response => response.json())
-
-
     } 
 
     const onDeleteComment = (comment_id) => {
@@ -71,7 +67,6 @@ const Comments = ({ postSlug }) => {
             const updatedComments = comments.filter((
                 comment) =>  comment.id !== comment_id)
             setComments(updatedComments)
-
         }
         )
     }

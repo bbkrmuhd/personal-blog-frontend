@@ -75,7 +75,8 @@ export const PostListData = ({ post }) => {
 
 const PostList = () => {
   const pathname = useLocation().search
-  const {isLoading,data, error, isError} = usePostListData()
+  const [pageNumber, setPageNumber] = useState(1)
+  const {isLoading,data, error, isError, isFetching} = usePostListData(pageNumber)
   
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -98,6 +99,7 @@ const PostList = () => {
         {data?.data.posts.map(post => {
           return <PostListData key={post.id} post={post}/>
         })}
+        <Pagination setPageNumber={setPageNumber} data={data?.data}/>
       </div>
   )
 }

@@ -1,4 +1,3 @@
-import { unorderedListCommand } from "@uiw/react-md-editor"
 import axios from "axios"
 import {useQuery, useQueryClient} from 'react-query'
 import {config} from '../config/environment'
@@ -20,8 +19,8 @@ const fetchFeaturedArticle = () => {
     return axios.get(`${base_url}/posts/featured`)
 }
 
-const fetchPostList = () => {
-    return axios.get(`${base_url}/posts/list`)
+const fetchPostList = (pageNumber) => {
+    return axios.get(`${base_url}/posts/list?page=${pageNumber}`)
 }
 const fetchPostDetail = ({queryKey}) => {
     const postSlug = queryKey[1]
@@ -41,6 +40,11 @@ const fetchPostByTag = ({queryKey}) => {
     return axios.get(`${base_url}/tags/${tagSlug}`)
 }
 
+
+const fetchComments = ({ queryKey }) => {
+    const postSlug = queryKey[1]
+    return axios.get(`${base_url}comments/get/${postSlug}`)
+}
 
 export const useCategoriesData = () => {
     return useQuery('categories', fetchCategories)
@@ -65,8 +69,10 @@ export const useFeaturedArticleData = () => {
     return useQuery('featured-article', fetchFeaturedArticle)
 }
 
-export const usePostListData = () => {
-    return useQuery('post-list', fetchPostList)
+export const usePostListData = (pageNumber) => {
+    return useQuery(['post-list', pageNumber], () => fetchPostList(pageNumber), {
+        keepPreviousData: true
+    })
 }
 
 export const usePostDetailData = (postSlug) => {
@@ -101,6 +107,23 @@ export const usePostByTagData = (tagSlug) => {
 
             if (posts){
                 return {data: posts}
+            }else {
+                return undefined
+            }
+        }
+    })
+}
+
+
+export const useFetchComments = (postSlug) => {
+    const queryClient = useQueryClient()
+    return useQuery(['post-comments', postSlug], fetchComments, {
+        initialData: () => {
+            const comments = queryClient.getQueryData('post-comments')
+            ?.data.find(post => post.slug === postSlug)
+
+            if (comments){
+                return {data: comments}
             }else {
                 return undefined
             }

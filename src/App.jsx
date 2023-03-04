@@ -6,7 +6,13 @@ import {Home, About, Login, PostList, PostDetail, Admin, TagList, Layout, AdminP
  AdminComments, AdminCreatePost, AdminTags, NotFound, Category, BaseLayout, } from './pages'
  import { RequireAuth } from "./components";
 
- const queryClient = new QueryClient()
+ const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+})
 
 
 export default function App() {

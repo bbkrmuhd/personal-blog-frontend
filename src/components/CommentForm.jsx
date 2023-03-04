@@ -1,8 +1,17 @@
 import React, { useState }from 'react'
 
-const CommentForm = ({ handleSubmit, labelText, initialText="", hasCancelButton=false, handleCancel}) => {
+const CommentForm = ({ 
+  handleSubmit, 
+  labelText, 
+  initialText="", 
+  hasCancelButton=false, 
+  handleCancel, 
+  addCommentLoading,
+  deleteCommentLoading, 
+  updateCommentLoading
+}) => {
     const [text, setText] = useState(initialText)
-    const isDisabled = text.length === 0
+    const isDisabled = text.length === 0 || addCommentLoading || deleteCommentLoading ||updateCommentLoading
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -28,7 +37,8 @@ const CommentForm = ({ handleSubmit, labelText, initialText="", hasCancelButton=
       
         <div className='flex justify-end w-full mt-2 sm:mt-0 sm:justify-start sm:w-auto sm:flex-col gap-2'>
         <button className='bg-cyan-700 text-white  px-2 py-1 sm:px-4 sm:py-2 text-xs rounded-md hover:bg-cyan-800 hover:drop-shadow-md' 
-        disabled={isDisabled} >{labelText}
+        disabled={isDisabled} >
+          {addCommentLoading || deleteCommentLoading || updateCommentLoading ? `${labelText}...` : labelText}
         </button>
         {hasCancelButton &&  (
             <button className='bg-gray-200 text-gray-900 px-2 py-1 sm:px-4 sm:py-2 text-xs rounded-md hover:bg-gray-300 hover:drop-shadow-md' 

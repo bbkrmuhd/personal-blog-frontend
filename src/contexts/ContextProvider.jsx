@@ -1,14 +1,12 @@
 import { useState, createContext, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { loadJSON, saveJSON } from "../services/services";
 import { config } from '../config/environment'
-import { data } from "autoprefixer";
 
 const StateContext = createContext()
 
 
 export const ContextProvider= ({children}) => {
-    const [currentUser, setCurrentUser] = useState(loadJSON('user') || null)
+    const [currentUser, setCurrentUser] = useState(localStorage.getItem('user') || null)
     const [active, setActive] = useState(false)
 
     const navigate = useNavigate()
@@ -25,6 +23,7 @@ export const ContextProvider= ({children}) => {
             .then((result) => result.json())
             .then((data) => {
              setCurrentUser(data)
+             localStorage.setItem('user', JSON.stringify(data))
              navigate(redirectPath(data), { replace: true })
 
            })
@@ -44,7 +43,7 @@ export const ContextProvider= ({children}) => {
 
 
     useEffect(() => {
-    saveJSON('user', currentUser)
+        localStorage.setItem('user', currentUser)
     }, [currentUser])
 
 

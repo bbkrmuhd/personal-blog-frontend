@@ -2,15 +2,15 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { ClipLoader } from 'react-spinners'
 import { H1, Pagination } from '../components'
+import { ForYouPostSkeleton } from '../components/Skeleton'
 import { ForYouPost as CategoryPost } from '../components/ForYou'
 import { useCategoryData } from '../hooks/FetchData'
 
 
 
-
 const Category = () => {
+    const arr = Array(4).fill(5)
     const categoryName = useLocation().pathname.split("/")[2].toLowerCase()
-
     const {isLoading, data, error, isError} = useCategoryData(categoryName)
 
   return (
@@ -20,7 +20,11 @@ const Category = () => {
       </div>
       <div>
         
-        {isLoading ? <ClipLoader/>
+        {isLoading ? <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
+  {arr.map(post => (
+    <ForYouPostSkeleton/>
+  ))}
+</div>
         :
              <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
             {data?.data.posts.map(post => (

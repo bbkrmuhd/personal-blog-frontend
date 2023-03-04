@@ -4,9 +4,13 @@ import { NavBar, Footer, H1, LatestPosts, ReadNext, Comments, LikeCommentShare }
 import { MdDateRange } from 'react-icons/md'
 import { usePostDetailData } from '../hooks/FetchData'
 import { minutesRead, toDate } from '../services/services'
+import { PostDetailDataSkeleton } from '../components/Skeleton'
+import { LikeCommentShareSkeleton } from '../components/Skeleton'
+import { LatestPostsListSkeleton } from '../components/Skeleton'
 import MDEditor from "@uiw/react-md-editor";
 
-const PostDetailData = ({ post: {author, title, body, body_html, update_on, image} }) => {
+const PostDetailData = ({ post: {author, title, body, body_html, update_on, image}}) => {
+  
   return (
     <>  
     <div className='flex items-center gap-2 text-gray-500 text-xs dark:text-gray-100'>
@@ -20,7 +24,7 @@ const PostDetailData = ({ post: {author, title, body, body_html, update_on, imag
               </div>
 
           </div>
-        <H1 text={`${title}`}/>
+        <H1 text={`${title}`} size={5}/>
         <div className='my-3 sm:my-5'>
           <img className='rounded-lg inset-0 w-full h-full object-cover max-h-72 sm:max-h-[28rem]' src={image}  alt="Post Image" />
         </div>
@@ -48,7 +52,23 @@ const PostDetail = () => {
 
 
   if (isLoading){
-    return <h1>Loading..</h1>
+
+    return (
+      <>
+      <div className='relative sm:h-full'>
+      <div className='absolute h-2 sm:flex-none sm:min-w-32 sm:my-4 sm:px-4 sm:flex sm:justify-end sm:relative '>
+        <LikeCommentShareSkeleton/>
+      </div>
+      </div>
+      <div className='flex-auto max-w-4xl min-h-screen px-4 sm:px-12 my-4'>
+            <PostDetailDataSkeleton/>
+      </div>
+          <div className='hidden flex-none lg:flex flex-col w-1/4 sm:px-4 my-4'>
+      <H1/>
+         <LatestPostsListSkeleton/>
+     </div>
+      </>
+    )
   }
 
   if (isError) {
@@ -58,8 +78,6 @@ const PostDetail = () => {
 
   return (
     <>   
-    <NavBar /> 
-    <section className='container mx-auto sm:flex my-10'>
       <div className='relative sm:h-full'>
       <div className='absolute h-2 sm:flex-none sm:min-w-32 sm:my-4 sm:px-4 sm:flex sm:justify-end sm:relative '>
         <LikeCommentShare postSlug={postSlug} />
@@ -73,7 +91,7 @@ const PostDetail = () => {
 
               {data?.data.post && (
                 <>
-                <H1 text='Read Next'/>
+                <H1 text='Read Next' size={5}/>
                 <div className='my-10 grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
                   {data?.data.related.map(rPost => (
                       <ReadNext key={rPost.id} post={rPost}/>
@@ -84,15 +102,12 @@ const PostDetail = () => {
       </div>
 
       <div className='hidden flex-none lg:flex flex-col w-1/4 sm:px-4 my-4'>
-      <H1 text='Popular Articles'/>
-           <LatestPosts />
+      <H1 text='Latest Posts'/>
+        <LatestPosts />
       </div>
-    </section>
-    
-    <Footer />
-
     </>
   )
+
 }
 
 export default PostDetail

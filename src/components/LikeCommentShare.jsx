@@ -75,4 +75,4 @@ const LikeCommentShare = ({ postSlug }) => {
   )
 }
 
-export default LikeCommentShare
+export default LikeCommentShare;

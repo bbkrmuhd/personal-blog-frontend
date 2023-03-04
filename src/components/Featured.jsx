@@ -4,7 +4,7 @@ import Fetch from '../hooks/Fetch'
 import Button from './Button'
 import { getText } from '../services/services'
 import { useFeaturedArticleData } from '../hooks/FetchData'
-
+import { FeaturedPostSkeleton } from './Skeleton'
 
 
 
@@ -19,7 +19,7 @@ const FeaturedPost = ({ post: {slug, title, body_html, image } }) => {
         <p className='text-slate-300 text-xs sm:text-sm leading-4 drop-shadow-lg truncate-line-clamp '>{getText(body_html)}</p>
           </div>
          <div>
-        <Link to={`/post/detail/${slug}`}><Button text='Read Now' bgColor='' textColor='white' textSize='md' /></Link>
+        <Link to={`/posts/detail/${slug}`}><Button text='Read Now' bgColor='' textColor='white' textSize='md' /></Link>
        </div>
         </div>
         <div>
@@ -33,7 +33,7 @@ const Featured = () => {
   const {isLoading, data, error, isError} = useFeaturedArticleData()
 
   if (isLoading){
-    return <h1>Loading..</h1>
+    return <FeaturedPostSkeleton/>
   }
 
   if (isError) {
@@ -41,7 +41,7 @@ const Featured = () => {
   }
 
   return (
-      <FeaturedPost post={data.data}/> 
+      <FeaturedPost post={data?.data}/> 
   )
 }
 

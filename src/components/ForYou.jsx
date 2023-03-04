@@ -8,22 +8,23 @@ import H1 from './H1'
 import { Link } from 'react-router-dom'
 import { getText, minutesRead, toDate} from '../services/services'
 import { useForYouData } from '../hooks/FetchData'
+import { ForYouPostSkeleton } from './Skeleton'
 
 
 
 
- export const ForYouPost = ({ post: { author, title , created_on, body_html, comments_count, likes_count, slug, image } }) => {
+ export const ForYouPost = ({ post: { author, title , created_on, body_html, comments_count, likes_count, slug, image }}) => {
 
 
   return (
     <div className='shadow-md flex sm:flex-col rounded-lg dark:bg-gray-800'>
-       <Link to={`/post/detail/${slug}`}>
+       <Link to={`/posts/detail/${slug}`}>
         <div className='w-28 h-full sm:h-40 sm:w-full rounded-lg bg-center bg-no-repeat bg-cover transition-all hover:scale-105 hover:translate-y-1 ' style={{'backgroundImage': `url(${image})`}}>
         </div>
         </Link>
       <div className='flex flex-col my-5 gap-2 px-2 w-full'>
         <div className='flex flex-col gap-2'>
-         <Link to={`/post/detail/${slug}`} > <h2 className='font-bold text-gray-900 hover:text-cyan-700 hover:underline truncate-line-clamp dark:text-white' >{title}</h2></Link> 
+         <Link to={`/posts/detail/${slug}`} > <h2 className='font-bold text-gray-900 hover:text-cyan-700 hover:underline truncate-line-clamp dark:text-white' >{title}</h2></Link> 
          <p className='text-sm leading-4 text-gray-700 max-w-[200px] sm:max-w-full truncate-line-clamp dark:text-gray-400'>{getText(body_html)}</p>
         </div>
         <div className='flex items sm:items-center justify-between sm:gap-2 mt-3 md:flex-row md:gap-0'>
@@ -69,7 +70,14 @@ const ForYou = () => {
 
 
     if (isLoading){
-      return <h1>Loading..</h1>
+      
+      const arr = Array(4).fill(5)
+  
+      return <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
+      {arr.map(post => (
+        <ForYouPostSkeleton/>
+      ))}
+    </div>
     }
 
     if (isError) {
@@ -91,13 +99,10 @@ const ForYou = () => {
 
 
         <div className='grid grid-cols-1 lg:grid-cols-2  gap-4 sm:gap-6 my-5 w-full'>
-            {data?.data.posts.map(post => (
-              <ForYouPost key={post.slug} post={post} />
+            {data?.data.posts.map((post, index) => (
+              <ForYouPost key={post.slug} post={post}/>
             ))}
           </div>
-
-         
-
         </div>
         </div>
 

@@ -37,7 +37,8 @@ const fetchLatestPosts = () => {
 
 const fetchPostByTag = ({queryKey}) => {
     const tagSlug = queryKey[1]
-    return axios.get(`${base_url}/tags/${tagSlug}`)
+    const pageNumber = queryKey[2]
+    return axios.get(`${base_url}/tags/${tagSlug}?page=${pageNumber}`)
 }
 
 
@@ -52,7 +53,7 @@ export const useCategoriesData = () => {
 
 export const useCategoryData = (categoryName) => {
     const queryClient = useQueryClient()
-    return useQuery(['category-detail', categoryName], fetchCategory, {
+    return useQuery(['category-detail', categoryName],  fetchCategory, {
         initialData: () => {
             const category = queryClient.getQueryData('category-detail')
             ?.data.find(category => category.name === categoryName)
@@ -98,9 +99,9 @@ export const useLatestPostsData = () => {
     return useQuery('latest-post', fetchLatestPosts)
 }
 
-export const usePostByTagData = (tagSlug) => {
+export const usePostByTagData = (tagSlug, pageNumber) => {
     const queryClient = useQueryClient()
-    return useQuery(['post-by-tag', tagSlug], fetchPostByTag, {
+    return useQuery(['post-by-tag', tagSlug, pageNumber], fetchPostByTag, {
         initialData: () => {
             const posts = queryClient.getQueryData('post-by-tag')
             ?.data.find(tag => tag.slug === tagSlug)
@@ -111,6 +112,7 @@ export const usePostByTagData = (tagSlug) => {
                 return undefined
             }
         }
+    
     })
 }
 

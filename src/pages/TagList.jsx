@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react'
+import React, {useState, useLayoutEffect} from 'react'
 import { usePostByTagData } from '../hooks/FetchData';
 import {H1, Pagination} from '../components'
 import {useParams, useLocation } from 'react-router-dom';
@@ -7,7 +7,8 @@ import { PostListData as TagListData } from './PostList';
 const TagList = () => {
     let { tagSlug } = useParams()
     const { pathname } = useLocation();
-    const {isLoading, data, error, isError} = usePostByTagData(tagSlug)
+    const [pageNumber, setPageNumber] = useState(1)
+    const {isLoading, data, error, isError} = usePostByTagData(tagSlug, pageNumber)
 
 
     useLayoutEffect(() => {
@@ -30,6 +31,7 @@ const TagList = () => {
         {data?.data.posts.map(post => (
             <TagListData key={post.id} post={post} />
             ))}
+          <Pagination setPageNumber={setPageNumber} data={data?.data}/>
         </div>
     )
 }

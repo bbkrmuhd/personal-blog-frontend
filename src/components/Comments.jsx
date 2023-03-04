@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useQuery, useMutation, useQueryClient } from 'react-query';
 import Comment from './Comment'
 import CommentForm from './CommentForm'
 import H1 from './H1'
@@ -7,53 +9,66 @@ import { config } from '../config/environment'
 
 
 const Comments = ({ postSlug }) => {
-    const [comments, setComments] = useState([])
+    // const [comments, setComments] = useState([])
     const [activeComment, setActiveComment] = useState(null)
-
-    const parentComments = comments.filter((comment) => comment.reply_comment_id == null)
+    const queryClient = useQueryClient()
+    
+    const {data: comments} = useQuery(['comments', postSlug],
+    async () => {
+        const res = await axios.get(`${config.base_url}comments/get/${postSlug}`)
+        return res.data.comments
+    }
+    )
+    const parentComments = comments && comments.filter((comment) => comment.reply_comment_id == null)
 
     const getReplies = comment_id => {
         return comments.filter((replies) => replies.reply_comment_id === comment_id)
         .sort((a, b) => new Date(a.created_on).getTime() - new Date(b.created_on).getTime())
     } 
 
-    useEffect(() => {
-        async function getComment(postSlug){
-            const response = await fetch(
-                `${config.base_url}comments/get/${postSlug}`)
-                .then((response) => response.json())
-            
 
-            const { comments, prev_url, next_url} = response
-            setComments(comments)
+    //   const addCommentMutation = useMutation(({formData, postSlug}) => {
+    //     axios.post(`${config.base_url}comment/create/${postSlug}`, formData)
+    //     .then(response => {
+    //         return response.data
+    //     })
+    //   },
+    //   {
+    //     onSuccess: (data) => {
+    //         console.log("Data received on add comment success:", data);
+    //         queryClient.setQueryData(['comments', postSlug], (oldComments) => [data.comment, ...oldComments]);
+    //         setActiveComment(null)
+    //     }
+    //   }
+    //   )
+
+    const addCommentMutation = useMutation(
+        ({ formData, postSlug }) =>
+          axios.post(`${config.base_url}comment/create/${postSlug}`, formData)
+            .then((response) => {
+              return response.data;
+            })
+            .catch((error) => {
+              throw error;
+            }),
+        {
+          onSuccess: (data) => {
+            console.log("On Success data:", data);
+            queryClient.setQueryData(['comments', postSlug], (oldComments) => [data.comment, ...oldComments]);
+            setActiveComment(null)
+          },
+          onError: (error) => {
+            console.log("On Error:", error);
+          }
         }
-        getComment(postSlug)
-    } , [postSlug])
-
-
-    const handleAddComment =  async (formData, slug) => {
-      return   await fetch(
-            `${config.base_url}comment/create/${slug}`, {
-          method: 'POST',
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify(formData)
-        
-        }).then(response => response.json())
-
-      }
+      );
 
       
     const onAddComment = (text, comment_id) => {
         const formData = {"comment": text, comment_id}
-        console.log(formData)
-        handleAddComment(formData, postSlug).then(({comment}) =>  {
-            setComments([comment, ...comments])
-            setActiveComment(null)
-        }    
-        ).catch((e) => console.log(e))
-       
-  
-    }
+        addCommentMutation.mutate({formData, postSlug})  
+    };
+
     const handleDeleteComment = async(comment_id) => {
        return await fetch(
             `${config.base_url}comment/delete/${comment_id}`, {
@@ -61,40 +76,52 @@ const Comments = ({ postSlug }) => {
         }).then(response => response.json())
     } 
 
-    const onDeleteComment = (comment_id) => {
-        console.log(comment_id)
-        handleDeleteComment(comment_id).then(() => {
-            const updatedComments = comments.filter((
-                comment) =>  comment.id !== comment_id)
-            setComments(updatedComments)
+    const deleteCommentMutation = useMutation(
+       (comment_id)  => axios.delete(`${config.base_url}comment/delete/${comment_id}`),
+       {
+        onSuccess: (_, comment_id) => {
+            queryClient.setQueryData(['comments', postSlug], (oldComments) => oldComments.filter(comment => comment.id  != comment_id))
         }
-        )
-    }
+       }
+    )
 
-    const handleUpdateComment = async(formData, comment_id) => {
-        return await fetch(
-            `${config.base_url}comment/update/${comment_id}`, {
-          method: 'PUT',
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify(formData)        
-        }).then(response => response.json())
-    } 
+    const onDeleteComment = (comment_id) => {
+        deleteCommentMutation.mutate(comment_id)
+    };
+
+    const updateCommentMutation = useMutation(
+        ({ formData, comment_id }) =>
+          axios.put(`${config.base_url}comment/update/${comment_id}`, formData)
+            .then((response) => {
+              return response.data;
+            })
+            .catch((error) => {
+              throw error;
+            }),
+        {
+          onSuccess: (data) => {
+            console.log("On Success data:", data);
+            queryClient.setQueryData(['comments', postSlug], (oldComments) => {
+                oldComments.map((commentToUpdate) => {
+                    if (commentToUpdate.id == data.comment.id){
+                        return { ...commentToUpdate, body: data.comment };
+                    }
+                    return commentToUpdate
+                })
+                setActiveComment(null)
+            })
+          },
+          onError: (error) => {
+            console.log("On Error:", error);
+          },
+          optimisticUpdates: false
+        }
+      );
 
     const onUpdateComment = (text, comment_id) => {
-        const formData = {"comment": text, comment_id}
-        handleUpdateComment(formData, comment_id).then(({ comment }) => {
-            const updatedComments = comments.map((commentToUpdate) => {
-                if (commentToUpdate.id === comment.id){ 
-                   return {...commentToUpdate, body: text}
-                }
-                return commentToUpdate
-            })
-            setComments(updatedComments)
-            setActiveComment(null)
-        }
-        )
-    }
-
+        const formData = { "comment": text, comment_id };
+        updateCommentMutation.mutate({ formData, comment_id });
+      };
  
 
 

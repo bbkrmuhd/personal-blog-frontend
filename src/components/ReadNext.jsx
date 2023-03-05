@@ -5,7 +5,7 @@ import {MdDateRange} from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import { minutesRead, toDate} from '../services/services'
 
-
+ 2
 const ReadNext = ({post: {title, author,slug, body_html, likes_count, comments_count, created_on}}) => {
   return (
       <div className='flex sm:flex-col rounded-md shadow-sm shadow-gray-300 dark:shadow-gray-700 dark:bg-gray-800'>
@@ -13,7 +13,7 @@ const ReadNext = ({post: {title, author,slug, body_html, likes_count, comments_c
           <div className='flex flex-col gap-2 mb-2 sm:mt-2 px-2 w-full'>
             
 
-            <Link to={`/post/detail/${slug}`}><p className='font-bold text-left text-sm sm:text-base text-slate-900 hover:text-cyan-700 capitalize cursor-pointer truncate-line-clamp hover:underline dark:text-white'>
+            <Link to={`/posts/detail/${slug}`}><p className='font-bold text-left text-sm sm:text-base text-slate-900 hover:text-cyan-700 capitalize cursor-pointer truncate-line-clamp hover:underline dark:text-white'>
                 {title}
                 </p>
               </Link>

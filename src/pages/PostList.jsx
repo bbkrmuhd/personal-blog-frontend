@@ -6,7 +6,7 @@ import {H1, Button, Pagination } from '../components'
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { minutesRead, getText, toDate } from '../services/services';
-import  { usePostListData, useUnsplashPhotos } from '../hooks/FetchData'
+import  { usePostListData } from '../hooks/FetchData'
 import { PostListDataSkeleton } from '../components/Skeleton';
 
 

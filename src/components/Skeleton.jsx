@@ -154,3 +154,14 @@ export const LikeCommentShareSkeleton = () => {
     </div>
   );
 };
+
+export const CategoryListSkeleton = () => {
+  return (
+    <li>
+      <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg cursor-pointer bg-gray-400 shine">
+        <span className='text-xl'></span>
+        <span className="ml-3 font-bold capitalize h-6"></span>
+      </div>
+    </li>
+  );
+}

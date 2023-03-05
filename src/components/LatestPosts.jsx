@@ -37,14 +37,7 @@ const LatestPosts = () => {
 
 
     if (isLoading){
-        const arr = Array(5).fill(5)
-        return( <div>
-          {
-            arr.map(post => {
-              <LatestPostsListSkeleton/>
-            })
-          }
-          </div>)
+        return <LatestPostsListSkeleton/>
   }
 
   if (isError) {

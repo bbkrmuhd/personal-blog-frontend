@@ -1,6 +1,5 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import { ClipLoader } from 'react-spinners'
 import { H1, Pagination } from '../components'
 import { ForYouPostSkeleton } from '../components/Skeleton'
 import { ForYouPost as CategoryPost } from '../components/ForYou'

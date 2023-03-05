@@ -9,7 +9,7 @@ const Subscribe = () => {
   return (
     <div className='p-2 sm:p-6 my-2 sm:my-4 flex flex-col sm:flex-row items-center gap-2 sm:gap-0 justify-between drop-shadow-sm'>
         <div className='w-full sm:w-3/6'>
-            <h1 className='text-slate-700 tracking-wide sm:text-3xl dark:text-gray-400'>Subscribe to my news latter to get latest updates and news</h1>
+            <h1 className='text-slate-700 tracking-wide sm:text-3xl dark:text-gray-400'>Subscribe to my newsletter to get latest updates and news</h1>
         </div>
         <div>
         <form className='sm:flex sm:gap-2' action="">

@@ -6,7 +6,7 @@ const BaseLayout = () => {
   return (
     <>   
     <NavBar /> 
-    <section className='container mx-auto sm:flex my-10 px-4 relative min-h-[50vh]'>
+    <section className='container mx-auto sm:flex my-10 px-4 sm:px-0 relative min-h-[50vh]'>
       <Outlet/>
     </section>
     <Footer /> 

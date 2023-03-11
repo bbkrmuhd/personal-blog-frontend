@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import './App.css'
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { ClipLoader } from 'react-spinners'
 import { BallTriangle } from  'react-loader-spinner'
 import { RequireAuth } from "./components";
 
